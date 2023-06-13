@@ -1,7 +1,6 @@
-const connection = require('./db');
-//const filterHelper = require('../services/FilterHelper');
-//const {passwordHasher} = require('../services/PasswordHelper');
-//const User = require('../entity/User');
+const connection = require('./index');
+const filterHelper = require('../services/FilterHelper');
+const {passwordHasher} = require('../services/PasswordHelper');
 
 async function insertUser(data) {
     //password hashing
@@ -9,7 +8,8 @@ async function insertUser(data) {
 
     let bodyResponse = {...data};
     
-    return connection.promise().query( "INSERT INTO user (firstname, lastname, email, phone, password, roles) VALUES (?, ?, ?, ?, ?, ?)", 
+
+    return connection.promise().query("INSERT INTO user (firstname, lastname, email, phone, password, roles) VALUES (?, ?, ?, ?, ?, ?)", 
     [
         data.firstname,
         data.lastname,
@@ -18,6 +18,7 @@ async function insertUser(data) {
         await passwordHasher(data.password),
         JSON.stringify(data.roles)
     ])
+
     .then(async ([rows]) => { 
         bodyResponse.id = rows.insertId
         //@TODO remove password from body
@@ -38,11 +39,20 @@ async function updateUser(id, data) {
 
     sqlQuery = sqlQuery.slice(0, sqlQuery.length - 2);
 
-    sqlQuery += ` WHERE id = ${id}`;
+
+    sqlQuery += ` WHERE iduser = ${id}`;
 
     let bodyResponse = {...data};
     
-    return connection.promise().query(sqlQuery, Object.values(data))
+    return connection.promise().query(sqlQuery, [
+        data.firstname,
+        data.lastname,
+        data.email,
+        data.phone,
+        await passwordHasher(data.password),
+        JSON.stringify(data.roles),
+      ])
+
     .then(async ([rows]) => { 
         //bodyResponse.id = rows.insertId
         //@TODO remove password from body
@@ -55,7 +65,8 @@ async function updateUser(id, data) {
 }
 
 async function deleteUser(id) {
-    let sqlQuery = `DELETE FROM user where id = ${id}`;
+
+    let sqlQuery = `DELETE FROM user where iduser = ${id}`;
     
     return connection.promise().query(sqlQuery)
     .then(async ([rows]) => { 
@@ -80,14 +91,15 @@ async function fetchUser() {
 }
 
 async function fetchOneUser(id) {
-    const sql = "SELECT * FROM user WHERE id = ?";
-    
-    return connection.promise().query(sql, id)
+
+    const sql = "SELECT * FROM user WHERE iduser = ?";
+
+    return connection.promise().query("SELECT * FROM user WHERE iduser = ?", id)
+    .then(async ([rows]) => { 
+        return {status: 200, message: rows[0]}})
     .then(async ([rows]) => {
-        let user = new User();
-        Object.keys(rows[0]).map(item => { user[item] = rows[0][item] });
-        
-        return rows.length === 0 ? {status: 404, message: {}} : {status: 200, message: user}
+        return rows.length === 0 ? {status: 404, message: {}} : {status: 200, message: rows[0]}
+
     })
     .catch(error => {
         return {status: 500, message: error}
