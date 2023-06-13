@@ -1,6 +1,4 @@
 const connection = require('./index');
-const filterHelper = require('../services/FilterHelper');
-const {passwordHasher} = require('../services/PasswordHelper');
 
 async function insertOffice(data) {
 
