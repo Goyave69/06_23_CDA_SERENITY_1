@@ -1,17 +1,22 @@
 const connection = require('./index');
 const filterHelper = require('../services/FilterHelper');
 const {passwordHasher} = require('../services/PasswordHelper');
-const User = require('../entity/User');
 
 async function insertUser(data) {
-    const sql = "INSERT INTO user (firstname, lastname, email, phone, password, roles) VALUES (?, ?, ?, ?, ?, ?)";
-
     //password hashing
     data.password = await passwordHasher(data.password)
 
     let bodyResponse = {...data};
     
-    return connection.promise().query(sql, Object.values(data))
+    return connection.promise().query("INSERT INTO user (firstname, lastname, email, phone, password, roles) VALUES (?, ?, ?, ?, ?, ?)", 
+    [
+        data.firstname,
+        data.lastname,
+        data.email,
+        data.phone,
+        await passwordHasher(data.password),
+        JSON.stringify(data.roles),
+      ])
     .then(async ([rows]) => { 
         bodyResponse.id = rows.insertId
         //@TODO remove password from body
@@ -32,11 +37,18 @@ async function updateUser(id, data) {
 
     sqlQuery = sqlQuery.slice(0, sqlQuery.length - 2);
 
-    sqlQuery += ` WHERE id = ${id}`;
+    sqlQuery += ` WHERE iduser = ${id}`;
 
     let bodyResponse = {...data};
     
-    return connection.promise().query(sqlQuery, Object.values(data))
+    return connection.promise().query(sqlQuery, [
+        data.firstname,
+        data.lastname,
+        data.email,
+        data.phone,
+        await passwordHasher(data.password),
+        JSON.stringify(data.roles),
+      ])
     .then(async ([rows]) => { 
         //bodyResponse.id = rows.insertId
         //@TODO remove password from body
@@ -49,7 +61,7 @@ async function updateUser(id, data) {
 }
 
 async function deleteUser(id) {
-    let sqlQuery = `DELETE FROM user where id = ${id}`;
+    let sqlQuery = `DELETE FROM user where iduser = ${id}`;
     
     return connection.promise().query(sqlQuery)
     .then(async ([rows]) => { 
@@ -74,23 +86,13 @@ async function fetchUser() {
 }
 
 async function fetchOneUser(id) {
-    const sql = "SELECT * FROM user WHERE id = ?";
+    const sql = "SELECT * FROM user WHERE iduser = ?";
 
-    return connection.promise().query(sql, id)
+    return connection.promise().query("SELECT * FROM user WHERE iduser = ?", id)
+    .then(async ([rows]) => { 
+        return {status: 200, message: rows[0]}})
     .then(async ([rows]) => {
-        let user = new User();
-        let userResult = rows[0];
-        /*user.id = userResult.id;
-        user.firstName = userResult.first_name;
-        user.lastName = userResult.last_name;
-        user.username = userResult.username;
-        user.address = userResult.address;
-        user.birthdate = userResult.birthdate;*/
-
-        Object.keys(rows[0]).map(item => { user[item] = rows[0][item] });
-        //return console.log(user);
-        
-        return rows.length === 0 ? {status: 404, message: {}} : {status: 200, message: user}
+        return rows.length === 0 ? {status: 404, message: {}} : {status: 200, message: rows[0]}
     })
     .catch(error => {
         return {status: 500, message: error}
