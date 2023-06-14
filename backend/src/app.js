@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const cors = require("cors");
 const userRouter = require("./routes/users");
+const appointmentRouter = require("./routes/appointments");
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, "..", "..", "frontend", "dist")));
 
 // API routes
 app.use("/users", userRouter);
+app.use("/appointments", appointmentRouter);
 
 // Redirect all requests to the REACT app
 const reactIndexFile = path.join(
