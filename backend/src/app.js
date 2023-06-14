@@ -5,6 +5,7 @@ const cors = require("cors");
 const userRouter = require("./routes/users");
 const appointmentRouter = require("./routes/appointments");
 const officeRouter = require("./routes/offices");
+const interventionRouter = require("./routes/interventions"); 
 
 const app = express();
 
@@ -28,6 +29,8 @@ app.use(express.static(path.join(__dirname, "..", "..", "frontend", "dist")));
 app.use("/users", userRouter);
 app.use("/appointments", appointmentRouter);
 app.use("/offices", officeRouter);
+app.use("/interventions", interventionRouter);
+
 
 // Redirect all requests to the REACT app
 const reactIndexFile = path.join(
