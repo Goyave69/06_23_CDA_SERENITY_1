@@ -91,11 +91,7 @@ async function fetchUser() {
 }
 
 async function fetchOneUser(id) {
-
-    //const sql = "SELECT * FROM user WHERE iduser = ?";
-
     return connection.promise().query("SELECT * FROM user WHERE iduser = ?", id)
-
     .then(async ([rows]) => {
         return rows.length === 0 ? {status: 404, message: {}} : {status: 200, message: rows[0]}
 
