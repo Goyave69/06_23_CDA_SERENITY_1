@@ -2,23 +2,12 @@ const connection = require('./index');
 const filterHelper = require('../services/FilterHelper');
 const {passwordHasher} = require('../services/PasswordHelper');
 
-async function insertUser(data) {
-    //password hashing
-    data.password = await passwordHasher(data.password)
+async function insertAppointment(data) { 
 
     let bodyResponse = {...data};
     
 
-    return connection.promise().query("INSERT INTO user (firstname, lastname, email, phone, password, roles) VALUES (?, ?, ?, ?, ?, ?)", 
-    [
-        data.firstname,
-        data.lastname,
-        data.email,
-        data.phone,
-        await passwordHasher(data.password),
-        JSON.stringify(data.roles)
-    ])
-
+    return connection.promise().query("INSERT INTO appointment (date_time, patient_idpatient, interventions_idinterventions, office_idoffice) VALUES (?, ?, ?, ?)", [data.date_time, data.patient_id, data.interventions_id, data.office_id])
     .then(async ([rows]) => { 
         bodyResponse.id = rows.insertId
         //@TODO remove password from body
@@ -30,8 +19,8 @@ async function insertUser(data) {
     })
 }
 
-async function updateUser(id, data) {
-    let sqlQuery = "UPDATE user SET ";
+async function updateAppointment(id, data) {
+    let sqlQuery = "UPDATE appointment SET ";
 
     for (let key in itemValue = Object.keys(data)) {
         sqlQuery += `${itemValue[key]} = ?, `
@@ -40,7 +29,7 @@ async function updateUser(id, data) {
     sqlQuery = sqlQuery.slice(0, sqlQuery.length - 2);
 
 
-    sqlQuery += ` WHERE iduser = ${id}`;
+    sqlQuery += ` WHERE idappointment = ${id}`;
 
     let bodyResponse = {...data};
     
@@ -64,9 +53,9 @@ async function updateUser(id, data) {
     })
 }
 
-async function deleteUser(id) {
+async function deleteAppointment(id) {
 
-    let sqlQuery = `DELETE FROM user where iduser = ${id}`;
+    let sqlQuery = `DELETE FROM Appointment where idappointment = ${id}`;
     
     return connection.promise().query(sqlQuery)
     .then(async ([rows]) => { 
@@ -78,8 +67,8 @@ async function deleteUser(id) {
     })
 }
 
-async function fetchUser() {
-    const sql = "SELECT * FROM user";
+async function fetchAppointment() {
+    const sql = "SELECT * FROM appointment";
     
     return connection.promise().query(sql)
     .then(async ([rows]) => { 
@@ -90,8 +79,12 @@ async function fetchUser() {
     })
 }
 
-async function fetchOneUser(id) {
-    return connection.promise().query("SELECT * FROM user WHERE iduser = ?", id)
+async function fetchOneAppointment(id) {
+
+    //const sql = "SELECT * FROM Appointment WHERE idAppointment = ?";
+
+    return connection.promise().query("SELECT * FROM appointment WHERE idappointment = ?", id)
+
     .then(async ([rows]) => {
         return rows.length === 0 ? {status: 404, message: {}} : {status: 200, message: rows[0]}
 
@@ -101,7 +94,7 @@ async function fetchOneUser(id) {
     })
 }
 
-async function fetchUserBy(filter) {
+async function fetchAppointmentBy(filter) {
     //search filter (that contain)
     let {sql, values } = filterHelper.checkKindOfFilter(filter);
 
@@ -121,10 +114,10 @@ async function fetchUserBy(filter) {
 }
 
 module.exports = {
-    insertUser,
-    fetchUser,
-    fetchOneUser,
-    fetchUserBy,
-    updateUser,
-    deleteUser
+    insertAppointment,
+    fetchAppointment,
+    fetchOneAppointment,
+    fetchAppointmentBy,
+    updateAppointment,
+    deleteAppointment
 }
