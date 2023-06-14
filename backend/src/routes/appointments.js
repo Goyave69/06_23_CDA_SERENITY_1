@@ -6,6 +6,8 @@ const readOneAppointmentController = require('../controllers/AppointmentControll
 const updateAppointmentController = require('../controllers/AppointmentController/UpdateAppointmentController')
 const deleteAppointmentController = require('../controllers/AppointmentController/DeleteAppointment');
 
+//dont forget to check the sentences
+
 /* POST : create a new Appointment. */
 router.post('/', createAppointmentController)
 
