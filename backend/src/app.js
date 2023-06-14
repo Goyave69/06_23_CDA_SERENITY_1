@@ -5,7 +5,6 @@ const cors = require("cors");
 const userRouter = require("./routes/users");
 
 const app = express();
-const usersRouter = require('./routes/users');
 
 // use some application-level middlewares
 app.use(
