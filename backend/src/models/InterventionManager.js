@@ -2,12 +2,14 @@ const connection = require('./index');
 const filterHelper = require('../services/FilterHelper');
 //const {passwordHasher} = require('../services/PasswordHelper');
 
-async function insertAppointment(data) { 
+async function insertIntervention(data) {   
 
     let bodyResponse = {...data};
     
 
-    return connection.promise().query("INSERT INTO appointment (date_time, patient_idpatient, interventions_idinterventions, office_idoffice) VALUES (?, ?, ?, ?)", [data.date_time, data.patient_id, data.interventions_id, data.office_id])
+    return connection.promise().query("INSERT INTO interventions (specialty, date, quotation, number_done, patient_idpatient, documents_iddocuments, office_idoffice ) VALUES (?, ?, ?, ?, ?, ?, ?)", 
+    [data.specialty, data.date, data.quotation, data.number_done, data.patient_idpatient, data.documents_iddocuments, data.office_idoffice])
+    
     .then(async ([rows]) => { 
         bodyResponse.id = rows.insertId
         //@TODO remove password from body
@@ -19,8 +21,8 @@ async function insertAppointment(data) {
     })
 }
 
-async function updateAppointment(id, data) {
-    let sqlQuery = "UPDATE appointment SET ";
+async function updateIntervention(id, data) {
+    let sqlQuery = "UPDATE interventions SET ";
 
     for (let key in itemValue = Object.keys(data)) {
         sqlQuery += `${itemValue[key]} = ?, `
@@ -29,7 +31,7 @@ async function updateAppointment(id, data) {
     sqlQuery = sqlQuery.slice(0, sqlQuery.length - 2);
 
 
-    sqlQuery += ` WHERE idappointment = ${id}`;
+    sqlQuery += ` WHERE idinterventions = ${id}`;
 
     let bodyResponse = {...data};
     
@@ -46,9 +48,9 @@ async function updateAppointment(id, data) {
     })
 }
 
-async function deleteAppointment(id) {
+async function deleteIntervention(id) {
 
-    let sqlQuery = `DELETE FROM Appointment where idappointment = ${id}`;
+    let sqlQuery = `DELETE FROM intervention where idinterventions = ${id}`;
     
     return connection.promise().query(sqlQuery)
     .then(async ([rows]) => { 
@@ -60,8 +62,8 @@ async function deleteAppointment(id) {
     })
 }
 
-async function fetchAppointment() {
-    const sql = "SELECT * FROM appointment";
+async function fetchIntervention() {
+    const sql = "SELECT * FROM interventions";
     
     return connection.promise().query(sql)
     .then(async ([rows]) => { 
@@ -72,11 +74,11 @@ async function fetchAppointment() {
     })
 }
 
-async function fetchOneAppointment(id) {
+async function fetchOneIntervention(id) {
 
-    //const sql = "SELECT * FROM Appointment WHERE idAppointment = ?";
+    //const sql = "SELECT * FROM Intervention WHERE idIntervention = ?";
 
-    return connection.promise().query("SELECT * FROM appointment WHERE idappointment = ?", id)
+    return connection.promise().query("SELECT * FROM interventions WHERE idinterventions = ?", id)
 
     .then(async ([rows]) => {
         return rows.length === 0 ? {status: 404, message: {}} : {status: 200, message: rows[0]}
@@ -87,7 +89,7 @@ async function fetchOneAppointment(id) {
     })
 }
 
-async function fetchAppointmentBy(filter) {
+async function fetchInterventionBy(filter) {
     //search filter (that contain)
     let {sql, values } = filterHelper.checkKindOfFilter(filter);
 
@@ -107,10 +109,10 @@ async function fetchAppointmentBy(filter) {
 }
 
 module.exports = {
-    insertAppointment,
-    fetchAppointment,
-    fetchOneAppointment,
-    fetchAppointmentBy,
-    updateAppointment,
-    deleteAppointment
+    insertIntervention,
+    fetchIntervention,
+    fetchOneIntervention,
+    fetchInterventionBy,
+    updateIntervention,
+    deleteIntervention
 }
