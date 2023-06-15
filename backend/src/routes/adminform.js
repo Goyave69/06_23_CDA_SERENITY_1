@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const createAdminFormController = require("../controllers/adminfromController/CreateAdminFormController");
-const readAdminFormController = require("../controllers/adminfromController/ReadAdminFormController");
-const readOneAdminFormController = require("../controllers/adminfromController/ReadOneAdminFormController");
-const updateAdminFormController = require("../controllers/adminfromController/UpdateAdmainFormController");
-const deleteAdminFormController = require("../controllers/adminfromController/DeleteAdminFormController");
+const createAdminFormController = require("../controllers/adminformController/CreateAdminFormController");
+const readAdminFormController = require("../controllers/adminformController/ReadAdminFormController");
+const readOneAdminFormController = require("../controllers/adminformController/ReadOneAdminFormController");
+const updateAdminFormController = require("../controllers/adminformController/UpdateAdmainFormController");
+const deleteAdminFormController = require("../controllers/adminformController/DeleteAdminFormController");
 
 /* POST : create a new user. */
 router.post("/", createAdminFormController);

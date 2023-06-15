@@ -9,6 +9,8 @@ const doctorRouter = require("./routes/doctors");
 const interventionRouter = require("./routes/interventions"); 
 const adminformRouter = require("./routes/adminform"); 
 const documentsRouter = require("./routes/documents");
+const patientsRouter = require("./routes/patient");
+
 
 
 const app = express();
@@ -37,6 +39,7 @@ app.use("/doctors", doctorRouter);
 app.use("/interventions", interventionRouter);
 app.use("/adminforms", adminformRouter); 
 app.use("/documents", documentsRouter);
+app.use("/patients", patientsRouter); 
 
 // Redirect all requests to the REACT app
 const reactIndexFile = path.join(
