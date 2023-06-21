@@ -11,9 +11,9 @@ function App() {
       <main>
         <Outlet />
       </main>
-      <Dashboard />
+      {/* <Dashboard />
       <MyPreparation/>
-      <TimeTable/>
+      <TimeTable/> */}
     </div>
   );
 }
