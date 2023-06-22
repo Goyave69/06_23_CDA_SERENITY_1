@@ -1,7 +1,10 @@
-export default function DashboardTemplate() {
+import SideBar from "@components/barcomponents/SideBar";
+
+export default function Dashboard() {
+
   return (
     <div>
-       <p>Hello Vite + React this is the Dashboard !</p>
+      <SideBar/>
     </div>
   );
 }
