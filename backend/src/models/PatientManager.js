@@ -90,7 +90,7 @@ async function fetchOnePatient(id) {
 }
 
 async function fetchPatientBy(filter) {
-    const tableName = 'user';
+    const tableName = 'patient';
     const { sql, values } = checkKindOfFilter(tableName, filter);
   
     // order filter (sorting)
@@ -102,7 +102,7 @@ async function fetchPatientBy(filter) {
     } catch (error) {
       return { status: 500, message: error };
     }
-  }
+}
   
 
 module.exports = {

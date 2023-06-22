@@ -1,10 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import Dashboard from './pages/DashboardTemplate'
-import { createBrowserRouter,RouterProvider } from "react-router-dom";
+import { createBrowserRouter,RouterProvider,} from "react-router-dom";
+import { ThemeProvider } from "@mui/material";
+import { mainTheme } from "./theme";
 import App from "./App";
 import MyPreparation from "@pages/MyPreparation";
 import TimeTable from "@pages/TimeTable";
+import Login from "@pages/Login";
+
 
 const router = createBrowserRouter([
   {
@@ -23,6 +27,10 @@ const router = createBrowserRouter([
         path: "/timetable",
         element: <TimeTable/>
       },
+      {
+        path: "/login",
+        element: <Login/>
+      },
     ]
   },
   
@@ -30,6 +38,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider theme={mainTheme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 );
