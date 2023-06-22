@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-export default function sidebar() {
-=======
 import * as React from 'react';
 import Countdown from './CountDown';
 import Badge from '@mui/material/Badge';
@@ -27,7 +24,6 @@ import { Icon } from "@mui/material";
 import Avatar from '@mui/material/Avatar';
 
 const drawerWidth = 240;
->>>>>>> c7b25f6771d6a3b3d197a48ef1dce367c9368c0c
 
 function ResponsiveDrawer(props) {
   const { window } = props;
