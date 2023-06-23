@@ -1,4 +1,4 @@
-import Dashboard from "./pages/DashboardTemplate";
+import SideBar from "@components/barcomponents/SideBar";
 import { Outlet } from "react-router-dom";
 
 import "./App.css";
@@ -6,7 +6,7 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <Dashboard />
+      <SideBar />
       <Outlet />
     </div>
   );

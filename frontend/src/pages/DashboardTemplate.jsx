@@ -1,10 +1,9 @@
-import SideBar from "@components/barcomponents/SideBar";
+import PreSurgeryProgress from "@components/dashboardcomponents/PreSurgeryProgress";
 
 export default function Dashboard() {
-
   return (
     <div>
-      <SideBar/>
+      <PreSurgeryProgress/>
     </div>
   );
 }

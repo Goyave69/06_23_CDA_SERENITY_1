@@ -1,12 +1,12 @@
-import React from 'react';
-import CardUnderstand from '@components/preparationcomponents/CardUnderstand';
-import CardForm from '@components/preparationcomponents/CardForm';
-import Grid from '@mui/material/Grid';
-import { Box } from '@mui/material';
+import React from "react";
+import CardUnderstand from "@components/preparationcomponents/CardUnderstand";
+import CardForm from "@components/preparationcomponents/CardForm";
+import Grid from "@mui/material/Grid";
+import { Box } from "@mui/material";
 
 export default function MyPreparation() {
   return (
-    <Box sx={{ width:"100%"}}>
+    <Box sx={{ width: "100%" }}>
       <Grid container spacing={2}>
         <Grid item xs={10}>
           <CardUnderstand />
@@ -18,6 +18,3 @@ export default function MyPreparation() {
     </Box>
   );
 }
-
-
-

@@ -3,10 +3,17 @@ import { createTheme } from "@mui/material/styles";
 export const mainTheme = createTheme({
   palette: {
     primary: {
-      main: "#FFFFFF",
+      main: "#FFFFFF", 
     },
     secondary: {
       main: "#6C5DD3",
+    },
+  },
+  overrides: {
+    MuiLinearProgress: {
+      root: {
+        backgroundColor: "#AF8EFF", 
+      },
     },
   },
   typography: {
@@ -17,3 +24,4 @@ export const mainTheme = createTheme({
     },
   },
 });
+
