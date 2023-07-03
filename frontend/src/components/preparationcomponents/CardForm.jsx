@@ -1,22 +1,29 @@
-import React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import PropTypes from 'prop-types';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import React from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import PropTypes from "prop-types";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 const CircularProgressWithLabel = (props) => {
   return (
-    <Box sx={{ position: 'relative', display: 'inline-flex', width:"55px", top: '-10px' }}>
+    <Box
+      sx={{
+        position: "relative",
+        display: "inline-flex",
+        width: "55px",
+        ml:"29px"
+      }}
+    >
       <CircularProgress variant="determinate" {...props} />
       <Box
         sx={{
-          top: '50%',
-          left: '50%',
-          position: 'absolute',
-          transform: 'translate(-50%, -50%)',
-          textAlign: 'center',
+          top: "50%",
+          left: "50%",
+          position: "absolute",
+          transform: "translate(-50%, -50%)",
+          textAlign: "center",
         }}
       >
         <Typography variant="body2" component="div" color="text.secondary">
@@ -25,7 +32,7 @@ const CircularProgressWithLabel = (props) => {
       </Box>
     </Box>
   );
-}
+};
 CircularProgressWithLabel.propTypes = {
   /**
    * The value of the progress indicator for the determinate variant.
@@ -39,39 +46,50 @@ const CustomCardForm = () => {
   return (
     <Card
       sx={{
-        backgroundColor: '#F5F5F5',
-        borderRadius:"20px",
-        position: 'absolute',
-        left: '25%',
-        right: '63.75%',
-        top: '23.93%',
-        bottom: '57%',
-        border: '3px solid #47CACF',
+        backgroundColor: "#F5F5F5",
+        borderRadius: "20px",
+        position: "relative",
+        width:"100",
+        ml: "16px",
+        padding: "45px",
+        marginTop:"100px",
+        border: "3px solid #47CACF",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        border: "3px solid #47CACF",
       }}
-    >
+     >
       <CardContent>
         <div
-          sx={{
-            position: 'absolute',
-            width: 65,
-            height: 65,
-            right: 56,
-            top: 'calc(50% - 65px/2 - 28px)',
+          style={{
+            position: "absolute",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            top: "10%",
+            left: "10%",
+            transform: "translate(-10%, -10%)",
           }}
         >
-          <CircularProgressWithLabel value={57} size={65} sx={{ color: '#47CACF' }} />
+          <CircularProgressWithLabel
+            value={57}
+            size={65}
+            sx={{ color: "#47CACF" }}
+          />
 
           <Typography
             variant="subtitle1"
             component="div"
             sx={{
-              position: 'absolute',
-              left: '47%',
-              top: '75%',
-              transform: 'translate(-50%, -50%)',
-              textAlign: 'center',
-              fontSize: '10px',
-              fontWeight:"Medium"
+              position: "absolute",
+              left: "47px",
+              top: "79px",
+              margin:"10px",
+              transform: "translate(-50%, -50%)",
+              textAlign: "center",
+              fontSize: "10px",
+              fontWeight: "Medium",
             }}
           >
             Se débarasser des formalitées administrative
@@ -83,4 +101,3 @@ const CustomCardForm = () => {
 };
 
 export default CustomCardForm;
-
