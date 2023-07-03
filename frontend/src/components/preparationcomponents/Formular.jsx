@@ -46,14 +46,14 @@ export default function Formular() {
   }
 
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex", marginTop: "60px"}}>
       <div>
-        <Typography variant="h6" sx={{ fontSize: 16 }}>
+        <Typography variant="h6" sx={{ fontSize: 16, display:"flex", justifyContent:"start", marginBottom:"48px" }}>
           La fiche administrative
         </Typography>
         <Typography
           variant="h6"
-          sx={{ fontSize: 14, fontWeight: "bold", my: "2rem" }}
+          sx={{ fontSize: 14, fontWeight: "bold", my: "2rem", display:"flex", justifyContent:"start" }}
         >
           Etat civil
         </Typography>
@@ -274,7 +274,7 @@ export default function Formular() {
         <Divider variant="middle" sx={{ mt: "3rem", width: "50%" }} />
         <Typography
           variant="h6"
-          sx={{ fontSize: 14, mt: "3rem", fontWeight: "bold" }}
+          sx={{ fontSize: 14, mt: "3rem", fontWeight: "bold", display:"flex", justifyContent:"start" }}
         >
           Adresse et contact
         </Typography>

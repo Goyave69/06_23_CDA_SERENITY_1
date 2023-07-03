@@ -42,7 +42,7 @@ CircularProgressWithLabel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-const CustomCard = () => {
+const CustomCardForm = () => {
   return (
     <Card
       sx={{
@@ -53,13 +53,13 @@ const CustomCard = () => {
         ml: "16px",
         padding: "45px",
         marginTop:"100px",
-        border: "3px solid #F5D23F",
+        border: "3px solid #F8749F",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        border: "3px solid #F5D23F",
+        border: "3px solid #F8749F",
       }}
-    >
+     >
       <CardContent>
         <div
           style={{
@@ -75,7 +75,7 @@ const CustomCard = () => {
           <CircularProgressWithLabel
             value={62}
             size={65}
-            sx={{ color: "#F5D23F" }}
+            sx={{ color: "#F8749F" }}
           />
 
           <Typography
@@ -92,7 +92,7 @@ const CustomCard = () => {
               fontWeight: "Medium",
             }}
           >
-            Comprendre mon opération
+           Resynchronisez-vous avec votre coprs
           </Typography>
         </div>
       </CardContent>
@@ -100,4 +100,4 @@ const CustomCard = () => {
   );
 };
 
-export default CustomCard;
+export default CustomCardForm;

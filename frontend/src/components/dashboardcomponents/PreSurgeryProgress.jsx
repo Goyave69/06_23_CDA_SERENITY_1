@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 
 function LinearProgressWithLabel(props) {
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent:"center" }}>
+    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent:"center", }}>
       <Box sx={{ width: '20%', mr: 1 }}>
         <LinearProgress variant="determinate" {...props} sx={{ height: "45px", borderRadius: "16px", color: "root" }} />
       </Box>

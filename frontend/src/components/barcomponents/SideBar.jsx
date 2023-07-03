@@ -23,6 +23,9 @@ import NotificationsNoneRoundedIcon from "@mui/icons-material/NotificationsNoneR
 import { Link } from "react-router-dom";
 import { Icon } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
+import Formular from "@components/preparationcomponents/Formular";
+
+
 
 const drawerWidth = 240;
 
@@ -111,7 +114,7 @@ function ResponsiveDrawer(props) {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          boxShadow: "none",
+          boxShadow: "none", backgroundColor:"white"
         }}
       >
         <Toolbar>
@@ -125,33 +128,31 @@ function ResponsiveDrawer(props) {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h7" noWrap component="div" sx={{ ml: -58 }}>
+            <Typography variant="h7" noWrap component="div" sx={{ ml: -58, color:"black" }}>
               Bonjour
             </Typography>
             <Typography
               variant="h5"
               component="div"
-              sx={{ fontWeight: "Medium", mr: 34, }}
+              sx={{ fontWeight: "Medium", mr: 34, color:"black"}}
             >
               Comment aller-vous ?
             </Typography>
           </div>
-          <div className="Notf" sx={{ mr: 5  }}>
-          <Countdown />
-          </div>
-          <div className="Notif" sx={{mr: 5 }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+             <Countdown/>
+          </Box>
           <Box>
             <IconButton
               size="large"
               aria-label="show new notifications"
-              color="inherit"
+              color="black"
             >
               <Badge color="secondary" variant="dot">
                 <NotificationsNoneRoundedIcon />
               </Badge>
             </IconButton>
           </Box>
-          </div>
         </Toolbar>
       </AppBar>
       <Box
@@ -191,16 +192,6 @@ function ResponsiveDrawer(props) {
         >
           {drawer}
         </Drawer>
-      </Box>
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          p: 3,
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-        }}
-      >
-        <Toolbar />
       </Box>
     </Box>
   );
