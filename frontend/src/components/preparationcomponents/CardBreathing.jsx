@@ -13,7 +13,7 @@ const CircularProgressWithLabel = (props) => {
         position: "relative",
         display: "inline-flex",
         width: "55px",
-        ml:"29px"
+        ml:"29px",
       }}
     >
       <CircularProgress variant="determinate" {...props} />
@@ -53,7 +53,6 @@ const CustomCardForm = () => {
         ml: "16px",
         padding: "45px",
         marginTop:"100px",
-        border: "3px solid #F8749F",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -75,7 +74,7 @@ const CustomCardForm = () => {
           <CircularProgressWithLabel
             value={62}
             size={65}
-            sx={{ color: "#F8749F" }}
+            sx={{ color: "#F8749F",}}
           />
 
           <Typography

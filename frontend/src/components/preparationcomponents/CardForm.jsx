@@ -53,7 +53,6 @@ const CustomCardForm = () => {
         ml: "16px",
         padding: "45px",
         marginTop:"100px",
-        border: "3px solid #47CACF",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

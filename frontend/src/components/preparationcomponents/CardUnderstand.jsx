@@ -53,7 +53,6 @@ const CustomCard = () => {
         ml: "16px",
         padding: "45px",
         marginTop:"100px",
-        border: "3px solid #F5D23F",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
