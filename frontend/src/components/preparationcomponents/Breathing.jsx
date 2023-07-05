@@ -40,7 +40,7 @@ const BreathingCircle = () => {
   };
 
   const circleStyle = {
-    marginLeft:"290px",
+    marginLeft:"330px",
     width: 200,
     height: 200,
     backgroundColor: "#03003C",
@@ -54,9 +54,14 @@ const BreathingCircle = () => {
         marginTop: "40px",
         backgroundColor: "#F5F5F5",
         borderRadius: "20px",
-      }}>
+      }}
+    >
       <CardContent>
-        <Typography variant="h5" component="div" sx={{marginBottom:"50px", marginTop:"30px"}}>
+        <Typography
+          variant="h5"
+          component="div"
+          sx={{ marginBottom: "50px", marginTop: "30px" }}
+        >
           Resynchronisez-vous avec votre coprs
         </Typography>
         <motion.div
@@ -64,11 +69,37 @@ const BreathingCircle = () => {
           variants={circleVariants}
           initial={isInhale ? "inhale" : "exhale"}
           animate={isInhale ? "inhale" : "exhale"}
-        />
+        >
+          {isInhale ? (
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{
+                color: "#FFF",
+              }}
+            >
+              Inhale
+            </Typography>
+          ) : (
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{
+                color: "#FFF",
+              }}
+            >
+              Exhale
+            </Typography>
+          )}
+        </motion.div>
         <Button
           variant="contained"
           onClick={handleToggleAnimation}
-          sx={{ backgroundColor: "#F8749F", borderRadius: "20px", marginTop:"40px" }}
+          sx={{
+            backgroundColor: "#F8749F",
+            borderRadius: "20px",
+            marginTop: "40px",
+          }}
         >
           {isAnimating ? "Arrêter" : "Démarrer"}
         </Button>
