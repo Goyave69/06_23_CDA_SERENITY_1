@@ -41,6 +41,7 @@ app.use("/adminforms", adminformRouter);
 app.use("/documents", documentsRouter);
 app.use("/patients", patientsRouter); 
 
+
 // Redirect all requests to the REACT app
 const reactIndexFile = path.join(
   __dirname,

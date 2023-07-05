@@ -4,7 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 
 function Countdown() {
-  const targetDate = new Date("2023-07-13");
+  const targetDate = new Date("2023-07-24");
   const [daysRemaining, setDaysRemaining] = useState(0);
 
   useEffect(() => {

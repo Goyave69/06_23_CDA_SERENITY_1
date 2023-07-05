@@ -23,8 +23,6 @@ import NotificationsNoneRoundedIcon from "@mui/icons-material/NotificationsNoneR
 import { Link } from "react-router-dom";
 import { Icon } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
-import Formular from "@components/preparationcomponents/Formular";
-
 
 
 const drawerWidth = 240;

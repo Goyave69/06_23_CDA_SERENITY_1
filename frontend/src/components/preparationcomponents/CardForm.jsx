@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "@mui/material/Card";
+import CardActionArea from "@mui/material/CardActionArea";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
@@ -42,60 +43,66 @@ CircularProgressWithLabel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-const CustomCardForm = () => {
+const CustomCardForm = ({ onClick }) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
   return (
     <Card
       sx={{
         backgroundColor: "#F5F5F5",
         borderRadius: "20px",
         position: "relative",
-        width:"100",
-        ml: "16px",
+        width: "100",
+        ml: "56px",
         padding: "45px",
-        marginTop:"100px",
-        border: "3px solid #47CACF",
+        marginTop: "100px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         border: "3px solid #47CACF",
       }}
-     >
-      <CardContent>
-        <div
-          style={{
-            position: "absolute",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            top: "10%",
-            left: "10%",
-            transform: "translate(-10%, -10%)",
-          }}
-        >
-          <CircularProgressWithLabel
-            value={57}
-            size={65}
-            sx={{ color: "#47CACF" }}
-          />
-
-          <Typography
-            variant="subtitle1"
-            component="div"
-            sx={{
+    >
+      <CardActionArea onClick={handleClick}>
+        <CardContent>
+          <div
+            style={{
               position: "absolute",
-              left: "47px",
-              top: "79px",
-              margin:"10px",
-              transform: "translate(-50%, -50%)",
-              textAlign: "center",
-              fontSize: "10px",
-              fontWeight: "Medium",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              top: "55%",
+              marginLeft: "95%",
+              transform: "translate(-95%, -95%)",
             }}
           >
-            Se débarasser des formalitées administrative
-          </Typography>
-        </div>
-      </CardContent>
+            <CircularProgressWithLabel
+              value={57}
+              size={65}
+              sx={{ color: "#47CACF" }}
+            />
+
+            <Typography
+              variant="subtitle1"
+              component="div"
+              sx={{
+                position: "absolute",
+                left: "47px",
+                top: "79px",
+                margin: "10px",
+                transform: "translate(-50%, -50%)",
+                textAlign: "center",
+                fontSize: "10px",
+                fontWeight: "Medium",
+              }}
+            >
+              Se débarasser des formalitées administrative
+            </Typography>
+          </div>
+        </CardContent>
+      </CardActionArea>
     </Card>
   );
 };
