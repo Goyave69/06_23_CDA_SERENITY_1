@@ -5,11 +5,10 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
-const LoginPage = ({setLoggedState}) => {
- 
+const LoginPage = ({ setLoggedState }) => {
   const handleLogin = function () {
     console.log(setLoggedState);
-  }
+  };
 
   return (
     <Container
@@ -50,9 +49,13 @@ const LoginPage = ({setLoggedState}) => {
           type="password"
           placeholder="mot de passe"
         />
-        <Button 
-        onClick={handleLogin} 
-        variant="contained" color="primary" fullWidth sx={{borderRadius:"20px", marginTop:"30px"}}>
+        <Button
+          onClick={handleLogin}
+          variant="contained"
+          color="primary"
+          fullWidth
+          sx={{ borderRadius: "20px", marginTop: "30px" }}
+        >
           Se connecter
         </Button>
       </Box>
@@ -61,7 +64,5 @@ const LoginPage = ({setLoggedState}) => {
 };
 
 export default LoginPage;
-
-
 
 // patient, doc-admin

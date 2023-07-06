@@ -14,7 +14,7 @@ const CircularProgressWithLabel = (props) => {
         position: "relative",
         display: "inline-flex",
         width: "55px",
-        ml:"29px"
+        ml: "29px",
       }}
     >
       <CircularProgress variant="determinate" {...props} />
@@ -44,7 +44,6 @@ CircularProgressWithLabel.propTypes = {
 };
 
 const CustomCardForm = ({ onClick }) => {
-
   const handleClick = () => {
     if (onClick) {
       onClick();

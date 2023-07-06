@@ -8,8 +8,8 @@ import "./App.css";
 function App() {
   return (
     <div className="App" d>
-      <SideBar/>
-      <main style={{padding: 24}}>
+      <SideBar />
+      <main style={{ padding: 24 }}>
         <Outlet />
       </main>
     </div>

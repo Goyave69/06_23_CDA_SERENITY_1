@@ -3,18 +3,18 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 export default function ProgressCircular(props) {
-
-    const [progress, setProgress] = useState(10);
+  const [progress, setProgress] = useState(10);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setProgress((prevProgress) => (prevProgress >= 100 ? 0 : prevProgress + 10));
+      setProgress((prevProgress) =>
+        prevProgress >= 100 ? 0 : prevProgress + 10
+      );
     }, 800);
     return () => {
       clearInterval(timer);
     };
   }, []);
-
 
   return (
     <div>

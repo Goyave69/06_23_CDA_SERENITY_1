@@ -3,7 +3,7 @@ import PreSurgeryProgress from "@components/dashboardcomponents/PreSurgeryProgre
 export default function Dashboard() {
   return (
     <div>
-      <PreSurgeryProgress/>
+      <PreSurgeryProgress />
     </div>
   );
 }

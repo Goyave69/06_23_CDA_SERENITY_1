@@ -22,8 +22,9 @@ export default function CheckListState(props) {
         <>
           <div style={{ display: "flex", flexDirection: "row" }}>
             <div style={{ marginRight: "5px" }}>
-{/*               <Checkbox checked={checked} onChange={handleCheckboxChange} />
- */}            </div>
+              {/*               <Checkbox checked={checked} onChange={handleCheckboxChange} />
+               */}{" "}
+            </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
               <div style={{ marginBottom: "5px" }}>{props.label1}</div>
               <div style={{ marginBottom: "5px" }}>{props.label2}</div>
