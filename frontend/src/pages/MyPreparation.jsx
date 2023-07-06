@@ -8,6 +8,8 @@ import CardLeaving from "@components/preparationcomponents/CardLeaving";
 import Breathing from "@components/preparationcomponents/Breathing";
 import Understand from "@components/preparationcomponents/Understand";
 import Appointment from "@components/preparationcomponents/Appointment";
+import CheckListLeaving from "@components/preparationcomponents/CheckListLeaving";
+import CheckListState from "@components/preparationcomponents/CheckListState";
 
 
 export default function MyPreparation() {
@@ -28,6 +30,8 @@ export default function MyPreparation() {
         return <Breathing/>;
       case 'appointment':
         return <Appointment/>;
+      case 'checklist':
+        return <CheckListLeaving/>;
       default:
         return null;
     }
@@ -38,7 +42,7 @@ export default function MyPreparation() {
       <div style={{display: "flex"}}>
         <CardUnderstand onClick={() => handleCardClick('Understand')}/>
         <CardForm onClick={() => handleCardClick('formular')}/>
-        <CardCheckList/>
+        <CardCheckList onClick={() => handleCardClick('checklist')}/>
         <CardBreathing onClick={() => handleCardClick('breathing')} />
         <CardLeaving onClick={() => handleCardClick('appointment')}/>
       </div>
