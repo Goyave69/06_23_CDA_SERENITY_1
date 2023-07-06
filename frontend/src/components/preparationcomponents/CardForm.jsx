@@ -109,7 +109,7 @@ const CardForm = ({ onClick }) => {
 
 
 CardForm.propTypes = {
-  onClick: PropTypes.string.isRequired, // Add the missing prop type validation
+  onClick: PropTypes.func.isRequired,
 };
 
 export default CardForm;

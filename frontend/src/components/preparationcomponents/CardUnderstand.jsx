@@ -108,7 +108,7 @@ const CardUnderstand = ({ onClick }) => {
 };
 
 CardUnderstand.propTypes = {
-  onClick: PropTypes.string.isRequired, // Add the missing prop type validation
+  onClick: PropTypes.func.isRequired,
 };
 
 export default CardUnderstand;

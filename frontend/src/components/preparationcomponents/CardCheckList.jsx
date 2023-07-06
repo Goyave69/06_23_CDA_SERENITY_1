@@ -107,7 +107,7 @@ const CardCheckList = ({ onClick }) => {
 };
 
 CardCheckList.propTypes = {
-  onClick: PropTypes.string.isRequired, // Add the missing prop type validation
+  onClick: PropTypes.func.isRequired,
 };
 
 
