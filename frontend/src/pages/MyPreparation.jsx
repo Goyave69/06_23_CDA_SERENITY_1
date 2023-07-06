@@ -9,7 +9,7 @@ import Breathing from "@components/preparationcomponents/Breathing";
 import Understand from "@components/preparationcomponents/Understand";
 import Appointment from "@components/preparationcomponents/Appointment";
 import CheckListLeaving from "@components/preparationcomponents/CheckListLeaving";
-import CheckListState from "@components/preparationcomponents/CheckListState";
+//import CheckListState from "@components/preparationcomponents/CheckListState";
 
 export default function MyPreparation() {
   //state array qui contient les éléments d'affichage pour les modules à update en fonction de l'avancée du form

@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import Checkbox from "@mui/material/Checkbox";
+//import Checkbox from "@mui/material/Checkbox";
 import FormControl from "@mui/material/FormControl";
 import FormHelperText from "@mui/material/FormHelperText";
 import CheckListState from "./CheckListState";
-import Icon from "@mui/material/Icon";
+//import Icon from "@mui/material/Icon";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Card from "@mui/material/Card";
 
@@ -17,13 +17,13 @@ const Container = styled(Box)`
   border-radius: 10px;
 `;
 
-const ContentContainer = styled(Box)`
+/* const ContentContainer = styled(Box)`
   background-color: #ffffff;
   padding: 20px;
   border: 2px solid violet;
   border-radius: 10px;
-  margin-top: 50px; /* Marge plus importante en haut */
-`;
+  margin-top: 50px; /* Marge plus importante en haut 
+`; */
 
 const Encart = styled(Box)`
   background-color: #e8e3fc;

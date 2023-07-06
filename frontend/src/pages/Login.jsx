@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import PropTypes from "prop-types";
 
 const LoginPage = ({ setLoggedState }) => {
   const handleLogin = function () {
@@ -61,6 +62,11 @@ const LoginPage = ({ setLoggedState }) => {
       </Box>
     </Container>
   );
+};
+
+LoginPage.propTypes = {
+  setLoggedState: PropTypes.string.isRequired, // Add the missing prop type validation
+ 
 };
 
 export default LoginPage;

@@ -43,7 +43,7 @@ CircularProgressWithLabel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-const CustomCard = ({ onClick }) => {
+const CardUnderstand = ({ onClick }) => {
   const handleClick = () => {
     if (onClick) {
       onClick();
@@ -107,4 +107,8 @@ const CustomCard = ({ onClick }) => {
   );
 };
 
-export default CustomCard;
+CardUnderstand.propTypes = {
+  onClick: PropTypes.string.isRequired, // Add the missing prop type validation
+};
+
+export default CardUnderstand;

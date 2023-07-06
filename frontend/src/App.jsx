@@ -1,3 +1,4 @@
+import React from 'react';
 import SideBar from "@components/barcomponents/SideBar";
 //import NavBar from "@components/barcomponents/NavBar"
 import { Outlet } from "react-router-dom";

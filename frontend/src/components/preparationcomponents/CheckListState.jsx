@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import PropTypes from "prop-types";
 
 export default function CheckListState(props) {
   const [checked, setChecked] = useState(false);
@@ -39,3 +40,9 @@ export default function CheckListState(props) {
     />
   );
 }
+
+
+CheckListState.propTypes = {
+  label1: PropTypes.string.isRequired, // Add the missing prop type validation
+  label2: PropTypes.string.isRequired, // Add the missing prop type validation
+};

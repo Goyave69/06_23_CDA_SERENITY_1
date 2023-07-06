@@ -43,7 +43,7 @@ CircularProgressWithLabel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-const CustomCardForm = ({ onClick }) => {
+const CardLeaving = ({ onClick }) => {
   const handleClick = () => {
     if (onClick) {
       onClick();
@@ -107,4 +107,9 @@ const CustomCardForm = ({ onClick }) => {
   );
 };
 
-export default CustomCardForm;
+
+CardLeaving.propTypes = {
+  onClick: PropTypes.string.isRequired, // Add the missing prop type validation
+};
+
+export default CardLeaving;
