@@ -42,15 +42,8 @@ const CheckListLeaving = () => {
     <Card
       sx={{
         backgroundColor: "#F5F5F5",
+        marginTop: "40px",
         borderRadius: "20px",
-        position: "relative",
-        width: "100",
-        ml: "16px",
-        padding: "45px",
-        marginTop: "100px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
         border: "3px solid #8D77F0",
       }}
     >
@@ -63,9 +56,9 @@ const CheckListLeaving = () => {
             <FormControl component="fieldset">
               <FormHelperText
                 sx={{
-                  marginBottom: "60px",
-                  color: "black",
-                  fontWeight: "bold"
+                  fontSize: 16,
+                  marginBottom: "48px",
+                  fontWeight: "medium"
                 }}
               >
                 Ma checklist avant de quitter la maison
