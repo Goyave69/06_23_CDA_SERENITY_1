@@ -2,11 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-//import Checkbox from "@mui/material/Checkbox";
 import FormControl from "@mui/material/FormControl";
 import FormHelperText from "@mui/material/FormHelperText";
 import CheckListState from "./CheckListState";
-//import Icon from "@mui/material/Icon";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Card from "@mui/material/Card";
 
@@ -16,14 +14,6 @@ const Container = styled(Box)`
   min-height: 100vh;
   border-radius: 10px;
 `;
-
-/* const ContentContainer = styled(Box)`
-  background-color: #ffffff;
-  padding: 20px;
-  border: 2px solid violet;
-  border-radius: 10px;
-  margin-top: 50px; /* Marge plus importante en haut 
-`; */
 
 const Encart = styled(Box)`
   background-color: #e8e3fc;
@@ -49,7 +39,7 @@ const CheckListLeaving = () => {
       <Container>
         {/*     <ContentContainer> */}
         <Grid container spacing={3}>
-        <Grid item xs={12} sm={6} md={6} lg={6} xl={6} xxl={6}>
+          <Grid item xs={12} sm={4} md={4} lg={4} xl={4} xxl={4}>
             {/* Contenu de la colonne 1 */}
 
             <FormControl component="fieldset">
@@ -57,7 +47,7 @@ const CheckListLeaving = () => {
                 sx={{
                   fontSize: 16,
                   marginBottom: "48px",
-                  fontWeight: "medium"
+                  fontWeight: "medium",
                 }}
               >
                 Ma checklist avant de quitter la maison
@@ -66,34 +56,21 @@ const CheckListLeaving = () => {
                 <CheckListState
                   label1="Pièce d' Identité"
                   label2="Obligatoire"
-                  label3={<ChevronRightIcon />}
                 />
               </Encart>
               <Encart>
-                <CheckListState
-                  label1="Carte Bleue"
-                  label2="Facultatif"
-                  label3={<ChevronRightIcon />}
-                />
+                <CheckListState label1="Carte Bleue" label2="Facultatif" />
               </Encart>
               <Encart>
-                <CheckListState
-                  label1="Accord Mutuelle"
-                  label2="Obligatoire"
-                  label3={<ChevronRightIcon />}
-                />
+                <CheckListState label1="Accord Mutuelle" label2="Obligatoire" />
               </Encart>
               <Encart>
-                <CheckListState
-                  label1="RDV Anesthésie"
-                  label2="Obligatoire"
-                  label3={<ChevronRightIcon />}
-                />
+                <CheckListState label1="RDV Anesthésie" label2="Obligatoire" />
               </Encart>
             </FormControl>
           </Grid>
 
-          <Grid item xs={12} sm={6} md={6} lg={6} xl={6} xxl={6}>
+          <Grid item xs={12} sm={4} md={4} lg={4} xl={4} xxl={4}>
             {/* Contenu de la colonne 2 */}
             <FormControl component="fieldset">
               <EmptySpace />
