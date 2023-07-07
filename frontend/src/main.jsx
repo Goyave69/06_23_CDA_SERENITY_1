@@ -7,7 +7,7 @@ import { mainTheme } from "./theme";
 import App from "./App";
 import MyPreparation from "@pages/MyPreparation";
 import TimeTable from "@pages/TimeTable";
-//import Login from "@pages/Login";
+import Login from "@pages/Login";
 
 const router = createBrowserRouter([
   {
