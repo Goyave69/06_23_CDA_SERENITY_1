@@ -56,7 +56,7 @@ const CheckListLeaving = () => {
       <Container>
         {/*     <ContentContainer> */}
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={4} md={4} lg={4} xl={4} xxl={4}>
+        <Grid item xs={12} sm={6} md={6} lg={6} xl={6} xxl={6}>
             {/* Contenu de la colonne 1 */}
 
             <FormControl component="fieldset">
@@ -100,7 +100,7 @@ const CheckListLeaving = () => {
             </FormControl>
           </Grid>
 
-          <Grid item xs={12} sm={4} md={4} lg={4} xl={4} xxl={4}>
+          <Grid item xs={12} sm={6} md={6} lg={6} xl={6} xxl={6}>
             {/* Contenu de la colonne 2 */}
             <FormControl component="fieldset">
               <EmptySpace />
