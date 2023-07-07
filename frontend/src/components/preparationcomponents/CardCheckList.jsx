@@ -14,7 +14,7 @@ const CircularProgressWithLabel = (props) => {
         position: "relative",
         display: "inline-flex",
         width: "55px",
-        ml:"29px"
+        ml: "29px",
       }}
     >
       <CircularProgress variant="determinate" {...props} />
@@ -43,8 +43,7 @@ CircularProgressWithLabel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-const CustomCardForm = ({ onClick }) => {
-
+const CardCheckList = ({ onClick }) => {
   const handleClick = () => {
     if (onClick) {
       onClick();
@@ -107,4 +106,9 @@ const CustomCardForm = ({ onClick }) => {
   );
 };
 
-export default CustomCardForm;
+CardCheckList.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
+
+
+export default CardCheckList;

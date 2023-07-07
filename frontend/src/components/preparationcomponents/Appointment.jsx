@@ -1,12 +1,5 @@
-import { Button, Typography } from "@mui/material";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Avatar from "@mui/material/Avatar";
-import Grid from '@mui/material/Grid';
-
-
+import React from 'react';
+import { Typography, Button, Card, CardContent, Box, Paper  } from "@mui/material";
 
 export default function Appointment() {
   return (
@@ -53,7 +46,7 @@ export default function Appointment() {
               Médecin Généraliste
             </Typography>
             <Typography variant="body2" gutterBottom>
-              Disponible Aujourd'hui à 14h
+              Disponible Aujourd&apos;hui à 14h
             </Typography>
             <Button sx={{ borderRadius: "16px" }} size="small">
               Prendre Rendez-vous

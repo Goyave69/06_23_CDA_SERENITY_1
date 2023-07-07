@@ -13,7 +13,7 @@ import {
   Divider,
 } from "@mui/material";
 import FormLabel from "@mui/material/FormLabel";
-import { useState } from "react";
+import React,{ useState } from "react";
 
 export default function Formular() {
   const [adminForm, setAdminForm] = useState({
@@ -281,7 +281,7 @@ export default function Formular() {
                   variant="standard"
                 >
                   <InputLabel id="number-children-label">
-                    Nombre d'enfant
+                    Nombre d&apos;enfant
                   </InputLabel>
                   <Select
                     labelId="number-children-label"
@@ -397,3 +397,5 @@ export default function Formular() {
     </Card>
   );
 }
+
+

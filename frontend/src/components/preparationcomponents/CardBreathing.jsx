@@ -7,7 +7,6 @@ import PropTypes from "prop-types";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 
-
 const CircularProgressWithLabel = (props) => {
   return (
     <Box
@@ -15,7 +14,7 @@ const CircularProgressWithLabel = (props) => {
         position: "relative",
         display: "inline-flex",
         width: "55px",
-        ml:"29px",
+        ml: "29px",
       }}
     >
       <CircularProgress variant="determinate" {...props} />
@@ -44,7 +43,7 @@ CircularProgressWithLabel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-const CustomCardForm = ({ onClick }) => {
+const CardBreathing = ({ onClick }) => {
   const handleClick = () => {
     if (onClick) {
       onClick();
@@ -67,9 +66,7 @@ const CustomCardForm = ({ onClick }) => {
         border: "3px solid #F8749F",
       }}
     >
-      <CardActionArea
-        onClick={handleClick}
-      >
+      <CardActionArea onClick={handleClick}>
         <CardContent>
           <div
             style={{
@@ -111,4 +108,10 @@ const CustomCardForm = ({ onClick }) => {
   );
 };
 
-export default CustomCardForm;
+
+CardBreathing.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
+
+
+export default CardBreathing;
