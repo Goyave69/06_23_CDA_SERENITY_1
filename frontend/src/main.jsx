@@ -27,6 +27,10 @@ const router = createBrowserRouter([
         path: "/timetable",
         element: <TimeTable />,
       },
+      {
+        path: "/login",
+        element: <Login />,
+      },
     ],
   },
 ]);

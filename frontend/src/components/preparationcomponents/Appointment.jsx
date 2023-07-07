@@ -3,12 +3,10 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
-import Avatar from "@mui/material/Avatar";
-import Grid from '@mui/material/Grid';
-
 
 
 export default function Appointment() {
+
   return (
     <Card
       sx={{
