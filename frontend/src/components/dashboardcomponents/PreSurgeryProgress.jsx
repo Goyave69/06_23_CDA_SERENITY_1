@@ -6,15 +6,12 @@ import Box from "@mui/material/Box";
 
 function LinearProgressWithLabel(props) {
   return (
-    <Box
-      sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
-    >
-      <Box sx={{ width: "20%", mr: 1 }}>
-        <LinearProgress
-          variant="determinate"
-          {...props}
-          sx={{ height: "45px", borderRadius: "16px", color: "root" }}
-        />
+    <Box sx={{ mt: 13}}>
+      <Typography variant="body2"  sx={{ color:"black", mb:"10px"}}>
+       Préparation pour ma chirurgie :
+      </Typography>
+      <Box sx={{ width: '230px', mr: 1,}}>
+        <LinearProgress variant="determinate" {...props} sx={{ height: "40px", borderRadius: "16px", color: "root" }} />
       </Box>
       <Box sx={{ minWidth: 35 }}>
         <Typography

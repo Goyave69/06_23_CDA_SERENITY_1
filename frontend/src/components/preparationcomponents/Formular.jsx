@@ -57,7 +57,7 @@ export default function Formular() {
       }}
     >
       <CardContent>
-        <div style={{ display: "flex", marginTop: "20px" }}>
+        <div style={{ display: "flex",  }}>
           <div>
             <Typography
               variant="h6"
