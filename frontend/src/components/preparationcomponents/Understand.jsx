@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from '@mui/material/CardMedia';
@@ -42,7 +42,7 @@ const Understand = () => {
                 alt="doctor explainig"
               />
               <Typography sx={{ mt: 1 }} variant="body2" color="text.secondary">
-                Le déroulé de l'opération.
+                Le déroulé de l&apos;opération.
               </Typography>
               <Typography sx={{ mt: 1, fontSize: 10, mr: "110px", }} variant="body2" color="text.secondary">
                 3 mins
@@ -80,7 +80,7 @@ const Understand = () => {
                 alt="doctor explainig"
               />
               <Typography sx={{ mt: 1 }} variant="body2" color="text.secondary">
-                Le déroulé de l'opération.
+                Le déroulé de l&apos;opération.
               </Typography>
               <Typography sx={{ mt: 1, fontSize: 10, mr: "110px", }} variant="body2" color="text.secondary">
                 4 mins

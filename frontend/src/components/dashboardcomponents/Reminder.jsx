@@ -3,6 +3,8 @@ import CardContent from "@mui/material/CardContent";
 import Paper from '@mui/material/Paper';
 import { Button, Typography } from "@mui/material";
 
+import React from 'react';
+
 export default function Reminder() {
   return (
     <Card

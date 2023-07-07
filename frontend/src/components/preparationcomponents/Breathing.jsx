@@ -40,7 +40,7 @@ const BreathingCircle = () => {
   };
 
   const circleStyle = {
-    marginLeft:"330px",
+    marginLeft: "330px",
     width: 200,
     height: 200,
     backgroundColor: "#03003C",
@@ -109,6 +109,3 @@ const BreathingCircle = () => {
 };
 
 export default BreathingCircle;
-
-
-

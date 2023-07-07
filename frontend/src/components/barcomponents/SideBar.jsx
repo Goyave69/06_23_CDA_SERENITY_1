@@ -1,6 +1,6 @@
-import * as React from 'react';
-import Countdown from './CountDown';
-import Badge from '@mui/material/Badge';
+import * as React from "react";
+import Countdown from "./CountDown";
+import Badge from "@mui/material/Badge";
 import CardMedia from "@mui/material/CardMedia";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
@@ -24,9 +24,7 @@ import { Link } from "react-router-dom";
 import { Icon } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 
-
 const drawerWidth = 240;
-
 
 function ResponsiveDrawer(props) {
   const { window } = props;
@@ -112,7 +110,8 @@ function ResponsiveDrawer(props) {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          boxShadow: "none", backgroundColor:"white"
+          boxShadow: "none",
+          backgroundColor: "white",
         }}
       >
         <Toolbar>
@@ -126,19 +125,24 @@ function ResponsiveDrawer(props) {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h7" noWrap component="div" sx={{ ml: -58, color:"black" }}>
+            <Typography
+              variant="h7"
+              noWrap
+              component="div"
+              sx={{ ml: -58, color: "black" }}
+            >
               Bonjour
             </Typography>
             <Typography
               variant="h5"
               component="div"
-              sx={{ fontWeight: "Medium", mr: 34, color:"black"}}
+              sx={{ fontWeight: "Medium", mr: 34, color: "black" }}
             >
               Comment aller-vous ?
             </Typography>
           </div>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-             <Countdown/>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            <Countdown />
           </Box>
           <Box>
             <IconButton

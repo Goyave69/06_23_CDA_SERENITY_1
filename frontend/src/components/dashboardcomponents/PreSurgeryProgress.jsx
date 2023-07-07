@@ -1,8 +1,8 @@
 import React from "react";
-import PropTypes from 'prop-types';
-import LinearProgress from '@mui/material/LinearProgress';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import PropTypes from "prop-types";
+import LinearProgress from "@mui/material/LinearProgress";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
 function LinearProgressWithLabel(props) {
   return (
@@ -14,9 +14,11 @@ function LinearProgressWithLabel(props) {
         <LinearProgress variant="determinate" {...props} sx={{ height: "40px", borderRadius: "16px", color: "root" }} />
       </Box>
       <Box sx={{ minWidth: 35 }}>
-        <Typography variant="body2" color="#4C5980" sx={{fontWeight:"bold"}}>{`${Math.round(
-          props.value,
-        )}%`}</Typography>
+        <Typography
+          variant="body2"
+          color="#4C5980"
+          sx={{ fontWeight: "bold" }}
+        >{`${Math.round(props.value)}%`}</Typography>
       </Box>
     </Box>
   );
@@ -35,4 +37,3 @@ export default function LinearWithValueLabel() {
     </Box>
   );
 }
-

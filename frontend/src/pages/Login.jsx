@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import PropTypes from "prop-types";
 
-const LoginPage = ({setLoggedState}) => {
- 
+const LoginPage = ({ setLoggedState }) => {
   const handleLogin = function () {
     console.log(setLoggedState);
-  }
+  };
 
   return (
     <Container
@@ -50,9 +50,13 @@ const LoginPage = ({setLoggedState}) => {
           type="password"
           placeholder="mot de passe"
         />
-        <Button 
-        onClick={handleLogin} 
-        variant="contained" color="primary" fullWidth sx={{borderRadius:"20px", marginTop:"30px"}}>
+        <Button
+          onClick={handleLogin}
+          variant="contained"
+          color="primary"
+          fullWidth
+          sx={{ borderRadius: "20px", marginTop: "30px" }}
+        >
           Se connecter
         </Button>
       </Box>
@@ -60,8 +64,11 @@ const LoginPage = ({setLoggedState}) => {
   );
 };
 
+LoginPage.propTypes = {
+  setLoggedState: PropTypes.string.isRequired, // Add the missing prop type validation
+ 
+};
+
 export default LoginPage;
-
-
 
 // patient, doc-admin
