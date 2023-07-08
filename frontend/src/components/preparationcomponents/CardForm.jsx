@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import PropTypes from 'prop-types';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
-=======
 import React from "react";
 import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
@@ -14,7 +6,6 @@ import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
->>>>>>> 53a29325156f0d57d43a34aa807b9bdf394a1d31
 
 const CircularProgressWithLabel = (props) => {
   return (
