@@ -1,6 +1,6 @@
-import * as React from 'react';
-import Countdown from './CountDown';
-import Badge from '@mui/material/Badge';
+import * as React from "react";
+import Countdown from "./CountDown";
+import Badge from "@mui/material/Badge";
 import CardMedia from "@mui/material/CardMedia";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
@@ -19,17 +19,16 @@ import Typography from "@mui/material/Typography";
 import ClassOutlinedIcon from "@mui/icons-material/ClassOutlined";
 import RoofingOutlinedIcon from "@mui/icons-material/RoofingOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
-import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';import { Link } from "react-router-dom";
+import NotificationsNoneRoundedIcon from "@mui/icons-material/NotificationsNoneRounded";
+import { Link } from "react-router-dom";
 import { Icon } from "@mui/material";
-import Avatar from '@mui/material/Avatar';
+import Avatar from "@mui/material/Avatar";
 
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
-
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -39,7 +38,7 @@ function ResponsiveDrawer(props) {
     {
       id: 0,
       text: "Dashboard",
-      link: "/",
+      link: "/dashboard",
       icon: RoofingOutlinedIcon,
     },
     {
@@ -59,16 +58,18 @@ function ResponsiveDrawer(props) {
   const drawer = (
     <div>
       <Toolbar>
-          <CardMedia
-            title="logo"
-            image="src/assets/hhLogo.png"
-            sx={{ width: "100px",
+        <CardMedia
+          title="logo"
+          image="src/assets/hhLogo.png"
+          sx={{
+            width: "100px",
             objectFit: "cover",
             height: "50px",
             borderRadius: 4,
-            m: 4,}}
-          />
-        </Toolbar>
+            m: 4,
+          }}
+        />
+      </Toolbar>
       <List>
         {drawerItems.map((item) => (
           <ListItem key={item.id} disablePadding>
@@ -78,7 +79,7 @@ function ResponsiveDrawer(props) {
                 borderRadius: "12px",
                 "&:hover": {
                   backgroundColor: "#6C5DD3",
-                  color: "#ffffff", 
+                  color: "#ffffff",
                   cursor: "pointer",
                 },
               }}
@@ -110,6 +111,7 @@ function ResponsiveDrawer(props) {
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
           boxShadow: "none",
+          backgroundColor: "white",
         }}
       >
         <Toolbar>
@@ -123,32 +125,37 @@ function ResponsiveDrawer(props) {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h7" noWrap component="div" sx={{ ml: -24 }}>
+            <Typography
+              variant="h7"
+              noWrap
+              component="div"
+              sx={{ ml: -58, color: "black" }}
+            >
               Bonjour
             </Typography>
             <Typography
               variant="h5"
               component="div"
-              sx={{ fontWeight: "Medium" }}
+              sx={{ fontWeight: "Medium", mr: 34, color: "black" }}
             >
               Comment aller-vous ?
             </Typography>
           </div>
-          <div sx={{ display: "flex", alignItems: "center", }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Countdown />
-          </div>
+          </Box>
+          <Box>
+            <IconButton
+              size="large"
+              aria-label="show new notifications"
+              color="black"
+            >
+              <Badge color="secondary" variant="dot">
+                <NotificationsNoneRoundedIcon />
+              </Badge>
+            </IconButton>
+          </Box>
         </Toolbar>
-        <Box sx={{ display: "flex", justifyContent: "flex-end", mr: 5 }}>
-          <IconButton
-            size="large"
-            aria-label="show new notifications"
-            color="inherit"
-          >
-            <Badge color="secondary" variant="dot">
-              <NotificationsNoneRoundedIcon />
-            </Badge>
-          </IconButton>
-        </Box>
       </AppBar>
       <Box
         component="nav"
@@ -187,16 +194,6 @@ function ResponsiveDrawer(props) {
         >
           {drawer}
         </Drawer>
-      </Box>
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          p: 3,
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-        }}
-      >
-        <Toolbar />
       </Box>
     </Box>
   );

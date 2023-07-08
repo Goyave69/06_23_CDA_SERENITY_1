@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import PropTypes from 'prop-types';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
-=======
 import React from "react";
 import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
@@ -14,7 +6,6 @@ import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
->>>>>>> 53a29325156f0d57d43a34aa807b9bdf394a1d31
 
 const CircularProgressWithLabel = (props) => {
   return (
@@ -52,7 +43,7 @@ CircularProgressWithLabel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-const CardForm = ({ onClick }) => {
+const CardLeaving = ({ onClick }) => {
   const handleClick = () => {
     if (onClick) {
       onClick();
@@ -71,7 +62,7 @@ const CardForm = ({ onClick }) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        border: "3px solid #47CACF",
+        border: "3px solid #66E47A",
       }}
     >
       <CardActionArea onClick={handleClick}>
@@ -90,7 +81,7 @@ const CardForm = ({ onClick }) => {
             <CircularProgressWithLabel
               value={57}
               size={65}
-              sx={{ color: "#47CACF" }}
+              sx={{ color: "#66E47A" }}
             />
 
             <Typography
@@ -107,7 +98,7 @@ const CardForm = ({ onClick }) => {
                 fontWeight: "Medium",
               }}
             >
-              Se débarasser des formalitées administrative
+              Anticiper ma sortie
             </Typography>
           </div>
         </CardContent>
@@ -117,8 +108,8 @@ const CardForm = ({ onClick }) => {
 };
 
 
-CardForm.propTypes = {
+CardLeaving.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
-export default CardForm;
+export default CardLeaving;

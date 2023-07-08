@@ -1,7 +1,9 @@
+import React from "react";
+
 export default function TimeTable() {
   return (
     <div>
-       <p>Hello this is the Agenda !</p>
+      <p> This is Agenda!</p>
     </div>
   );
 }

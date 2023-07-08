@@ -9,7 +9,8 @@
     "dev": "concurrently -n front,back -c green,yellow -t \"HH:mm:ss\" -p \"{name} {time}\" \"npm --prefix ./frontend run dev\" \"npm --prefix ./backend run dev\"",
     "dev-front": "npm --prefix ./frontend run dev",
     "dev-back": "npm --prefix ./backend run dev",
-    "lint": "npm --prefix ./frontend run lint && npm --prefix ./backend run lint",
+    "lint": "npm --prefix ./frontend run lint ",
+    "lint1": "npm --prefix ./frontend run lint && npm --prefix ./backend run lint",
     "fix": "npm --prefix ./frontend run fix && npm --prefix ./backend run fix"
   },
   "keywords": [],
@@ -17,19 +18,27 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^7.0.0",
+    "eslint-plugin-react": "^7.32.2",
     "husky": "^7.0.0"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@iconscout/react-unicons": "^2.0.2",
+    "@mui/icons-material": "^5.13.7",
+    "@mui/material": "^5.13.5",
+    "@mui/styled-engine-sc": "^5.12.0",
     "argon2": "^0.30.3",
     "axios": "^1.4.0",
     "cors": "^2.8.5",
     "dotenv": "^16.1.4",
     "express": "^4.18.2",
+    "framer-motion": "^10.12.18",
     "mysql2": "^3.3.3",
     "nodemon": "^2.0.22",
     "prettier": "^2.8.8",
-    "react-circular-progressbar": "^2.1.0",
+    "react-router-dom": "^6.13.0",
+    "styled-components": "^5.3.11",
     "vite": "^4.3.9"
   }
 }
