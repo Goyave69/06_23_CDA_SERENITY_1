@@ -9,6 +9,8 @@ import MyPreparation from "@pages/MyPreparation";
 import TimeTable from "@pages/TimeTable";
 import Login from "@pages/Login";
 import AdminOffice from "@pages/admin/AdminOffice.jsx";
+/* import AdminDoctor  from "@pages/admin/AdminDoctor.jsx" */
+import AdminUser from "@pages/admin/AdminUser.jsx";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +37,14 @@ const router = createBrowserRouter([
       {
         path: "/admin/office",
         element: <AdminOffice />,
+      },
+   /*    {
+        path: "/admin/doctor",
+        element: <AdminDoctor />,
+      } */
+      {
+        path: "/admin/user",
+        element: <AdminUser/>,
       },
     ],
   },
