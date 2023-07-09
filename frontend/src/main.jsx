@@ -8,6 +8,7 @@ import App from "./App";
 import MyPreparation from "@pages/MyPreparation";
 import TimeTable from "@pages/TimeTable";
 import Login from "@pages/Login";
+import AdminOffice from "@pages/admin/AdminOffice.jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/admin/office",
+        element: <AdminOffice />,
       },
     ],
   },
