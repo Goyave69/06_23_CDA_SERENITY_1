@@ -11,6 +11,7 @@ import Login from "@pages/Login";
 import AdminOffice from "@pages/admin/AdminOffice.jsx";
 /* import AdminDoctor  from "@pages/admin/AdminDoctor.jsx" */
 import AdminUser from "@pages/admin/AdminUser.jsx";
+import ListeOffices from "@pages/admin/listeOffices.jsx";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/user",
         element: <AdminUser/>,
+      },
+      {
+        path: "/admin/offices",
+        element: <ListeOffices/>,
       },
     ],
   },
