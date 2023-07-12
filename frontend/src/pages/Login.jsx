@@ -65,7 +65,7 @@ const LoginPage = ({ setLoggedState }) => {
 };
 
 LoginPage.propTypes = {
-  setLoggedState: PropTypes.string.isRequired, // Add the missing prop type validation
+  setLoggedState: PropTypes.func, // Add the missing prop type validation
  
 };
 
