@@ -36,7 +36,6 @@ CREATE TABLE IF NOT EXISTS `happyhealth`.`patient` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `happyhealth`.`admin_form`
 -- -----------------------------------------------------
