@@ -37,6 +37,8 @@ const Cabinets = () => {
     ],
     []
   );
+
+  
     return (
       <Container
         maxWidth="sm"
@@ -45,7 +47,7 @@ const Cabinets = () => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          minHeight: "100vh",
+          minHeight: "80vh",
           marginLeft: "450px",
         }}
       >
@@ -57,7 +59,7 @@ const Cabinets = () => {
             width: "auto",
           }}
         >
-          <Box sx={{ mt: "30px", width: "100%" }}>
+          <Box sx={{ width: "100%" }}>
             <DataGrid
               columns={columns}
               rows={data}
@@ -70,7 +72,7 @@ const Cabinets = () => {
             onClick={handleRafraichir}
             variant="contained"
             color="primary"
-            sx={{ borderRadius: "10px", ml: "200px", marginTop: "20px" }}
+            sx={{ borderRadius: "10px", ml: "290px", marginTop: "20px" }}
           >
             Nouveau cabinets
           </Button>
