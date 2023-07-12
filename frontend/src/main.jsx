@@ -8,13 +8,22 @@ import App from "./App";
 import MyPreparation from "@pages/MyPreparation";
 import TimeTable from "@pages/TimeTable";
 import Login from "@pages/Login";
+//import AdminOffice from "@pages/admin/AdminOffice.jsx";
+/* import AdminDoctor  from "@pages/admin/AdminDoctor.jsx" */
+//import AdminUser from "@pages/admin/AdminUser.jsx";
+//import ListeOffices from "@pages/admin/listeOffices.jsx";
+import Admin from "./Admin";
+import Cabinets from "@pages/admin/Cabinets"
+import Interventions from "@pages/admin/Interventions"
+import Patients from "@pages/admin/Patients"
+import Suivi from "@pages/admin/Suivi"
+import Particiens from "@pages/admin/Particiens"
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
-      //pour l'outlet (afficher les children ici) et navbar reste fix
       {
         path: "/dashboard",
         element: <Dashboard />,
@@ -30,6 +39,32 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+    ],
+  },
+  {
+    path: "/admin",
+    element: <Admin />,
+    children: [
+      {
+        path: "/admin/cabinets",
+        element: <Cabinets />,
+      },
+      {
+        path: "/admin/interventions",
+        element: <Interventions/>,
+      },
+      {
+        path: "/admin/patients",
+        element: <Patients/>,
+      },
+      {
+        path: "/admin/particiens",
+        element: <Particiens/>,
+      },
+      {
+        path: "/admin/suivi",
+        element: <Suivi/>,
       },
     ],
   },
