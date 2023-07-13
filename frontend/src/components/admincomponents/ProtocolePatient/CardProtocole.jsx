@@ -6,64 +6,185 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 
 const CardProtocole = () => {
+
+    const handleClick = () => {
+        // Code à exécuter lors du clic sur la Box
+        console.log("La Box a été cliquée !");
+    };
+
     return (
-        <Container
+      <Container
         maxWidth="sm"
         sx={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          minHeight: "80vh",
-          
+          minHeight: "90vh",
         }}
       >
         <Card
-        sx={{
-          marginTop: "40px",
-          backgroundColor: "#F5F5F5",
-          borderRadius: "20px",
-          display: "flex",
-          justifyContent: "end",
-         
-        }}
-      >
-        <CardContent>
-          <Box>
-            <Typography>
-            Protocole Serenity
-            </Typography>
-          </Box>
-          <Box display="flex" justifyContent="center" mt="2rem">
-            <Button
-              variant="contained"
-              sx={{ borderRadius: "10px", marginTop: "20px", backgroundColor:"#F3D03D" }}
+          sx={{
+            marginTop: "40px",
+            backgroundColor: "#F5F5F5",
+            borderRadius: "20px",
+            display: "flex",
+            justifyContent: "end",
+          }}
+        >
+          <CardContent>
+            <Box>
+              <Typography sx={{ fontWeight: "medium" }}>
+                Protocole Serenity
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                mt: "3rem",
+                borderRadius: "10px",
+                backgroundColor: "#F3D03D",
+                height: "60px",
+              }}
+              onClick={handleClick}
             >
-              INFOS OPERATIONS
-            </Button>
-          </Box>
-          <Box display="flex" justifyContent="center" mt="0.2rem">
-            <Button
-              variant="contained"
-              sx={{ borderRadius: "10px", marginTop: "20px", backgroundColor:"#4AD1B7" }}
-            >
-              INFOS OPERATIONS
-            </Button>
-          </Box>
+              <div
+                style={{
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  width: "11rem",
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontSize: "15px",
+                    color: "white",
+                    mt: 1,
+                  }}
+                >
+                  Comprendre mon operation
+                </Typography>
+              </div>
+              <div style={{ color: "white" }}>
+                <p>10</p>
+              </div>
+            </Box>
 
-          <Box display="flex" justifyContent="center" mt="2rem">
-            <Button
-              variant="contained"
-              color="primary"
-              sx={{ borderRadius: "10px", marginTop: "20px" }}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                mt: "1rem",
+                borderRadius: "10px",
+                backgroundColor: "#4AD1B7",
+                height: "60px",
+              }}
+              onClick={handleClick}
             >
-              Add More
-            </Button>
-          </Box>
-        </CardContent>
-      </Card>
+              <div
+                style={{
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  width: "11rem",
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontSize: "15px",
+                    color: "white",
+                    mt: 1,
+                  }}
+                >
+                  Finir les démarches administratives
+                </Typography>
+              </div>
+              <div style={{ color: "white" }}>
+                <p>3</p>
+              </div>
+            </Box>
+
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                mt: "1rem",
+                borderRadius: "10px",
+                backgroundColor: "#BAEA64",
+                height: "60px",
+              }}
+              onClick={handleClick}
+            >
+              <div
+                style={{
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  width: "11rem",
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontSize: "15px",
+                    color: "white",
+                    mt: 1.5,
+                  }}
+                >
+                  Anticiper ma sortie
+                </Typography>
+              </div>
+              <div style={{ color: "white" }}>
+                <p>12</p>
+              </div>
+            </Box>
+
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                mt: "1rem",
+                borderRadius: "10px",
+                backgroundColor: "#635EEC",
+                height: "60px",
+              }}
+              onClick={handleClick}
+            >
+              <div
+                style={{
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  width: "14rem",
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontSize: "15px",
+                    color: "white",
+                    mt: 1,
+                    ml: "10px",
+                  }}
+                >
+                  Ma checklist avant de quitter la maison
+                </Typography>
+              </div>
+            </Box>
+
+            <Box display="flex" justifyContent="center" mt="0.5rem" mb="2.5rem">
+              <Button
+                fullWidth
+                variant="contained"
+                sx={{
+                  borderRadius: "10px",
+                  marginTop: "20px",
+                  backgroundColor: "black",
+                  height: "45px",
+                }}
+              >
+                Add More
+              </Button>
+            </Box>
+          </CardContent>
+        </Card>
       </Container>
-
     );
 };
 
