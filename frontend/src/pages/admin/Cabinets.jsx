@@ -1,9 +1,9 @@
 import React, { useMemo, useState }from 'react';
-//import AdminOffice from "@pages/admin/AdminOffice.jsx";
 import Container from "@mui/material/Container";
 import { DataGrid } from "@mui/x-data-grid";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 
 const handleRafraichir = function () {
@@ -48,7 +48,7 @@ const Cabinets = () => {
           alignItems: "center",
           justifyContent: "center",
           minHeight: "80vh",
-          marginLeft: "450px",
+          marginLeft: "150px",
         }}
       >
         <Box
@@ -68,14 +68,18 @@ const Cabinets = () => {
               disableColumnMenu
             />
           </Box>
-          <Button
-            onClick={handleRafraichir}
-            variant="contained"
-            color="primary"
-            sx={{ borderRadius: "10px", ml: "290px", marginTop: "20px" }}
-          >
-            Nouveau cabinets
-          </Button>
+          <Box display="flex" justifyContent="center" mt="2rem">
+            <NavLink to="/admin/add-offices">
+              <Button
+                onClick={handleRafraichir} //mettre dans le formulaire 
+                variant="contained"
+                color="primary"
+                sx={{ borderRadius: "10px", marginTop: "20px" }}
+              >
+                Nouveau cabinets
+              </Button>
+            </NavLink>
+          </Box>
         </Box>
       </Container>
     );

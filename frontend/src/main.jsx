@@ -8,7 +8,7 @@ import App from "./App";
 import MyPreparation from "@pages/MyPreparation";
 import TimeTable from "@pages/TimeTable";
 import Login from "@pages/Login";
-//import AdminOffice from "@pages/admin/AdminOffice.jsx";
+import AdminOffice from "@pages/admin/AdminOffice.jsx";
 /* import AdminDoctor  from "@pages/admin/AdminDoctor.jsx" */
 //import AdminUser from "@pages/admin/AdminUser.jsx";
 //import ListeOffices from "@pages/admin/listeOffices.jsx";
@@ -65,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/suivi",
         element: <Suivi/>,
+      },
+      {
+        path: "/admin/add-offices",
+        element: <AdminOffice/>,
       },
     ],
   },
