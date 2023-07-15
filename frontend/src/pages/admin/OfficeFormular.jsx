@@ -3,9 +3,10 @@ import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+
 import axios from "axios";
 
-function AdminOffice() {
+function OfficeFormular() {
   const [officeData, setOfficeData] = useState({
     name: "",
     doc_name: "",
@@ -24,7 +25,7 @@ function AdminOffice() {
     // Effectuer les actions souhaitées lorsque l'état officeData est mis à jour
   }, [officeData]);
 
-  const handleValider = () => {
+  const handleAjouter = () => {
     console.log(officeData);
 
     axios
@@ -185,17 +186,17 @@ function AdminOffice() {
           }
         />
         <Button
-          onClick={handleValider}
+          onClick={handleAjouter}
           variant="contained"
           color="primary"
           fullWidth
           sx={{ borderRadius: "20px", marginTop: "30px" }}
         >
-          Validate
+          Cliquer pour ajouter ce cabinet
         </Button>
       </Box>
     </Container>
   );
 }
 
-export default AdminOffice;
+export default OfficeFormular;
