@@ -1,36 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
-//import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-//import PropTypes from "prop-types";
+import axios from "axios";
 
-import axios from "axios"
+function AdminOffice() {
+  const [officeData, setOfficeData] = useState({
+    name: "",
+    doc_name: "",
+    street_number: "",
+    street_name: "",
+    zip_code: "",
+    phone_number: "",
+    email: "",
+    free_parking: "",
+    disabled: "",
+    open_hours: "",
+    specialty: "",
+  });
 
-const AdminOffice = () => {
+  useEffect(() => {
+    // Effectuer les actions souhaitées lorsque l'état officeData est mis à jour
+  }, [officeData]);
 
+  const handleValider = () => {
+    console.log(officeData);
 
-
-  const handleValider = function () {
-let newOffice = {}
-newOffice.name = document.getElementById("name").value
-newOffice.doc_name = document.getElementById("doc_name").value
-newOffice.street_number = document.getElementById("street_number").value
-newOffice.street_name = document.getElementById("street_name").value
-newOffice.zip_code = document.getElementById("zip_code").value
-newOffice.phone_number = document.getElementById("phone_number").value
-newOffice.email = document.getElementById("email").value
-newOffice.free_parking = document.getElementById("free_parking").value
-newOffice.disabled = document.getElementById("disabled").value
-newOffice.open_hours = document.getElementById("open_hours").value
-newOffice.specialty = document.getElementById("specialty").value
-
-    console.log(newOffice);
-
-	axios.post('http://localhost:5000/offices/', newOffice)
-	.then(response => console.log("response",response));
-
+    axios
+      .post("http://localhost:5000/offices/", officeData)
+      .then((response) => console.log("response", response));
   };
 
   return (
@@ -54,102 +53,137 @@ newOffice.specialty = document.getElementById("specialty").value
         }}
       >
         <TextField
-		id="name"
+          id="name"
           label="Nom cabinet"
           variant="outlined"
           fullWidth
           margin="normal"
           placeholder="nom du cabinet"
+          value={officeData.name}
+          onChange={(e) =>
+            setOfficeData({ ...officeData, name: e.target.value })
+          }
         />
         <TextField
-		id="doc_name"
+          id="doc_name"
           label="doc_name"
           variant="outlined"
           fullWidth
           margin="normal"
           placeholder="doc_name"
+          value={officeData.doc_name}
+          onChange={(e) =>
+            setOfficeData({ ...officeData, doc_name: e.target.value })
+          }
         />
-
-<TextField
-		id="street_number"
+        <TextField
+          id="street_number"
           label="street_number"
           variant="outlined"
           fullWidth
           margin="normal"
           placeholder="street_number"
+          value={officeData.street_number}
+          onChange={(e) =>
+            setOfficeData({ ...officeData, street_number: e.target.value })
+          }
         />
         <TextField
-		id="street_name"
+          id="street_name"
           label="street_name"
           variant="outlined"
           fullWidth
           margin="normal"
           placeholder="street_name"
+          value={officeData.street_name}
+          onChange={(e) =>
+            setOfficeData({ ...officeData, street_name: e.target.value })
+          }
         />
-
-<TextField
-		id="zip_code"
+        <TextField
+          id="zip_code"
           label="zip_code"
           variant="outlined"
           fullWidth
           margin="normal"
           placeholder="zip_code"
+          value={officeData.zip_code}
+          onChange={(e) =>
+            setOfficeData({ ...officeData, zip_code: e.target.value })
+          }
         />
-
-<TextField
-		id="phone_number"
+        <TextField
+          id="phone_number"
           label="phone_number"
           variant="outlined"
           fullWidth
           margin="normal"
           placeholder="phone_number"
+          value={officeData.phone_number}
+          onChange={(e) =>
+            setOfficeData({ ...officeData, phone_number: e.target.value })
+          }
         />
-
-<TextField
-		id="email"
+        <TextField
+          id="email"
           label="email"
           variant="outlined"
           fullWidth
           margin="normal"
           placeholder="email"
+          value={officeData.email}
+          onChange={(e) =>
+            setOfficeData({ ...officeData, email: e.target.value })
+          }
         />
-
-<TextField
-		id="free_parking"
+        <TextField
+          id="free_parking"
           label="free_parking"
           variant="outlined"
           fullWidth
           margin="normal"
           placeholder="free_parking"
+          value={officeData.free_parking}
+          onChange={(e) =>
+            setOfficeData({ ...officeData, free_parking: e.target.value })
+          }
         />
-
-<TextField
-		id="disabled"
+        <TextField
+          id="disabled"
           label="disabled"
           variant="outlined"
           fullWidth
           margin="normal"
           placeholder="disabled"
+          value={officeData.disabled}
+          onChange={(e) =>
+            setOfficeData({ ...officeData, disabled: e.target.value })
+          }
         />
-
-<TextField
-		id="open_hours"
+        <TextField
+          id="open_hours"
           label="open_hours"
           variant="outlined"
           fullWidth
           margin="normal"
           placeholder="open_hours"
+          value={officeData.open_hours}
+          onChange={(e) =>
+            setOfficeData({ ...officeData, open_hours: e.target.value })
+          }
         />
-
-<TextField
-		id="specialty"
+        <TextField
+          id="specialty"
           label="specialty"
           variant="outlined"
           fullWidth
           margin="normal"
           placeholder="specialty"
+          value={officeData.specialty}
+          onChange={(e) =>
+            setOfficeData({ ...officeData, specialty: e.target.value })
+          }
         />
-
         <Button
           onClick={handleValider}
           variant="contained"
@@ -162,8 +196,6 @@ newOffice.specialty = document.getElementById("specialty").value
       </Box>
     </Container>
   );
-};
+}
 
 export default AdminOffice;
-
-// patient, doc-admin

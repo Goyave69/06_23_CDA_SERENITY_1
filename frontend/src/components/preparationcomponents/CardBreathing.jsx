@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 
-const CircularProgressWithLabel = (props) => {
+const CircularProgressWithLabel = (vz) => {
   return (
     <Box
       sx={{
