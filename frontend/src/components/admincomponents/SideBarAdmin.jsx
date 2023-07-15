@@ -89,8 +89,8 @@ function SideBarAdmin(props) {
     },
     {
       id: 1,
-      text: "Particiens",
-      link: "/admin/particiens",
+      text: "Praticiens",
+      link: "/admin/praticiens",
       icon: PermContactCalendarOutlinedIcon,
     },
     {

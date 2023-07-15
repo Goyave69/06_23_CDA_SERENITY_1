@@ -17,7 +17,7 @@ import Cabinets from "@pages/admin/Cabinets"
 import Interventions from "@pages/admin/Interventions"
 import Patients from "@pages/admin/Patients"
 import Suivi from "@pages/admin/Suivi"
-import Particiens from "@pages/admin/Particiens"
+import Praticiens from "@pages/admin/Praticiens"
 
 const router = createBrowserRouter([
   {
@@ -59,8 +59,8 @@ const router = createBrowserRouter([
         element: <Patients/>,
       },
       {
-        path: "/admin/particiens",
-        element: <Particiens/>,
+        path: "/admin/praticiens",
+        element: <Praticiens/>,
       },
       {
         path: "/admin/suivi",
