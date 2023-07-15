@@ -8,17 +8,15 @@ import App from "./App";
 import MyPreparation from "@pages/MyPreparation";
 import TimeTable from "@pages/TimeTable";
 import Login from "@pages/Login";
-import AdminOffice from "@pages/admin/AdminOffice.jsx";
 /* import AdminDoctor  from "@pages/admin/AdminDoctor.jsx" */
 //import AdminUser from "@pages/admin/AdminUser.jsx";
-//import ListeOffices from "@pages/admin/listeOffices.jsx";
 import Admin from "./Admin";
-import Cabinets from "@pages/admin/Cabinets"
 import Interventions from "@pages/admin/Interventions"
 import Patients from "@pages/admin/Patients"
 import Suivi from "@pages/admin/Suivi"
 import Praticiens from "@pages/admin/Praticiens"
-
+import OfficesList from "@pages/admin/OfficesList";
+import AddOfficeFormular from "@pages/admin/AddOfficeFormular";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -48,7 +46,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/admin/cabinets",
-        element: <Cabinets />,
+        element: <OfficesList />,
       },
       {
         path: "/admin/interventions",
@@ -68,7 +66,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin/add-offices",
-        element: <AdminOffice/>,
+        element: <AddOfficeFormular/>,
       },
     ],
   },

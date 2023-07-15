@@ -4,8 +4,9 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { MaterialReactTable } from "material-react-table";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 
-function OfficesList() {
+const OfficesList = () => {
   const [officeData, setOfficeData] = useState([]);
 
   useEffect(() => {
@@ -22,28 +23,14 @@ function OfficesList() {
         header: "Name",
         muiTableHeadCellProps: { sx: { color: "green" } },
       },
-      /* { accessorKey: "doc_name", header: "Doc Name" }, */
-      /* { accessorKey: "street_number", header: "Street Number" },
-      { accessorKey: "street_name", header: "Street Name" },
-      { accessorKey: "zip_code", header: "Zip Code" }, */
       { accessorKey: "phone_number", header: "Phone" },
-      /*    { accessorKey: "email", header: "Email" }, */
-      /*    { accessorKey: "free_parking", header: "Free Parking" },
-      { accessorKey: "disabled", header: "Disabled" }, */
       { accessorKey: "open_hours", header: "Open Hours" },
       { accessorKey: "specialty", header: "Specialty" },
     ],
     []
   );
 
-/*   const handleAfficher = function () {
-    axios.get("http://localhost:5000/offices/").then((response) => {
-      console.log("response", response);
-      setOfficeData(response.data);
-    });
-  }; */
-
-  return (
+   return (
     <Container
       maxWidth="sm"
       sx={{
@@ -51,57 +38,45 @@ function OfficesList() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        minHeight: "100vh",
+        minHeight: "80vh",
+        marginLeft: "150px",
       }}
     >
-      <h3>Cabinets</h3>
+      {/* <h3>Liste des Cabinets dans lesquels vous pouvez prendre RDV</h3> */}
+      
       <Box
-        sx={{
-          p: 4,
-          boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
-          borderRadius: "4px",
-          width: "100%",
-          maxWidth: "400px",
-        }}
+          sx={{
+            p: 4,
+            boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
+            borderRadius: "4px",
+            width: "auto",
+          }}
       >
-        {/* <Button
-          onClick={handleRafraichir}
-          variant="contained"
-          color="primary"
-          fullWidth
-          sx={{ borderRadius: "20px", marginTop: "30px" }}
-        >
-          Afficher les cabinets
-        </Button> */}
-      </Box>
-
-      <Box
-        sx={{
-          p: 4,
-          boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
-          borderRadius: "4px",
-          width: "100%",
-          maxWidth: "400px",
-        }}
-      >
-    {<Button
-          onClick={handleAjouerNew}
-          variant="contained"
-          color="primary"
-          fullWidth
-          sx={{ borderRadius: "20px", marginTop: "30px" }}
-        >
-         Ajouter un nouveau Cabinet
-        </Button>}
-      </Box>
-
-      <MaterialReactTable
+      
+      <Box sx={{ width: "100%" }}>
+        <MaterialReactTable
         columns={columns}
         data={officeData}
         enableRowSelection
         enableColumnOrdering
         enableGlobalFilter
-      />
+        />
+      </Box>
+
+
+      <Box display="flex" justifyContent="center" mt="2rem">
+        <NavLink to="/admin/add-offices">
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{ borderRadius: "10px", marginTop: "20px" }}
+          >
+            Cliquez ici pour ajouter un nouveau Cabinet
+          </Button>
+        </NavLink>
+      </Box>
+      </Box>
+      
     </Container>
   );
 }

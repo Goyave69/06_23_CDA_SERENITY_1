@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+
+import { useNavigate   } from "react-router-dom";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -6,7 +8,22 @@ import Button from "@mui/material/Button";
 
 import axios from "axios";
 
-function OfficeFormular() {
+let test = {
+  name: "name "+Date.now(),
+  doc_name: "doc_name "+Date.now(),
+  street_number: 4,
+  street_name:"rue du bouyt du monde",
+  zip_code: "34567",
+  phone_number: "123456",
+  email: "truc@bidule.machin",
+  free_parking: 1,
+  disabled: 0,
+  open_hours: "9h00 17h00",
+  specialty: "2",
+}
+
+function AddOfficeFormular() {
+  const navigate = useNavigate();
   const [officeData, setOfficeData] = useState({
     name: "",
     doc_name: "",
@@ -25,12 +42,31 @@ function OfficeFormular() {
     // Effectuer les actions souhaitées lorsque l'état officeData est mis à jour
   }, [officeData]);
 
+  const handleTest= () => {
+    setOfficeData(test)
+  }
   const handleAjouter = () => {
     console.log(officeData);
 
+
     axios
       .post("http://localhost:5000/offices/", officeData)
-      .then((response) => console.log("response", response));
+      .then((response) => {
+        console.log("response", response);
+
+        if (response.status == 201) {
+          console.log("snack")
+          //on pourra ajouter une snack bar!!
+       
+          navigate("/admin/cabinets");
+        }else{
+          console.log(response.status)
+        }
+      })
+      .catch((e) => {
+        console.log(e)
+        alert("hum ...It seems somthing went wrong !");
+      });
   };
 
   return (
@@ -44,6 +80,7 @@ function OfficeFormular() {
         minHeight: "100vh",
       }}
     >
+ 
       <Box
         sx={{
           p: 4,
@@ -53,6 +90,7 @@ function OfficeFormular() {
           maxWidth: "400px",
         }}
       >
+            
         <TextField
           id="name"
           label="Nom cabinet"
@@ -185,6 +223,7 @@ function OfficeFormular() {
             setOfficeData({ ...officeData, specialty: e.target.value })
           }
         />
+         <Button onClick={handleTest}>test</Button>
         <Button
           onClick={handleAjouter}
           variant="contained"
@@ -192,11 +231,11 @@ function OfficeFormular() {
           fullWidth
           sx={{ borderRadius: "20px", marginTop: "30px" }}
         >
-          Cliquer pour ajouter ce cabinet
+          Cliquer ici pour ajouter ce cabinet
         </Button>
       </Box>
     </Container>
   );
 }
 
-export default OfficeFormular;
+export default AddOfficeFormular;
