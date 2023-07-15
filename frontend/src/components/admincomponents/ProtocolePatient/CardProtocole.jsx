@@ -5,22 +5,14 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 
-const CardProtocole = () => {
-
-    const handleClick = () => {
-        // Code à exécuter lors du clic sur la Box
-        console.log("La Box a été cliquée !");
-    };
+const CardProtocole = ({ handleClick }) => {
 
     return (
       <Container
         maxWidth="sm"
         sx={{
           display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          minHeight: "90vh",
+          mt:6,
         }}
       >
         <Card
@@ -47,7 +39,7 @@ const CardProtocole = () => {
                 backgroundColor: "#F3D03D",
                 height: "60px",
               }}
-              onClick={handleClick}
+              onClick={() => handleClick("understand")} 
             >
               <div
                 style={{
@@ -113,7 +105,7 @@ const CardProtocole = () => {
                 backgroundColor: "#BAEA64",
                 height: "60px",
               }}
-              onClick={handleClick}
+              onClick={() => handleClick("appointment")}
             >
               <div
                 style={{
