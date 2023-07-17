@@ -72,7 +72,7 @@ const CardProtocole = ({ handleClick }) => {
                 backgroundColor: "#4AD1B7",
                 height: "60px",
               }}
-              onClick={handleClick}
+              onClick={() => handleClick("formular")}
             >
               <div
                 style={{
@@ -138,7 +138,7 @@ const CardProtocole = ({ handleClick }) => {
                 backgroundColor: "#635EEC",
                 height: "60px",
               }}
-              onClick={handleClick}
+              onClick={() => handleClick("checklist")}
             >
               <div
                 style={{
