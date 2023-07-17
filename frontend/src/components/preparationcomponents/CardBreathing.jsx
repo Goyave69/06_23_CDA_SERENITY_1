@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 
-const CircularProgressWithLabel = (props) => {
+const CircularProgressWithLabel = ({value}) => {
   return (
     <Box
       sx={{
@@ -17,7 +17,7 @@ const CircularProgressWithLabel = (props) => {
         ml: "29px",
       }}
     >
-      <CircularProgress variant="determinate" {...props} />
+      <CircularProgress variant="determinate" />
       <Box
         sx={{
           top: "50%",
@@ -28,7 +28,7 @@ const CircularProgressWithLabel = (props) => {
         }}
       >
         <Typography variant="body2" component="div" color="text.secondary">
-          {`${Math.round(props.value)}%`}
+          {`${Math.round(value.value)}%`}
         </Typography>
       </Box>
     </Box>

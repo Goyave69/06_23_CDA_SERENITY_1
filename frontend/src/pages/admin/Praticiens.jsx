@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Particiens = () => {
+const Praticiens = () => {
     return (
         <div>
            <h1>hello doc</h1>
@@ -8,4 +8,4 @@ const Particiens = () => {
     );
 };
 
-export default Particiens;
+export default Praticiens;
