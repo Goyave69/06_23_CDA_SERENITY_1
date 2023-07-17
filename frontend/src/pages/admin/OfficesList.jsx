@@ -154,7 +154,7 @@ const OfficesList = () => {
       {
         accessorKey: "idoffice",
         header: "Id Office",
-        enableEditing: false,
+        enableEditing: "false",
         muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
           ...getCommonEditTextFieldProps(cell),
         }),
@@ -165,7 +165,7 @@ const OfficesList = () => {
         muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
           ...getCommonEditTextFieldProps(cell),
         }),
-        enablehiding: false,
+        enablehiding: "false",
       },
       {
         accessorKey: "doc_name",
@@ -201,7 +201,7 @@ const OfficesList = () => {
       {
         accessorKey: "phone_number",
         header: "Phone",
-        enablehiding: false,
+        enablehiding: "false",
         muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
           ...getCommonEditTextFieldProps(cell),
         }),
@@ -232,7 +232,7 @@ const OfficesList = () => {
         header: "Open Hours",
         muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
           ...getCommonEditTextFieldProps(cell),
-          enablehiding: false,
+          enablehiding: "false",
         }),
       },
       {
@@ -240,7 +240,7 @@ const OfficesList = () => {
         header: "Specialty",
         muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
           ...getCommonEditTextFieldProps(cell),
-          enablehiding: false,
+          enablehiding: "false",
         }),
       },
     ],
