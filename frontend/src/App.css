@@ -17,6 +17,7 @@ code {
   display: flex;
 }
 
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -38,6 +39,7 @@ code {
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
 
 .App-link {
   color: #61dafb;
