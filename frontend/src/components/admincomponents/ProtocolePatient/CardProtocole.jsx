@@ -72,7 +72,7 @@ const CardProtocole = ({ handleClick }) => {
                 backgroundColor: "#4AD1B7",
                 height: "60px",
               }}
-              onClick={handleClick}
+              onClick={() => handleClick("appointment")}
             >
               <div
                 style={{
