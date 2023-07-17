@@ -41,7 +41,7 @@ const AddAppointment = () => {
                 Ajouter un rendez-vous
               </Typography>
               <div style={{ color: "white" }}>
-                <p>3</p>
+                <p>12</p>
               </div>
             </Box>
 
