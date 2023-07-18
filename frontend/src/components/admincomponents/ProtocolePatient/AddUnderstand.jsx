@@ -98,7 +98,7 @@ const AddUnderstand = () => {
               <h1>File Upload</h1>
 
               <div class="input-group">
-                <label for="title">Titre de la video</label>
+                <label htmlFor="title">Titre de la video</label>
                 <input
                   name="title"
                   id="title"

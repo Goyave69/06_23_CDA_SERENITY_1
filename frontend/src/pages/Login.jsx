@@ -6,6 +6,9 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import PropTypes from "prop-types";
 
+// creation des utilisateurs http://localhost:3000/admin/patients
+// https://www.passportjs.org/packages/passport-local/
+
 const LoginPage = ({ setLoggedState }) => {
   const handleLogin = function () {
     console.log(setLoggedState);
