@@ -1,4 +1,5 @@
 const express = require("express");
+const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
 const cors = require("cors");
@@ -11,9 +12,15 @@ const adminformRouter = require("./routes/adminform");
 const documentsRouter = require("./routes/documents");
 const patientsRouter = require("./routes/patient");
 
+const uploads = "public/uploads/"
+
+const upload = multer({ dest: uploads });
 
 
 const app = express();
+app.use('/static', express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // use some application-level middlewares
 app.use(
@@ -40,7 +47,27 @@ app.use("/interventions", interventionRouter);
 app.use("/adminforms", adminformRouter); 
 app.use("/documents", documentsRouter);
 app.use("/patients", patientsRouter); 
+app.post("/upload_files", upload.single("files"), uploadFiles);
 
+app.get("/list_uploads", listUploads);
+
+function uploadFiles(req, res) {
+  console.log(req.body);
+  console.log(req.files);
+  res.json({ message: "Successfully uploaded files" });
+}
+
+function listUploads(req, res){
+  fs.readdir(uploads, (err, files) => {
+
+    let response = { files: files };
+    return res.status(201).json(response)
+
+    /*files.forEach(file => {
+      console.log(file);
+    });*/
+  });
+}
 
 // Redirect all requests to the REACT app
 const reactIndexFile = path.join(

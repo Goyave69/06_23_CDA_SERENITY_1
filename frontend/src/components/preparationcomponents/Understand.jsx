@@ -1,11 +1,23 @@
-import React from 'react';
+import React , { useState, useEffect } from 'react';
 import { Typography } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from '@mui/material/CardMedia';
 import Box from '@mui/material/Box';
+import axios from "axios";
 
 const Understand = () => {
+
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:5000/list_uploads/").then((response) => {
+      console.log("response", response);
+      setVideos(response.data.files);
+    });
+   }, []);
+
+
     return (
       <Card
         sx={{
@@ -27,6 +39,23 @@ const Understand = () => {
             }}
           >
             Les vidéos du Dr Noailles :
+
+<ul>
+            {videos.map((video) => (
+        
+              <li>{video}
+
+<video controls width="250">
+
+    <source src={ `http://localhost:5000/static/uploads/${video}` } type="video/mp4" />
+</video>
+</li>
+
+
+
+            ))}
+</ul>
+
           </Typography>
           <div style={{ display: "flex" }}>
             <Box>
