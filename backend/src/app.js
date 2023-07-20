@@ -12,6 +12,8 @@ const adminformRouter = require("./routes/adminform");
 const documentsRouter = require("./routes/documents");
 const patientsRouter = require("./routes/patient");
 
+const authRouter = require('./routes/auth');
+
 const uploads = "public/uploads/"
 
 const upload = multer({ dest: uploads });
@@ -50,6 +52,8 @@ app.use("/patients", patientsRouter);
 app.post("/upload_files", upload.single("files"), uploadFiles);
 
 app.get("/list_uploads", listUploads);
+
+app.use('/authentication', authRouter);
 
 function uploadFiles(req, res) {
   console.log(req.body);
