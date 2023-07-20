@@ -5,10 +5,33 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import PropTypes from "prop-types";
+import axios from "axios";
+
+// creation des utilisateurs http://localhost:3000/admin/patients
+// https://www.passportjs.org/packages/passport-local/
 
 const LoginPage = ({ setLoggedState }) => {
   const handleLogin = function () {
     console.log(setLoggedState);
+
+    let data = {"email" : "trois", "password": "cinq"}
+
+    axios
+      .post("http://localhost:5000/authentication/login", data)
+      .then((response) => {
+        console.log("response", response);
+
+        if (response.status == 201) {
+          console.log("snack")
+          //on pourra ajouter une snack bar!!
+        }else{
+          console.log(response.status)
+        }
+      })
+      .catch((e) => {
+        console.log(e)
+        alert("hum ...It seems somthing went wrong !");
+      });
   };
 
   return (

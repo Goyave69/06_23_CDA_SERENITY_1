@@ -10,6 +10,7 @@ async function passwordHasher(password) {
 
 async function passwordVerification(password, hashedPassword) {
   try {
+    console.log(password, hashedPassword, await argon2.verify(hashedPassword, password))
     return await argon2.verify(hashedPassword, password)
   } catch (err) {
     // internal failure
