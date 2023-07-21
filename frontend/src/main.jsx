@@ -17,6 +17,9 @@ import Suivi from "@pages/admin/Suivi"
 import Praticiens from "@pages/admin/Praticiens"
 import OfficesList from "@pages/admin/OfficesList";
 import AddOfficeFormular from "@pages/admin/AddOfficeFormular";
+import { SnackbarProvider } from "notistack";
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -74,8 +77,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <SnackbarProvider>
     <ThemeProvider theme={mainTheme}>
       <RouterProvider router={router} />
     </ThemeProvider>
+    </SnackbarProvider>
   </React.StrictMode>
 );

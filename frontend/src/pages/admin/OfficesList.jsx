@@ -160,6 +160,14 @@ const OfficesList = () => {
         }),
       },
       {
+        accessorKey: "idoffice",
+        header: "Id Office",
+        enableEditing: "false",
+        muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
+          ...getCommonEditTextFieldProps(cell),
+        }),
+      },
+      {
         accessorKey: "name",
         header: "Name",
         muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
@@ -273,7 +281,7 @@ console.log(officeData.name);
           width: "auto",
         }}
       >
-        <Box sx={{ width: "100%", position: "relative", left: "300px" }}>
+        <Box sx={{ width: "100%", position: "relative", /*left: "300px"*/ }}>
           <MaterialReactTable
             displayColumnDefOptions={{
               "mrt-row-actions": {
@@ -354,7 +362,7 @@ console.log(officeData.name);
       </Box>
     </Container>
   );
-};
+};;
 
 //example of creating a mui dialog modal for creating new rows
 export const CreateNewAccountModal = ({ open, columns, onClose, onSubmit }) => {
@@ -412,7 +420,6 @@ const validateEmail = (email) =>
   email
     .toLowerCase()
     .match(
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
 const validateAge = (age) => age >= 18 && age <= 50;
 

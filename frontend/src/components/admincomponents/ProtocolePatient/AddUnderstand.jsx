@@ -6,38 +6,59 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import Modal from '@mui/material/Modal';
+import TextField from '@mui/material/TextField';
+
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  bgcolor: "background.paper",
+  p: 4,
+  boxShadow: "2",
+  borderRadius: "10px",
+  width: "auto",
+};
 
 const AddUnderstand = () => {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const [file, setFile] = useState(null);
   const [title, setTitle] = useState(null);
+
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
 
   const handleUpload = () => {
     console.log("Uploading");
     console.log(file);
     console.log(title);
- 
-    // if( files.length > 0 & title.length > 0) {
 
-    const formData = new FormData();
-    formData.append("name", title);
-    formData.append("files", file);
+    if (file && title) { // Check si les deux ne sont pas vide
+      const formData = new FormData();
+      formData.append("name", title);
+      formData.append("files", file);
 
-    console.log(formData)
+      console.log(formData);
 
-    fetch("http://localhost:5000/upload_files", {
-      method: "POST",
-      body: formData,
-     /* headers: {
-        "Content-Type": "multipart/form-data",
-      },
-      */
-    })
-      .then((res) => console.log(res))
-      .catch((err) => ("Error occured", err));
-    /*
-  }else{
-    alert ("formulaire incorrect")
-  }*/
+      fetch("http://localhost:5000/upload_files", {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => console.log(res))
+        .catch((err) => console.error("Error", err));
+    } else {
+      alert("Formulaire incorrect");
+    }
   };
 
   return (
@@ -94,46 +115,8 @@ const AddUnderstand = () => {
               }}
             ></Grid>
 
-            <div class="container">
-              <h1>File Upload</h1>
-
-              <div class="input-group">
-                <label htmlFor="title">Titre de la video</label>
-                <input
-                  name="title"
-                  id="title"
-                  onChange={(e) => {
-                    setTitle(e.target.value);
-                  }}
-                  placeholder="titre"
-                />
-              </div>
-             <div> <input
-                accept=".mp4"
-                style={{ display: "block" }}
-                type="file"
-                onChange={(e) => {
-                  setFile(e.target.files[0]);
-                }}
-              />
-                <label>
-                <span>File</span>
-              </label>
-              </div>
-              <Button
-                onClick={handleUpload}
-                variant="contained"
-                color="primary"
-                fullWidth
-                sx={{ borderRadius: "20px", marginTop: "30px" }}
-              >
-                Upload
-              </Button>
-
-            
-            </div>
-
             <Button
+              onClick={handleOpen}
               variant="contained"
               sx={{
                 mt: 4,
@@ -150,10 +133,102 @@ const AddUnderstand = () => {
               }}
             >
               <Typography sx={{ color: "#696A70", fontSize: "11px" }}>
-                {" "}
-                Ajouter{" "}
+                Ajouter
               </Typography>
             </Button>
+
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box sx={style}>
+                <Container maxWidth="sm">
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      borderRadius: "10px",
+                      backgroundColor: "#F3D03D",
+                      mb:3,
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        fontSize: "15px",
+                        fontWeight: "medium",
+                        color: "white",
+                        mt: 2,
+                        mb:2,
+                        mr: 25,
+                        ml: 2,
+                      }}
+                    >
+                      Comprendre mon operation
+                    </Typography>
+                  </Box>
+
+                  <div>
+                    <input
+                      accept=".mp4"
+                      style={{ display: "none" }}
+                      type="file"
+                      onChange={handleFileChange}
+                      id="fileInput"
+                    />
+                    <label htmlFor="fileInput">
+                      <Button
+                        variant="outlined"
+                        component="span"
+                        fullWidth
+                        sx={{ borderRadius: "5px", marginTop: "10px" }}
+                      >
+                        Upload video
+                      </Button>
+                    </label>
+                  </div>
+
+                  <div>
+                    <TextField
+                      label="Titre"
+                      variant="outlined"
+                      name="title"
+                      value={title}
+                      onChange={handleTitleChange}
+                      placeholder="titre"
+                      fullWidth
+                      margin="normal"
+                    />
+                    <TextField
+                      fullWidth
+                      id="outlined-multiline-static"
+                      label="Déscription courte"
+                      multiline
+                      rows={4}
+                      
+                    />
+                  </div>
+
+                  <Button
+                    onClick={handleUpload}
+                    variant="contained"
+                    color="primary"
+                    fullWidth
+                    sx={{
+                      borderRadius: "10px",
+                      marginTop: "20px",
+                      backgroundColor: "#343435",
+                      height: "45px",
+                      width: "35%",
+                    }}
+                  >
+                    Crée
+                  </Button>
+                </Container>
+              </Box>
+            </Modal>
+
             <Button
               variant="contained"
               sx={{
@@ -182,4 +257,6 @@ const AddUnderstand = () => {
   );
 };
 
+
 export default AddUnderstand;
+

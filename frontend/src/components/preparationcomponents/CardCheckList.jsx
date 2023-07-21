@@ -88,6 +88,7 @@ const CardCheckList = ({ onClick }) => {
               variant="subtitle1"
               component="div"
               sx={{
+                flexWrap:"wrap",
                 position: "absolute",
                 left: "47px",
                 top: "79px",

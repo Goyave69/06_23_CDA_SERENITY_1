@@ -7,6 +7,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
 import axios from "axios";
+import { Typography } from "@mui/material";
 
 let test = {
   name: "name "+Date.now(),
@@ -71,27 +72,27 @@ function AddOfficeFormular() {
 
   return (
     <Container
-      maxWidth="sm"
       sx={{
+        mt:6,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        minHeight: "100vh",
       }}
     >
  
       <Box
         sx={{
+          ml:10,
           p: 4,
           boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
           borderRadius: "4px",
           width: "100%",
-          maxWidth: "400px",
         }}
       >
-            
-        <TextField
+        <Typography sx={{fontWeight:"medium", mb:2, fontSize:16 }}>Ajouter un nouveau cabinet</Typography>
+       <div style={{ display: "flex" }}>
+       <TextField
           id="name"
           label="Nom cabinet"
           variant="outlined"
@@ -102,6 +103,7 @@ function AddOfficeFormular() {
           onChange={(e) =>
             setOfficeData({ ...officeData, name: e.target.value })
           }
+          sx={{mr: "2rem" }}
         />
         <TextField
           id="doc_name"
@@ -114,7 +116,11 @@ function AddOfficeFormular() {
           onChange={(e) =>
             setOfficeData({ ...officeData, doc_name: e.target.value })
           }
+          sx={{  mr: "2rem" }}
         />
+       </div>
+
+        <div style={{ display: "flex" }} >
         <TextField
           id="street_number"
           label="street_number"
@@ -126,6 +132,7 @@ function AddOfficeFormular() {
           onChange={(e) =>
             setOfficeData({ ...officeData, street_number: e.target.value })
           }
+          sx={{mr: "2rem" }}
         />
         <TextField
           id="street_name"
@@ -138,7 +145,11 @@ function AddOfficeFormular() {
           onChange={(e) =>
             setOfficeData({ ...officeData, street_name: e.target.value })
           }
+          sx={{mr: "2rem" }}
         />
+        </div>
+
+        <div style={{ display: "flex" }}>
         <TextField
           id="zip_code"
           label="zip_code"
@@ -150,6 +161,7 @@ function AddOfficeFormular() {
           onChange={(e) =>
             setOfficeData({ ...officeData, zip_code: e.target.value })
           }
+          sx={{mr: "2rem" }}
         />
         <TextField
           id="phone_number"
@@ -162,8 +174,12 @@ function AddOfficeFormular() {
           onChange={(e) =>
             setOfficeData({ ...officeData, phone_number: e.target.value })
           }
+          sx={{mr: "2rem" }}
         />
-        <TextField
+        </div>
+       
+       <div style={{ display: "flex" }}>
+       <TextField
           id="email"
           label="email"
           variant="outlined"
@@ -174,6 +190,7 @@ function AddOfficeFormular() {
           onChange={(e) =>
             setOfficeData({ ...officeData, email: e.target.value })
           }
+          sx={{mr: "2rem" }}
         />
         <TextField
           id="free_parking"
@@ -186,7 +203,11 @@ function AddOfficeFormular() {
           onChange={(e) =>
             setOfficeData({ ...officeData, free_parking: e.target.value })
           }
+          sx={{mr: "2rem" }}
         />
+       </div>
+        
+        <div style={{ display: "flex" }}>
         <TextField
           id="disabled"
           label="disabled"
@@ -198,6 +219,7 @@ function AddOfficeFormular() {
           onChange={(e) =>
             setOfficeData({ ...officeData, disabled: e.target.value })
           }
+          sx={{mr: "2rem" }}
         />
         <TextField
           id="open_hours"
@@ -210,7 +232,10 @@ function AddOfficeFormular() {
           onChange={(e) =>
             setOfficeData({ ...officeData, open_hours: e.target.value })
           }
+          sx={{mr: "2rem" }}
         />
+        </div>
+        
         <TextField
           id="specialty"
           label="specialty"
@@ -222,6 +247,7 @@ function AddOfficeFormular() {
           onChange={(e) =>
             setOfficeData({ ...officeData, specialty: e.target.value })
           }
+          sx={{mr: "2rem" }}
         />
          <Button onClick={handleTest}>test</Button>
         <Button
@@ -229,9 +255,14 @@ function AddOfficeFormular() {
           variant="contained"
           color="primary"
           fullWidth
-          sx={{ borderRadius: "20px", marginTop: "30px" }}
+          sx={{ borderRadius: "10px",
+          marginTop: "20px",
+          backgroundColor: "#343435",
+          height: "45px",
+          width: "35%", 
+          marginLeft: 12,}}
         >
-          Cliquer ici pour ajouter ce cabinet
+          Valider
         </Button>
       </Box>
     </Container>
