@@ -141,11 +141,6 @@ const OfficesList = () => {
 
   const refresh = () => {
     console.log("refresh")
-   refresh()
-  }, []);
-
-  const refresh = () => {
-    console.log("refresh")
     axios.get("http://localhost:5000/offices/").then((response) => {
       console.log("response", response);
       setOfficeData(response.data);
