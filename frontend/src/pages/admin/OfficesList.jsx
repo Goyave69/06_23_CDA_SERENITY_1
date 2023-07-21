@@ -141,6 +141,11 @@ const OfficesList = () => {
 
   const refresh = () => {
     console.log("refresh")
+   refresh()
+  }, []);
+
+  const refresh = () => {
+    console.log("refresh")
     axios.get("http://localhost:5000/offices/").then((response) => {
       console.log("response", response);
       setOfficeData(response.data);
@@ -151,6 +156,14 @@ const OfficesList = () => {
 
   const columns = useMemo(
     () => [
+      {
+        accessorKey: "idoffice",
+        header: "Id Office",
+        enableEditing: "false",
+        muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
+          ...getCommonEditTextFieldProps(cell),
+        }),
+      },
       {
         accessorKey: "idoffice",
         header: "Id Office",
@@ -354,7 +367,7 @@ console.log(officeData.name);
       </Box>
     </Container>
   );
-};
+};;
 
 //example of creating a mui dialog modal for creating new rows
 export const CreateNewAccountModal = ({ open, columns, onClose, onSubmit }) => {
@@ -412,7 +425,6 @@ const validateEmail = (email) =>
   email
     .toLowerCase()
     .match(
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
 const validateAge = (age) => age >= 18 && age <= 50;
 

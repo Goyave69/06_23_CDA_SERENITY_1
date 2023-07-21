@@ -39,6 +39,23 @@ const Understand = () => {
             }}
           >
             Les vidéos du Dr Noailles :
+
+<ul>
+            {videos.map((video) => (
+        
+              <li>{video}
+
+<video controls width="250">
+
+    <source src={ `http://localhost:5000/static/uploads/${video}` } type="video/mp4" />
+</video>
+</li>
+
+
+
+            ))}
+</ul>
+
           </Typography>
           <div style={{ display: "flex" }}>
             <Box>
