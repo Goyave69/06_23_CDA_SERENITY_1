@@ -44,7 +44,7 @@ const Understand = () => {
 
           </Typography>
           <div style={{ display: "flex" }}>
-            <Box>
+            <Box>^$poiuy 
               <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
                   alt="Preview de la vidéo"
