@@ -1,19 +1,32 @@
 const argon2 = require("argon2");
 
-async function passwordHasher(password) {
-  try {
-    return await argon2.hash(password);
-  } catch (err) {
-    console.log(err);
-  }
-}
+const hashingOptions = {
+  type: argon2.argon2id,
+  memoryCost: 2 ** 16,
+  timeCost: 5,
+  parallelism: 1,
+};
 
-async function passwordVerification(password, hashedPassword) {
+const passwordHasher = (req, res, next) => {
+  console.log(req.body)
+  argon2
+    .hash(req.body.password, hashingOptions)
+    .then((hashedPassword) => {
+      req.body.password = hashedPassword;
+      next();
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+
+async function passwordVerification(hashedPassword, password) {
   try {
-    console.log(password, hashedPassword, await argon2.verify(hashedPassword, password))
     return await argon2.verify(hashedPassword, password)
   } catch (err) {
-    // internal failure
+    return console.error(err)
   }
 }
 

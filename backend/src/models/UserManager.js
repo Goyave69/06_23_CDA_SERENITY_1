@@ -3,9 +3,6 @@ const connection = require("./index");
 const { passwordHasher } = require("../services/PasswordHelper");
 
 async function insertUser(data) {
-  //password hashing
-  data.password = await passwordHasher(data.password);
-
   let bodyResponse = { ...data };
 
   return connection
@@ -17,7 +14,7 @@ async function insertUser(data) {
         data.lastname,
         data.email,
         data.phone,
-        await passwordHasher(data.password),
+        data.password,
         JSON.stringify(data.roles),
       ]
     )
