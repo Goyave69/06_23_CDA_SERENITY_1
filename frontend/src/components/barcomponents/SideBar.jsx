@@ -38,19 +38,19 @@ function ResponsiveDrawer(props) {
     {
       id: 0,
       text: "Dashboard",
-      link: "/dashboard",
+      link: "/user/dashboard",
       icon: RoofingOutlinedIcon,
     },
     {
       id: 1,
       text: "Ma Préparation",
-      link: "/mypreparation",
+      link: "/user/mypreparation",
       icon: ClassOutlinedIcon,
     },
     {
       id: 2,
       text: "Agenda",
-      link: "/timetable",
+      link: "/user/timetable",
       icon: CalendarMonthOutlinedIcon,
     },
   ];
