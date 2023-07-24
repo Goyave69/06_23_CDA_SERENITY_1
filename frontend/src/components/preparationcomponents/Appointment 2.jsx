@@ -1,20 +1,15 @@
-import React from 'react';
-import { Typography, Button, Card, CardContent, Box, Paper  } from "@mui/material";
-import { useState } from 'react'
-import {enqueueSnackbar} from 'notistack';
-
+import React from "react";
+import {
+  Typography,
+  Button,
+  Card,
+  CardContent,
+  Box,
+  Paper,
+} from "@mui/material";
+import { enqueueSnackbar } from "notistack";
 
 export default function Appointment() {
-  const [confirmedAppointment, setConfirmedAppointment] = useState(false);
-
-  const validateAppointment = () => {
-   
-    setTimeout(() => {
-      enqueueSnackbar('Votre RDV est confirmé', { variant: 'success' });
-      setConfirmedAppointment(true);
-    }, 2000);
-  };
-
   return (
     <Card
       sx={{
@@ -33,17 +28,17 @@ export default function Appointment() {
             display: "flex",
             justifyContent: "start",
             marginBottom: "48px",
-            ml:"10px"
+            ml: "10px",
           }}
         >
           Les Rendez-vous disponibles :
         </Typography>
-        <Box sx={{display: "flex", flexFlow: "row wrap" }}>
+        <Box sx={{ display: "flex", flexFlow: "row wrap" }}>
           <Paper
             sx={{
               p: 2,
               margin: "auto",
-              mr:"20px",
+              mr: "20px",
               maxWidth: 290,
               height: 160,
               flexGrow: 1,
@@ -56,29 +51,26 @@ export default function Appointment() {
               Dr. Alexandro Smith
             </Typography>
             <Typography sx={{ mb: 2 }} variant="body2" color="text.secondary">
-              Médecin Généraliste
+              Infirmier
             </Typography>
             <Typography variant="body2" gutterBottom>
               Disponible Aujourd&apos;hui à 14h
             </Typography>
 
-            <Button 
-                sx={{ borderRadius: "16px" }} 
-                size="small"
-                onClick={validateAppointment}
-                disabled={confirmedAppointment}
-              >
-              Prendre ce Rendez-vous
+            <Button
+              sx={{ borderRadius: "16px" }}
+              size="small"
+              onClick={() => enqueueSnackbar("Votre RDV est confirmé, a bientot!", { variant: "success" })}
+            >
+              Prendre Rendez-vous
             </Button>
-
-
           </Paper>
-        
+
           <Paper
             sx={{
               p: 2,
               margin: "auto",
-              mr:"20px",
+              mr: "20px",
               maxWidth: 290,
               height: 160,
               flexGrow: 1,
@@ -91,12 +83,16 @@ export default function Appointment() {
               Dr. Claudia Nasi
             </Typography>
             <Typography sx={{ mb: 2 }} variant="body2" color="text.secondary">
-             Kinésithérapeute
+              Kinésithérapeute
             </Typography>
             <Typography variant="body2" gutterBottom>
-             Disponible dans 3h
+              Disponible dans 3h
             </Typography>
-            <Button sx={{ borderRadius: "16px" }} size="small">
+            <Button
+              sx={{ borderRadius: "16px" }}
+              size="small"
+              onClick={() => enqueueSnackbar("Votre RDV est confirmé, a bientot!", { variant: "success" })}
+            >
               Prendre Rendez-vous
             </Button>
           </Paper>
@@ -106,7 +102,7 @@ export default function Appointment() {
               p: 2,
               margin: "auto",
               maxWidth: 290,
-              mr:"20px",
+              mr: "20px",
               height: 160,
               flexGrow: 1,
               borderRadius: "16px",
@@ -123,7 +119,11 @@ export default function Appointment() {
             <Typography variant="body2" gutterBottom>
               Disponible Demain à 10h
             </Typography>
-            <Button sx={{ borderRadius: "16px" }} size="small">
+            <Button
+              sx={{ borderRadius: "16px" }}
+              size="small"
+              onClick={() => enqueueSnackbar("Votre RDV est confirmé, a bientot!", { variant: "success" })}
+            >
               Prendre Rendez-vous
             </Button>
           </Paper>
@@ -131,4 +131,4 @@ export default function Appointment() {
       </CardContent>
     </Card>
   );
-  }
+}

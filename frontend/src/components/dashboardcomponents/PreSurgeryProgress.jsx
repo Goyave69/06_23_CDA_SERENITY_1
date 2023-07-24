@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 function LinearProgressWithLabel(props) {
   return (
     <Box sx={{ mt: 13}}>
-      <Typography variant="body2"  sx={{ color:"black", mb:"10px"}}>
+      <Typography variant="body2"  sx={{ color:"black", mb:"10px", display:"flex"}}>
        Préparation pour ma chirurgie :
       </Typography>
       <Box sx={{ width: '230px', mr: 1,}}>
@@ -17,7 +17,7 @@ function LinearProgressWithLabel(props) {
         <Typography
           variant="body2"
           color="#4C5980"
-          sx={{ fontWeight: "bold" }}
+          sx={{ fontWeight: "bold", mr:"100px",  }}
         >{`${Math.round(props.value)}%`}</Typography>
       </Box>
     </Box>

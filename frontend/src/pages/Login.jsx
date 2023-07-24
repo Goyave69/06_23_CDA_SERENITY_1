@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -8,30 +8,52 @@ import PropTypes from "prop-types";
 import axios from "axios";
 
 // creation des utilisateurs http://localhost:3000/admin/patients
-// https://www.passportjs.org/packages/passport-local/
+//daa https://www.passportjs.org/packages/passport-local/
+
+// const LoginPage = ({ setLoggedState }) => {
+//   const handleLogin = function () {
+//     console.log(setLoggedState);
+
+//     let data = {"email" : "trois", "password": "cinq"}
+
+//     axios
+//       .post("http://localhost:5000/authentication/login", data)
+//       .then((response) => {
+//         console.log("response", response);
+
+//         if (response.status == 201) {
+//           console.log("snack")
+//           //on pourra ajouter une snack bar!!
+//         }else{
+//           console.log(response.status)
+//         }
+//       })
+//       .catch((e) => {
+//         console.log(e)
+//         alert("hum ...It seems somthing went wrong !");
+//       });
+//   };
 
 const LoginPage = ({ setLoggedState }) => {
-  const handleLogin = function () {
-    console.log(setLoggedState);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    let data = {"email" : "trois", "password": "cinq"}
+  const data = {
+    email: email,
+    password: password,
+  };
+  
+  const handleLogin = function () {
 
     axios
-      .post("http://localhost:5000/authentication/login", data)
-      .then((response) => {
-        console.log("response", response);
-
-        if (response.status == 201) {
-          console.log("snack")
-          //on pourra ajouter une snack bar!!
-        }else{
-          console.log(response.status)
-        }
-      })
-      .catch((e) => {
-        console.log(e)
-        alert("hum ...It seems somthing went wrong !");
-      });
+    .post("http://localhost:5000/login", data)
+    .then((response) => {
+      if (response.status === 201) {
+        alert("successfully login")
+        setLoggedState(true)
+      }
+      alert("something is wrong")
+    })
   };
 
   return (
@@ -64,6 +86,8 @@ const LoginPage = ({ setLoggedState }) => {
           margin="normal"
           type="email"
           placeholder="exemple@exemple.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <TextField
           label="Mot de passe"
@@ -72,6 +96,8 @@ const LoginPage = ({ setLoggedState }) => {
           margin="normal"
           type="password"
           placeholder="mot de passe"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <Button
           onClick={handleLogin}
