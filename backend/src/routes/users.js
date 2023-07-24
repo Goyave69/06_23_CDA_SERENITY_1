@@ -5,9 +5,10 @@ const readUserController = require('../controllers/userController/ReadUserContro
 const readOneUserController = require('../controllers/userController/ReadOneUserController')
 const updateUserController = require('../controllers/userController/UpdateUserController')
 const deleteUserController = require('../controllers/userController/DeleteUserController');
+const { passwordHasher } = require('../services/PasswordHelper');
 
 /* POST : create a new user. */
-router.post('/', createUserController)
+router.post('/', passwordHasher,  createUserController)
 
 /* GET : fetch all users . */
 router.get('/', readUserController)
@@ -16,9 +17,10 @@ router.get('/', readUserController)
 router.get('/:id', readOneUserController)
 
 /* PUT : update one user . */
-router.put('/:id', updateUserController)
+router.put('/:id', passwordHasher, updateUserController)
 
 /* DELETE : delete one user . */
 router.delete('/:id', deleteUserController)
+
 
 module.exports = router;
