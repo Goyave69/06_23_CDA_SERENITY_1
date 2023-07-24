@@ -22,7 +22,7 @@ import { Typography } from "@mui/material";
   specialty: "2",
 }
  */
-function AddInterventionsFormular() {
+function AddInterventionFormular() {
   const navigate = useNavigate();
   const [interventionData, setInterventioneData] = useState({
     name: "",
@@ -268,4 +268,4 @@ function AddInterventionsFormular() {
   );
 }
 
-export default AddOfficeFormular;
+export default AddInterventionFormular;

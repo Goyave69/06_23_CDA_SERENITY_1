@@ -17,7 +17,7 @@ import Suivi from "@pages/admin/Suivi"
 import Praticiens from "@pages/admin/AddPraticiens/PraticiensList"
 import OfficesList from "@pages/admin/AddCabinets/OfficesList";
 import AddOfficeFormular from "@pages/admin/AddCabinets/AddOfficeFormular";
-import AddInterventionFormular from "@pages/admin/AddInterventionFormular"
+import AddInterventionFormular from "@pages/admin/AddInterventions/AddInterventionFormular"
 import { SnackbarProvider } from "notistack";
 
 
