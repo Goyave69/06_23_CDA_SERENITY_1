@@ -7,18 +7,16 @@ import Box from "@mui/material/Box";
 function LinearProgressWithLabel(props) {
   return (
     <Box sx={{ mt: 13}}>
-      <Typography variant="body2"  sx={{ color:"black", mb:"10px"}}>
+      <Typography variant="body2"  sx={{ color:"black", mb:"10px", display:"flex"}}>
        Préparation pour ma chirurgie :
       </Typography>
       <Box sx={{ width: '230px', mr: 1,}}>
-        <LinearProgress variant="determinate" {...props} sx={{ height: "40px", borderRadius: "16px", color: "root" }} />
-      </Box>
-      <Box sx={{ minWidth: 35 }}>
-        <Typography
+      <Typography
           variant="body2"
           color="#4C5980"
-          sx={{ fontWeight: "bold" }}
+          sx={{ fontWeight: "bold",}}
         >{`${Math.round(props.value)}%`}</Typography>
+        <LinearProgress variant="determinate" {...props} sx={{ height: "40px", borderRadius: "16px", color: "root" }} />
       </Box>
     </Box>
   );

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import { useNavigate   } from "react-router-dom";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -9,7 +8,7 @@ import Button from "@mui/material/Button";
 import axios from "axios";
 import { Typography } from "@mui/material";
 
-let test = {
+/* let test = {
   name: "name "+Date.now(),
   doc_name: "doc_name "+Date.now(),
   street_number: 4,
@@ -22,10 +21,10 @@ let test = {
   open_hours: "9h00 17h00",
   specialty: "2",
 }
-
-function AddOfficeFormular() {
+ */
+function AddInterventionFormular() {
   const navigate = useNavigate();
-  const [officeData, setOfficeData] = useState({
+  const [interventionData, setInterventioneData] = useState({
     name: "",
     doc_name: "",
     street_number: "",
@@ -269,4 +268,4 @@ function AddOfficeFormular() {
   );
 }
 
-export default AddOfficeFormular;
+export default AddInterventionFormular;

@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 export default function Dashboard() {
   return (
     <div>
-      <Box sx={{}}>
+      <Box>
         <PreSurgeryProgress />
       </Box>
       <div>

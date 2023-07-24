@@ -7,20 +7,19 @@ const userRouter = require("./routes/users");
 const appointmentRouter = require("./routes/appointments");
 const officeRouter = require("./routes/offices");
 const doctorRouter = require("./routes/doctors");
-const interventionRouter = require("./routes/interventions"); 
-const adminformRouter = require("./routes/adminform"); 
+const interventionRouter = require("./routes/interventions");
+const adminformRouter = require("./routes/adminform");
 const documentsRouter = require("./routes/documents");
 const patientsRouter = require("./routes/patient");
 
-const authRouter = require('./routes/auth');
+const authRouter = require("./routes/auth");
 
-const uploads = "public/uploads/"
+const uploads = "public/uploads/";
 
 const upload = multer({ dest: uploads });
 
-
 const app = express();
-app.use('/static', express.static('public'));
+app.use("/static", express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -46,14 +45,13 @@ app.use("/appointments", appointmentRouter);
 app.use("/offices", officeRouter);
 app.use("/doctors", doctorRouter);
 app.use("/interventions", interventionRouter);
-app.use("/adminforms", adminformRouter); 
+app.use("/adminforms", adminformRouter);
 app.use("/documents", documentsRouter);
-app.use("/patients", patientsRouter); 
+app.use("/patients", patientsRouter);
 app.post("/upload_files", upload.single("files"), uploadFiles);
-
 app.get("/list_uploads", listUploads);
 
-app.use('/authentication', authRouter);
+app.use(authRouter);
 
 function uploadFiles(req, res) {
   console.log(req.body);
@@ -61,11 +59,10 @@ function uploadFiles(req, res) {
   res.json({ message: "Successfully uploaded files" });
 }
 
-function listUploads(req, res){
+function listUploads(req, res) {
   fs.readdir(uploads, (err, files) => {
-
     let response = { files: files };
-    return res.status(201).json(response)
+    return res.status(201).json(response);
 
     /*files.forEach(file => {
       console.log(file);

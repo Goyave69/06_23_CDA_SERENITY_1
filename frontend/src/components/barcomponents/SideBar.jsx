@@ -20,7 +20,7 @@ import ClassOutlinedIcon from "@mui/icons-material/ClassOutlined";
 import RoofingOutlinedIcon from "@mui/icons-material/RoofingOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 import NotificationsNoneRoundedIcon from "@mui/icons-material/NotificationsNoneRounded";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Icon } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 
@@ -95,7 +95,13 @@ function ResponsiveDrawer(props) {
         ))}
       </List>
       <Box sx={{ position: "absolute", bottom: 16, left: 16 }}>
-        <Avatar src="src/assets/avatar.png" alt="Avatar" />
+        <IconButton
+          component={NavLink}
+          to="/login"
+          activeClassName="active-icon-login"
+        >
+          <Avatar src="src/assets/avatar.png" alt="Avatar" />
+        </IconButton>
       </Box>
     </div>
   );

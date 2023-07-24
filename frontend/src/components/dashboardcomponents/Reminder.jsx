@@ -13,8 +13,7 @@ export default function Reminder() {
         marginTop: "40px",
         backgroundColor: "#F5F5F5",
         borderRadius: "20px",
-        display:"flex",
-        justifyContent:"end"
+        ml:90,
       }}
     >
       <CardContent>
