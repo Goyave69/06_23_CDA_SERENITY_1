@@ -11,14 +11,12 @@ function LinearProgressWithLabel(props) {
        Préparation pour ma chirurgie :
       </Typography>
       <Box sx={{ width: '230px', mr: 1,}}>
-        <LinearProgress variant="determinate" {...props} sx={{ height: "40px", borderRadius: "16px", color: "root" }} />
-      </Box>
-      <Box sx={{ minWidth: 35 }}>
-        <Typography
+      <Typography
           variant="body2"
           color="#4C5980"
-          sx={{ fontWeight: "bold", mr:"100px",  }}
+          sx={{ fontWeight: "bold",}}
         >{`${Math.round(props.value)}%`}</Typography>
+        <LinearProgress variant="determinate" {...props} sx={{ height: "40px", borderRadius: "16px", color: "root" }} />
       </Box>
     </Box>
   );
