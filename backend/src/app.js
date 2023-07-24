@@ -39,18 +39,6 @@ app.use(express.static(path.join(__dirname, "../public")));
 // Serve REACT APP
 app.use(express.static(path.join(__dirname, "..", "..", "frontend", "dist")));
 
-
-const isLogin = (req, res) => {
-  if (
-    req.body.email === "melbel@wcs.fr" &&
-    req.body.password === "123456"
-  ) {
-    res.send("Credentials are valid");
-  } else {
-    res.sendStatus(401);
-  }
-};
-
 // API routes
 app.use("/users", userRouter);
 app.use("/appointments", appointmentRouter);
@@ -61,11 +49,9 @@ app.use("/adminforms", adminformRouter);
 app.use("/documents", documentsRouter);
 app.use("/patients", patientsRouter);
 app.post("/upload_files", upload.single("files"), uploadFiles);
-app.post("/login", isLogin);
-
 app.get("/list_uploads", listUploads);
 
-app.use("/authentication", authRouter);
+app.use(authRouter);
 
 function uploadFiles(req, res) {
   console.log(req.body);
