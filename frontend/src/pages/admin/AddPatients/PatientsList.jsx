@@ -1,5 +1,5 @@
 import React from 'react';
-import AdminUser from "@pages/admin/AdminUser.jsx";
+import AdminUser from "@pages/admin/AddUsers/UsersList.jsx";
 
 const Patients = () => {
     return (

@@ -11,12 +11,13 @@ import Login from "@pages/Login";
 /* import AdminDoctor  from "@pages/admin/AdminDoctor.jsx" */
 //import AdminUser from "@pages/admin/AdminUser.jsx";
 import Admin from "./Admin";
-import Interventions from "@pages/admin/Interventions"
-import Patients from "@pages/admin/Patients"
+import InterventionsList from "@pages/admin/AddInterventions/InterventionsList"
+import Patients from "@pages/admin/AddPatients/PatientsList"
 import Suivi from "@pages/admin/Suivi"
-import Praticiens from "@pages/admin/Praticiens"
-import OfficesList from "@pages/admin/OfficesList";
-import AddOfficeFormular from "@pages/admin/AddOfficeFormular";
+import Praticiens from "@pages/admin/AddPraticiens/PraticiensList"
+import OfficesList from "@pages/admin/AddCabinets/OfficesList";
+import AddOfficeFormular from "@pages/admin/AddCabinets/AddOfficeFormular";
+import AddInterventionFormular from "@pages/admin/AddInterventionFormular"
 import { SnackbarProvider } from "notistack";
 
 
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin/interventions",
-        element: <Interventions/>,
+        element: <InterventionsList/>,
       },
       {
         path: "/admin/patients",
@@ -71,7 +72,13 @@ const router = createBrowserRouter([
         path: "/admin/add-offices",
         element: <AddOfficeFormular/>,
       },
+      {
+        path: "/admin/add-interventions",
+        element: <AddInterventionFormular/>,
+      },
+
     ],
+
   },
 ]);
 
