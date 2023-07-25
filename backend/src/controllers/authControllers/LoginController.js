@@ -8,6 +8,7 @@ async function tokenGeneration(req, res) {
 
   AuthManager.findOneByEmail(email).then(async ([rows]) => {
     console.log(rows)
+    const user = rows[0];
     if (rows.length === 0) {
       res.sendStatus(404);
     }
@@ -21,8 +22,11 @@ async function tokenGeneration(req, res) {
     console.warn(token)
 
    let message = {message: "login succesfull", roles : rows[0].roles}
-    return res.cookie("token", token, {
+   return res.cookie("token", token, {
         httpOnly: true
+    })
+    .cookie("user", user, {
+      httpOnly: false
     })
     .status(201).json(message);
   })

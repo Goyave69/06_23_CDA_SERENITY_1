@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import Dashboard from "./pages/DashboardTemplate";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -11,16 +11,15 @@ import Login from "@pages/Login";
 /* import AdminDoctor  from "@pages/admin/AdminDoctor.jsx" */
 //import AdminUser from "@pages/admin/AdminUser.jsx";
 import Admin from "./Admin";
-import InterventionsList from "@pages/admin/AddInterventions/InterventionsList"
-import UsersList from "@pages/admin/AddUsers/UsersList"
-import Suivi from "@pages/admin/Suivi"
-import Praticiens from "@pages/admin/AddPraticiens/PraticiensList"
+import InterventionsList from "@pages/admin/AddInterventions/InterventionsList";
+import UsersList from "@pages/admin/AddUsers/UsersList";
+import Suivi from "@pages/admin/Suivi";
+import Praticiens from "@pages/admin/AddPraticiens/PraticiensList";
 import OfficesList from "@pages/admin/AddCabinets/OfficesList";
 import AddOfficeFormular from "@pages/admin/AddCabinets/AddOfficeFormular";
-import AddInterventionFormular from "@pages/admin/AddInterventions/AddInterventionFormular"
+import AddInterventionFormular from "@pages/admin/AddInterventions/AddInterventionFormular";
 import { SnackbarProvider } from "notistack";
 import AddUserFormular from "@pages/admin/AddUsers/AddUserFormular";
-
 
 
 const router = createBrowserRouter([
@@ -28,7 +27,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <Login />,
   },
-   {
+  {
     path: "/user",
     element: <App />,
     children: [
@@ -56,44 +55,42 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin/interventions",
-        element: <InterventionsList/>,
+        element: <InterventionsList />,
       },
       {
         path: "/admin/patients",
-        element: <UsersList/>,
+        element: <UsersList />,
       },
       {
         path: "/admin/praticiens",
-        element: <Praticiens/>,
+        element: <Praticiens />,
       },
       {
         path: "/admin/suivi",
-        element: <Suivi/>,
+        element: <Suivi />,
       },
       {
         path: "/admin/add-offices",
-        element: <AddOfficeFormular/>,
+        element: <AddOfficeFormular />,
       },
       {
         path: "/admin/add-user",
-        element: <AddUserFormular/>,
+        element: <AddUserFormular />,
       },
       {
         path: "/admin/add-interventions",
-        element: <AddInterventionFormular/>,
+        element: <AddInterventionFormular />,
       },
-
     ],
-
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <SnackbarProvider>
-    <ThemeProvider theme={mainTheme}>
-      <RouterProvider router={router} />
-    </ThemeProvider>
+      <ThemeProvider theme={mainTheme}>
+          <RouterProvider router={router} />
+      </ThemeProvider>
     </SnackbarProvider>
   </React.StrictMode>
 );
