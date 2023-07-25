@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -35,6 +36,7 @@ import axios from "axios";
 //   };
 
 const LoginPage = ({ setLoggedState }) => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -42,18 +44,29 @@ const LoginPage = ({ setLoggedState }) => {
     email: email,
     password: password,
   };
-  
-  const handleLogin = function () {
 
+  const handleLogin = function () {
     axios
-    .post("http://localhost:5000/login", data)
-    .then((response) => {
-      if (response.status === 201) {
-        alert("successfully login")
-        setLoggedState(true)
-      }
-      alert("something is wrong")
-    })
+      .post("http://localhost:5000/login", data)
+      .then((response) => {
+        if (response.status === 201) {
+   
+          console.log(response.data);
+          if (response.data.roles.length == 0){
+            // setLoggedState avec utilisateur
+            alert ("logged as user" )
+            navigate("/user")
+          }else{
+             // setLoggedState /useContext avec medecin
+            alert ("logged as "+response.data.roles.roles )
+            navigate("/admin")
+          }
+  
+        }else{
+          alert ('not good !')
+        }
+      })
+
   };
 
   return (
@@ -115,7 +128,6 @@ const LoginPage = ({ setLoggedState }) => {
 
 LoginPage.propTypes = {
   setLoggedState: PropTypes.func, // Add the missing prop type validation
- 
 };
 
 export default LoginPage;

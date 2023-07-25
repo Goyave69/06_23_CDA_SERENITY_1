@@ -12,35 +12,37 @@ import Login from "@pages/Login";
 //import AdminUser from "@pages/admin/AdminUser.jsx";
 import Admin from "./Admin";
 import InterventionsList from "@pages/admin/AddInterventions/InterventionsList"
-import Patients from "@pages/admin/AddPatients/PatientsList"
+import UsersList from "@pages/admin/AddUsers/UsersList"
 import Suivi from "@pages/admin/Suivi"
 import Praticiens from "@pages/admin/AddPraticiens/PraticiensList"
 import OfficesList from "@pages/admin/AddCabinets/OfficesList";
 import AddOfficeFormular from "@pages/admin/AddCabinets/AddOfficeFormular";
 import AddInterventionFormular from "@pages/admin/AddInterventions/AddInterventionFormular"
 import { SnackbarProvider } from "notistack";
+import AddUserFormular from "@pages/admin/AddUsers/AddUserFormular";
+
 
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Login />,
+  },
+   {
+    path: "/user",
     element: <App />,
     children: [
       {
-        path: "/dashboard",
+        path: "/user/dashboard",
         element: <Dashboard />,
       },
       {
-        path: "/mypreparation",
+        path: "/user/mypreparation",
         element: <MyPreparation />,
       },
       {
-        path: "/timetable",
+        path: "/user/timetable",
         element: <TimeTable />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
       },
     ],
   },
@@ -58,7 +60,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin/patients",
-        element: <Patients/>,
+        element: <UsersList/>,
       },
       {
         path: "/admin/praticiens",
@@ -71,6 +73,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/add-offices",
         element: <AddOfficeFormular/>,
+      },
+      {
+        path: "/admin/add-user",
+        element: <AddUserFormular/>,
       },
       {
         path: "/admin/add-interventions",

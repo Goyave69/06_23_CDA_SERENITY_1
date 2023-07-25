@@ -19,14 +19,16 @@ async function tokenGeneration(req, res) {
     }
     const token = jwtGenerator(rows[0].id)
     console.warn(token)
-    res.cookie("token", token, {
+
+   let message = {message: "login succesfull", roles : rows[0].roles}
+    return res.cookie("token", token, {
         httpOnly: true
     })
-    .status(200).json("login successful");
+    .status(201).json(message);
   })
   .catch((error) => {
     console.error(error)
-    res.sendStatus(500)
+    return res.sendStatus(500)
   })
 }
 
