@@ -83,12 +83,12 @@ const CardProtocole = ({ handleClick }) => {
               >
                 <Typography
                   sx={{
-                    fontSize: "15px",
+                    fontSize: "14px",
                     color: "white",
                     mt: 1,
                   }}
                 >
-                  Finir les démarches administratives
+                  Consultation des fiches administratives
                 </Typography>
               </div>
               <div style={{ color: "white" }}>
@@ -121,7 +121,7 @@ const CardProtocole = ({ handleClick }) => {
                     mt: 1.5,
                   }}
                 >
-                  Anticiper ma sortie
+                  Ajout Disponibilités
                 </Typography>
               </div>
               <div style={{ color: "white" }}>
@@ -155,7 +155,7 @@ const CardProtocole = ({ handleClick }) => {
                     ml: "10px",
                   }}
                 >
-                  Ma checklist avant de quitter la maison
+                  Verification des docs obligatoires
                 </Typography>
               </div>
             </Box>

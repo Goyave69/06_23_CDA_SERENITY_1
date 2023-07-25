@@ -52,7 +52,7 @@ const AddFormular = () => {
                 ml: 2,
               }}
             >
-              Consulter les fiches administratives
+              Consulter des fiches administratives
             </Typography>
             <div style={{ color: "white" }}>
               <p>3</p>

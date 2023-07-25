@@ -38,7 +38,7 @@ const AddAppointment = () => {
                   ml: 2,
                 }}
               >
-                Ajouter un rendez-vous
+                Ajout Disponibilités
               </Typography>
               <div style={{ color: "white" }}>
                 <p>12</p>
