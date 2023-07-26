@@ -48,7 +48,13 @@ const LoginPage = () => {
   };
 
   const handleLogin = function () {
-    axios.post("http://localhost:5000/login", data).then((response) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      withCredentials: true,
+    };
+    axios.post("http://localhost:5000/login", data, config).then((response) => {
       if (response.status === 201) {
         if (response.data.roles[0] === "PATIENT_ROLE") {
           alert("logged as user");

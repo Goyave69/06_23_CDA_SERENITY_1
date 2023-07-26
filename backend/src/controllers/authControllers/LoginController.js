@@ -23,10 +23,14 @@ async function tokenGeneration(req, res) {
 
    let message = {message: "login succesfull", roles : rows[0].roles}
    return res.cookie("token", token, {
-        httpOnly: true
+        httpOnly: true,
+        sameSite: "None",
+        secure: true
     })
     .cookie("user", user, {
-      httpOnly: false
+      httpOnly: false,
+      sameSite: "None",
+      secure: true
     })
     .status(201).json(message);
   })
