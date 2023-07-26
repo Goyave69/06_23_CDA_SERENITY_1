@@ -39,22 +39,17 @@ const AddUnderstand = () => {
   };
 
   const handleUpload = () => {
-    console.log("Uploading");
-    console.log(file);
-    console.log(title);
 
     if (file && title) { // Check si les deux ne sont pas vide
       const formData = new FormData();
       formData.append("name", title);
       formData.append("files", file);
 
-      console.log(formData);
 
       fetch("http://localhost:5000/upload_files", {
         method: "POST",
         body: formData,
       })
-        .then((res) => console.log(res))
         .catch((err) => console.error("Error", err));
     } else {
       alert("Formulaire incorrect");
