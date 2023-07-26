@@ -7,9 +7,7 @@ import Button from "@mui/material/Button";
 import axios from "axios";
 import { Typography } from "@mui/material";
 
-
-
-let test = {
+/* let test = {
   name: "name "+Date.now(),
   doc_name: "doc_name "+Date.now(),
   street_number: 4,
@@ -22,21 +20,19 @@ let test = {
   open_hours: "9h00 17h00",
   specialty: "2",
 }
-
-function AddOfficeFormular() {
+ */
+function AddInterventionFormular() {
   const navigate = useNavigate();
-  const [officeData, setOfficeData] = useState({
-    name: "",
-    doc_name: "",
-    street_number: "",
-    street_name: "",
-    zip_code: "",
-    phone_number: "",
-    email: "",
-    free_parking: "",
-    disabled: "",
-    open_hours: "",
+  const [interventionData, setInterventionData] = useState({
+    idinterventions: "",
     specialty: "",
+    date: "",
+    quotation: "",
+    number_done: "",
+    patient_idpatient: "",
+    documents_iddocuments: "",
+    office_idoffice: "",
+    interventionName: "",
   });
 
   useEffect(() => {
@@ -44,7 +40,7 @@ function AddOfficeFormular() {
   }, [officeData]);
 
   const handleTest= () => {
-    setOfficeData(test)
+    setInterventionData(test)
   }
   const handleAjouter = () => {
     console.log(officeData);
@@ -101,7 +97,7 @@ function AddOfficeFormular() {
           placeholder="nom du cabinet"
           value={officeData.name}
           onChange={(e) =>
-            setOfficeData({ ...officeData, name: e.target.value })
+            setInterventionData({ ...officeData, name: e.target.value })
           }
           sx={{mr: "2rem" }}
         />
@@ -114,7 +110,7 @@ function AddOfficeFormular() {
           placeholder="doc_name"
           value={officeData.doc_name}
           onChange={(e) =>
-            setOfficeData({ ...officeData, doc_name: e.target.value })
+            setInterventionData({ ...officeData, doc_name: e.target.value })
           }
           sx={{  mr: "2rem" }}
         />
@@ -130,7 +126,7 @@ function AddOfficeFormular() {
           placeholder="street_number"
           value={officeData.street_number}
           onChange={(e) =>
-            setOfficeData({ ...officeData, street_number: e.target.value })
+            setInterventionData({ ...officeData, street_number: e.target.value })
           }
           sx={{mr: "2rem" }}
         />
@@ -143,7 +139,7 @@ function AddOfficeFormular() {
           placeholder="street_name"
           value={officeData.street_name}
           onChange={(e) =>
-            setOfficeData({ ...officeData, street_name: e.target.value })
+            setInterventionData({ ...officeData, street_name: e.target.value })
           }
           sx={{mr: "2rem" }}
         />
@@ -159,7 +155,7 @@ function AddOfficeFormular() {
           placeholder="zip_code"
           value={officeData.zip_code}
           onChange={(e) =>
-            setOfficeData({ ...officeData, zip_code: e.target.value })
+            setInterventionData({ ...officeData, zip_code: e.target.value })
           }
           sx={{mr: "2rem" }}
         />
@@ -172,7 +168,7 @@ function AddOfficeFormular() {
           placeholder="phone_number"
           value={officeData.phone_number}
           onChange={(e) =>
-            setOfficeData({ ...officeData, phone_number: e.target.value })
+            setInterventionData({ ...officeData, phone_number: e.target.value })
           }
           sx={{mr: "2rem" }}
         />
@@ -188,7 +184,7 @@ function AddOfficeFormular() {
           placeholder="email"
           value={officeData.email}
           onChange={(e) =>
-            setOfficeData({ ...officeData, email: e.target.value })
+            setInterventionData({ ...officeData, email: e.target.value })
           }
           sx={{mr: "2rem" }}
         />
@@ -201,7 +197,7 @@ function AddOfficeFormular() {
           placeholder="free_parking"
           value={officeData.free_parking}
           onChange={(e) =>
-            setOfficeData({ ...officeData, free_parking: e.target.value })
+            setInterventionData({ ...officeData, free_parking: e.target.value })
           }
           sx={{mr: "2rem" }}
         />
@@ -217,7 +213,7 @@ function AddOfficeFormular() {
           placeholder="disabled"
           value={officeData.disabled}
           onChange={(e) =>
-            setOfficeData({ ...officeData, disabled: e.target.value })
+            setInterventionData({ ...officeData, disabled: e.target.value })
           }
           sx={{mr: "2rem" }}
         />
@@ -230,7 +226,7 @@ function AddOfficeFormular() {
           placeholder="open_hours"
           value={officeData.open_hours}
           onChange={(e) =>
-            setOfficeData({ ...officeData, open_hours: e.target.value })
+            setInterventionData({ ...officeData, open_hours: e.target.value })
           }
           sx={{mr: "2rem" }}
         />
@@ -245,7 +241,7 @@ function AddOfficeFormular() {
           placeholder="specialty"
           value={officeData.specialty}
           onChange={(e) =>
-            setOfficeData({ ...officeData, specialty: e.target.value })
+            setInterventioneData({ ...officeData, specialty: e.target.value })
           }
           sx={{mr: "2rem" }}
         />
@@ -269,4 +265,4 @@ function AddOfficeFormular() {
   );
 }
 
-export default AddOfficeFormular;
+export default AddInterventionFormular;
