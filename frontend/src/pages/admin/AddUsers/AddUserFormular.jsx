@@ -19,7 +19,7 @@ let test = {
   email: "truc@bidule.machin",
   phone: "123456",
   password: "1234",
-  roles: "chirurgien",
+  roles: "adaptetoiorole",
   specialty: 1,
   languages: "Chinois, Marseillais",
   biography: "Un bon doc !",
@@ -54,7 +54,7 @@ function AddUserFormular() {
   
   const handleRoleChange = (event) => {
     if (event.target.value == "patient") {
-      setUserData({ ...userData, roles: "" });
+      setUserData({ ...userData, roles: "PATIENT_ROLE" });
     }
     setRole(event.target.value);
   };
@@ -68,8 +68,8 @@ function AddUserFormular() {
 
     if (
       userData.roles != undefined &&
-      userData.roles.length > 0 &&
-      typeof userData.roles == "string"
+      userData.roles.length > 0 
+      /* typeof userData.roles == "string" */
     ) {
       let roles = { roles: userData.roles };
       userData.roles = roles;

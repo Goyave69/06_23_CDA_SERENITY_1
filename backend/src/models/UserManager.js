@@ -6,7 +6,7 @@ async function insertUser(data) {
   let bodyResponse = { ...data };
 
   let is_praticien = false;
-  if (typeof data.roles == "string" && data.roles.length == 0) {
+  if (data.roles.includes("PATIENT_ROLE")) {
     is_praticien = false;
   } else {
     is_praticien = true;
@@ -22,7 +22,7 @@ async function insertUser(data) {
         data.email,
         data.phone,
         data.password,
-        JSON.stringify(data.roles),
+        JSON.stringify(data.roles)
       ]
     )
 
