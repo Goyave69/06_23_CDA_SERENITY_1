@@ -88,7 +88,7 @@ const CardCheckList = ({ onClick }) => {
               variant="subtitle1"
               component="div"
               sx={{
-                flexWrap:"wrap",
+                flexWrap: "wrap",
                 position: "absolute",
                 left: "47px",
                 top: "79px",
@@ -110,6 +110,5 @@ const CardCheckList = ({ onClick }) => {
 CardCheckList.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
-
 
 export default CardCheckList;
