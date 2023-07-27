@@ -7,46 +7,20 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import PropTypes from "prop-types";
 import axios from "axios";
-import getCookie from "@services/cookieHelper";
+import { setCookie, getCookie } from "../services/cookieHelper";
 
-// creation des utilisateurs http://localhost:3000/admin/patients
-//daa https://www.passportjs.org/packages/passport-local/
-
-// const LoginPage = ({ setLoggedState }) => {
-//   const handleLogin = function () {
-//     console.log(setLoggedState);
-
-//     let data = {"email" : "trois", "password": "cinq"}
-
-//     axios
-//       .post("http://localhost:5000/authentication/login", data)
-//       .then((response) => {
-//         console.log("response", response);
-
-//         if (response.status == 201) {
-//           console.log("snack")
-//           //on pourra ajouter une snack bar!!
-//         }else{
-//           console.log(response.status)
-//         }
-//       })
-//       .catch((e) => {
-//         console.log(e)
-//         alert("hum ...It seems somthing went wrong !");
-//       });
-//   };
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const token = getCookie("user");
-  console.log(token);
   const data = {
     email: email,
     password: password,
   };
+  const token = JSON.parse(getCookie("user").split("").splice(2).join(""));
 
+console.log(token)
   const handleLogin = function () {
     const config = {
       headers: {
@@ -56,10 +30,11 @@ const LoginPage = () => {
     };
     axios.post("http://localhost:5000/login", data, config).then((response) => {
       if (response.status === 201) {
-        if (response.data.roles[0] === "PATIENT_ROLE") {
+        setCookie("token", token, 7);
+        if (token.roles[0] === "PATIENT_ROLE") {
           alert("logged as user");
           navigate("/user");
-        } else if (response.data.roles[0] === "ADMIN_ROLE") {
+        } else if (token.roles[0] === "ADMIN_ROLE") {
           alert("logged as " + response.data.roles[0]);
           navigate("/admin");
         }
