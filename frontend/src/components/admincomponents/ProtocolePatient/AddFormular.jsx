@@ -1,7 +1,6 @@
 import React from "react";
-import { Container, Card, CardContent, Box, Typography} from "@mui/material";
-import { DataGrid } from '@mui/x-data-grid';
-
+import { Container, Card, CardContent, Box, Typography } from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
 
 const AddFormular = () => {
   const columns = [
@@ -14,7 +13,6 @@ const AddFormular = () => {
     { id: 1, patients: "Patient 1", status: "En attente", consulter: "Lien" },
     { id: 2, patients: "Patient 2", status: "Terminé", consulter: "Lien" },
     { id: 3, patients: "Patient 3", status: "En cours", consulter: "Lien" },
-    
   ];
 
   return (
@@ -58,7 +56,7 @@ const AddFormular = () => {
               <p>3</p>
             </div>
           </Box>
-          <div style={{ height: 340, width: "100%", marginTop: "30px"}}>
+          <div style={{ height: 340, width: "100%", marginTop: "30px" }}>
             <DataGrid columns={columns} rows={rows} />
           </div>
         </CardContent>

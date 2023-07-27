@@ -27,47 +27,46 @@ const UsersList = () => {
   const [validationErrors, setValidationErrors] = useState({});
 
   const handleCreateNewRow = (values) => {
-   // officeData.push(values);
+    // officeData.push(values);
     console.log(values);
     console.log("creation");
-    delete values.iduser
+    delete values.iduser;
     axios
-    .post("http://localhost:5000/users/", values)
-    .then((response) => {
-      console.log("response", response);
+      .post("http://localhost:5000/users/", values)
+      .then((response) => {
+        console.log("response", response);
 
-      if (response.status == 201) {
-        console.log("snack")
-        refresh()
-        //on pourra ajouter une snack bar!!
-     
-      }else{
-        console.log(response.status)
-      }
-    })
-    .catch((e) => {
-      console.log(e)
-      alert("hum ...It seems somthing went wrong !");
-    });
+        if (response.status == 201) {
+          console.log("snack");
+          refresh();
+          //on pourra ajouter une snack bar!!
+        } else {
+          console.log(response.status);
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+        alert("hum ...It seems somthing went wrong !");
+      });
     //setOfficeData([...officeData]);
   };
 
   const handleSaveRowEdits = async ({ exitEditingMode, row, values }) => {
     if (!Object.keys(validationErrors).length) {
-     /* officeData[row.index] = values;
+      /* officeData[row.index] = values;
       //send/receive api updates here, then refetch or update local table data for re-render
       setOfficeData([...officeData]);*/
       console.log("UPDTE 2", values);
-      let id_to_put = row.getValue("iduser")
-      delete values.iduser
-      let url_put = "http://localhost:5000/users/"+id_to_put
+      let id_to_put = row.getValue("iduser");
+      delete values.iduser;
+      let url_put = "http://localhost:5000/users/" + id_to_put;
       axios.put(url_put, values).then((response) => {
         console.log("response", response);
-        if (response.status == 201){
-          console.log(row.getValue("name")+" a bien été mis à jour")
-          refresh()
+        if (response.status == 201) {
+          console.log(row.getValue("name") + " a bien été mis à jour");
+          refresh();
         }
-       // setOfficeData(response.data);
+        // setOfficeData(response.data);
       });
 
       exitEditingMode(); //required to exit editing mode and close modal
@@ -80,27 +79,24 @@ const UsersList = () => {
 
   const handleDeleteRow = useCallback(
     (row) => {
-      if (
-        !confirm(`Are you sure you want to delete ${row.getValue("name")}`)
-      ) {
+      if (!confirm(`Are you sure you want to delete ${row.getValue("name")}`)) {
         return;
       }
       //send api delete request here, then refetch or update local table data for re-render
-      let id_to_delete = row.getValue("iduser")
-      console.log("efface", id_to_delete)
+      let id_to_delete = row.getValue("iduser");
+      console.log("efface", id_to_delete);
       // actualaisation du tableau directement sans passer par le backend et la base
-     /*officeData.splice(row.id, 1);
+      /*officeData.splice(row.id, 1);
       setOfficeData([...officeData]);*/
-      let url_delete = "http://localhost:5000/users/"+id_to_delete
+      let url_delete = "http://localhost:5000/users/" + id_to_delete;
       axios.delete(url_delete).then((response) => {
         console.log("response", response);
-        if (response.status == 200){
-          console.log(row.getValue("name")+" a bien été supprimé")
-          refresh()
+        if (response.status == 200) {
+          console.log(row.getValue("name") + " a bien été supprimé");
+          refresh();
         }
-       // setOfficeData(response.data);
+        // setOfficeData(response.data);
       });
-
     },
     [userData]
   );
@@ -137,18 +133,24 @@ const UsersList = () => {
   );
 
   useEffect(() => {
-   refresh()
+    refresh();
   }, []);
 
   const refresh = () => {
-    console.log("refresh")
+    console.log("refresh");
     axios.get("http://localhost:5000/users/").then((response) => {
       console.log("response", response);
+      let roles = response.data.roles;
+      if (typeof roles != "string") {
+        roles = JSON.stringify(roles);
+        response.data.roles = roles;
+      }
+
       setUserData(response.data);
     });
-  }
+  };
 
-//enablediting false sur idoffice https://www.material-react-table.com/docs/guides/editing
+  //enablediting false sur idoffice https://www.material-react-table.com/docs/guides/editing
 
   const columns = useMemo(
     () => [
@@ -169,7 +171,7 @@ const UsersList = () => {
         }),
         enablehiding: "false",
       },
-   {
+      {
         accessorKey: "lastname",
         header: "Lastname",
         muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
@@ -192,7 +194,20 @@ const UsersList = () => {
           ...getCommonEditTextFieldProps(cell),
         }),
       },
-    /*      {
+      {
+        accessorKey: "roles",
+        header: "Roles",
+        Cell: ({ renderedCellValue }) => <strong>{
+          typeof renderedCellValue == "string" && renderedCellValue.length == 0 ?
+          <span>Patient</span> : 
+
+          renderedCellValue.roles
+          
+          
+          
+          }</strong> 
+      },
+      /*      {
         accessorKey: "password",
         header: "Password",
         muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
@@ -237,7 +252,7 @@ console.log(officeData.name);
           width: "auto",
         }}
       >
-        <Box sx={{ width: "100%", position: "relative", /*left: "300px"*/ }}>
+        <Box sx={{ width: "100%", position: "relative" /*left: "300px"*/ }}>
           <MaterialReactTable
             displayColumnDefOptions={{
               "mrt-row-actions": {
@@ -258,7 +273,6 @@ console.log(officeData.name);
             initialState={{
               columnVisibility: {
                 iduser: false,
-          
               },
             }}
             onEditingRowSave={handleSaveRowEdits}
@@ -283,7 +297,7 @@ console.log(officeData.name);
             renderTopToolbarCustomActions={() => (
               <Button
                 color="secondary"
-                onClick={() =>     navigate("/admin/add-user")}
+                onClick={() => navigate("/admin/add-user")}
                 variant="contained"
               >
                 Create New Account
@@ -298,13 +312,11 @@ console.log(officeData.name);
           />
         </Box>
 
-        <Box display="flex" justifyContent="center" mt="2rem">
-   
-        </Box>
+        <Box display="flex" justifyContent="center" mt="2rem"></Box>
       </Box>
     </Container>
   );
-};;
+};
 
 //example of creating a mui dialog modal for creating new rows
 export const CreateNewAccountModal = ({ open, columns, onClose, onSubmit }) => {
@@ -357,12 +369,7 @@ export const CreateNewAccountModal = ({ open, columns, onClose, onSubmit }) => {
 };
 
 const validateRequired = (value) => !!value.length;
-const validateEmail = (email) =>
-  !!email.length &&
-  email
-    .toLowerCase()
-    .match(
-    );
+const validateEmail = (email) => !!email.length && email.toLowerCase().match();
 const validateAge = (age) => age >= 18 && age <= 50;
 
 export default UsersList;

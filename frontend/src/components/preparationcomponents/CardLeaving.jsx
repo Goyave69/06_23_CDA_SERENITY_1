@@ -108,7 +108,6 @@ const CardLeaving = ({ onClick }) => {
   );
 };
 
-
 CardLeaving.propTypes = {
   onClick: PropTypes.func.isRequired,
 };

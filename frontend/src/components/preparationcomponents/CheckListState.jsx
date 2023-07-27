@@ -42,7 +42,6 @@ export default function CheckListState(props) {
   );
 }
 
-
 CheckListState.propTypes = {
   label1: PropTypes.string.isRequired, // Add the missing prop type validation
   label2: PropTypes.string.isRequired,

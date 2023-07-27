@@ -1,12 +1,16 @@
-import React from 'react';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import React from "react";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
 const DateDDay = () => {
   return (
     <div>
       <Box>
-        <Typography variant="h6" component="span" sx={{fontSize: 11, color:"#7265E3"}}>
+        <Typography
+          variant="h6"
+          component="span"
+          sx={{ fontSize: 11, color: "#7265E3" }}
+        >
           Date
         </Typography>
       </Box>

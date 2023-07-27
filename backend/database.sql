@@ -130,6 +130,7 @@ CREATE TABLE IF NOT EXISTS `happyhealth`.`intervention` (
   `number_done` VARCHAR(45) NULL,
   `patient_idpatient` INT NOT NULL,
   `office_idoffice` INT NOT NULL,
+  `intervention_name` VARCHAR (80) NOT NULL
   PRIMARY KEY (`idinterventions`),
   INDEX `fk_interventions_patient_idx` (`patient_idpatient` ASC) VISIBLE,
   INDEX `fk_interventions_office1_idx` (`office_idoffice` ASC) VISIBLE,
@@ -334,4 +335,38 @@ CREATE TABLE IF NOT EXISTS `happyhealth`.`document_has_appointment` (
     REFERENCES `happyhealth`.`appointment` (`idappointment`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
+
+INSERT INTO office 
+  (name, doc_name, street_number, street_name, zip_code, phone_number, email, free_parking, disabled, open_hours, specialty) 
+  VALUES 
+  ("CLINIQUE HAPI", "DC NSILULU", "6", "rue de la Clinique", "69004", "0609924487", "clinichapi@gmail.com", "1", "1", "0h - 24h", "0"),
+  ("ANESTASIA", "DC FEEL GOOD", "4", "rue du sommeil", "69004", "0608934486", "anestasia@gmail.com", "1", "1", "0h - 24h", "1"),
+  ("PSYGOOD", "DC ZEN", "2", "rue de la coolitude", "69005", "0809823477", "psygood@gmail.com", "1", "1", "8h - 21h", "2"),
+  ("KINE PLUS", "DC FELIPE", "3", "rue de l'articulation", "69002", "0608914286", "kineplus@gmail.com", "1", "1", "8h - 21h", "3"),
+  ("INFIRMIERS OK", "DC STICH", "1", "rue du pansement", "69001", "0708905588", "infirmiersok@gmail.com", "1", "1", "8h - 21h", "4"); 
+
+INSERT INTO user
+
+
+
+INSERT INTO doctor
+  (specialty, languages, biography, diploma, experiences, publications, user_iduser) 
+  VALUES 
+  ("cardiologue", "espagnol, anglais", "15 ans à Montpellier grands brulés", "facultéd'Harvard", "blabla", "articleCoeuretRythmedeVie", "iduserpatient"),
+  ("1", "", "", "", "", "", ""),
+  ("2", "", "", "", "", "", ""),
+  ("3", "", "", "", "", "", "");
+
+
+INSERT INTO patient
+        (user_iduser) 
+        VALUES 
+        (""),
+        (""),
+        (""),
+        (""),
+        ("");
+
+
+
 ENGINE = InnoDB;

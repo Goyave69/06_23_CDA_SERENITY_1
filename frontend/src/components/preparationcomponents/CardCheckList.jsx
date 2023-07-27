@@ -113,5 +113,4 @@ CardCheckList.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
-
 export default CardCheckList;

@@ -8,7 +8,6 @@ const hashingOptions = {
 };
 
 const passwordHasher = (req, res, next) => {
-  console.log(req.body)
   argon2
     .hash(req.body.password, hashingOptions)
     .then((hashedPassword) => {
@@ -21,16 +20,39 @@ const passwordHasher = (req, res, next) => {
     });
 };
 
-
 async function passwordVerification(hashedPassword, password) {
   try {
-    return await argon2.verify(hashedPassword, password)
+    return await argon2.verify(hashedPassword, password);
   } catch (err) {
-    return console.error(err)
+    return console.error(err);
   }
 }
 
+const verifyToken = (req, res, next) => {
+  try {
+    const authorizationHeader = req.get("Authorization");
+
+    if (authorizationHeader == null) {
+      throw new Error("Authorization header is missing");
+    }
+
+    const [type, token] = authorizationHeader.split(" ");
+
+    if (type !== "Bearer") {
+      throw new Error("Authorization header has not the 'Bearer' type");
+    }
+
+    req.payload = jwt.verify(token, process.env.JWT_SECRET);
+
+    next();
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(401);
+  }
+};
+
 module.exports = {
   passwordHasher,
-  passwordVerification
+  passwordVerification,
+  verifyToken
 };

@@ -25,48 +25,50 @@ const OfficesList = () => {
   const [officeData, setOfficeData] = useState([]);
   const [validationErrors, setValidationErrors] = useState({});
 
-  const handleCreateNewRow = (values) => {
+//essai Mir suppress AddOfficesFormular : en fait non car il a le get, le office data ...
+  
+
+const handleCreateNewRow = (values) => {
    // officeData.push(values);
     console.log(values);
     console.log("creation");
-    delete values.idoffice
+    delete values.idoffice;
     axios
-    .post("http://localhost:5000/offices/", values)
-    .then((response) => {
-      console.log("response", response);
+      .post("http://localhost:5000/offices/", values)
+      .then((response) => {
+        console.log("response", response);
 
-      if (response.status == 201) {
-        console.log("snack")
-        refresh()
-        //on pourra ajouter une snack bar!!
-     
-      }else{
-        console.log(response.status)
-      }
-    })
-    .catch((e) => {
-      console.log(e)
-      alert("hum ...It seems somthing went wrong !");
-    });
+        if (response.status == 201) {
+          console.log("snack");
+          refresh();
+          //on pourra ajouter une snack bar!!
+        } else {
+          console.log(response.status);
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+        alert("hum ...It seems somthing went wrong !");
+      });
     //setOfficeData([...officeData]);
   };
 
   const handleSaveRowEdits = async ({ exitEditingMode, row, values }) => {
     if (!Object.keys(validationErrors).length) {
-     /* officeData[row.index] = values;
+      /* officeData[row.index] = values;
       //send/receive api updates here, then refetch or update local table data for re-render
       setOfficeData([...officeData]);*/
       console.log("UPDTE 2", values);
-      let id_to_put = row.getValue("idoffice")
-      delete values.idoffice
-      let url_put = "http://localhost:5000/offices/"+id_to_put
+      let id_to_put = row.getValue("idoffice");
+      delete values.idoffice;
+      let url_put = "http://localhost:5000/offices/" + id_to_put;
       axios.put(url_put, values).then((response) => {
         console.log("response", response);
-        if (response.status == 201){
-          console.log(row.getValue("name")+" a bien été mis à jour")
-          refresh()
+        if (response.status == 201) {
+          console.log(row.getValue("name") + " a bien été mis à jour");
+          refresh();
         }
-       // setOfficeData(response.data);
+        // setOfficeData(response.data);
       });
 
       exitEditingMode(); //required to exit editing mode and close modal
@@ -79,27 +81,24 @@ const OfficesList = () => {
 
   const handleDeleteRow = useCallback(
     (row) => {
-      if (
-        !confirm(`Are you sure you want to delete ${row.getValue("name")}`)
-      ) {
+      if (!confirm(`Are you sure you want to delete ${row.getValue("name")}`)) {
         return;
       }
       //send api delete request here, then refetch or update local table data for re-render
-      let id_to_delete = row.getValue("idoffice")
-      console.log("efface", id_to_delete)
+      let id_to_delete = row.getValue("idoffice");
+      console.log("efface", id_to_delete);
       // actualaisation du tableau directement sans passer par le backend et la base
-     /*officeData.splice(row.id, 1);
+      /*officeData.splice(row.id, 1);
       setOfficeData([...officeData]);*/
-      let url_delete = "http://localhost:5000/offices/"+id_to_delete
+      let url_delete = "http://localhost:5000/offices/" + id_to_delete;
       axios.delete(url_delete).then((response) => {
         console.log("response", response);
-        if (response.status == 200){
-          console.log(row.getValue("name")+" a bien été supprimé")
-          refresh()
+        if (response.status == 200) {
+          console.log(row.getValue("name") + " a bien été supprimé");
+          refresh();
         }
-       // setOfficeData(response.data);
+        // setOfficeData(response.data);
       });
-
     },
     [officeData]
   );
@@ -113,8 +112,8 @@ const OfficesList = () => {
           const isValid =
             cell.column.id === "email"
               ? validateEmail(event.target.value)
-              : cell.column.id === "age"
-              ? validateAge(+event.target.value)
+             /*  : cell.column.id === "age"
+              ? validateAge(+event.target.value) */
               : validateRequired(event.target.value);
           if (!isValid) {
             //set validation error for cell if invalid
@@ -136,18 +135,18 @@ const OfficesList = () => {
   );
 
   useEffect(() => {
-   refresh()
+    refresh();
   }, []);
 
   const refresh = () => {
-    console.log("refresh")
+    console.log("refresh");
     axios.get("http://localhost:5000/offices/").then((response) => {
       console.log("response", response);
       setOfficeData(response.data);
     });
-  }
+  };
 
-//enablediting false sur idoffice https://www.material-react-table.com/docs/guides/editing
+//enable editing false sur idoffice https://www.material-react-table.com/docs/guides/editing
 
   const columns = useMemo(
     () => [
@@ -159,14 +158,7 @@ const OfficesList = () => {
           ...getCommonEditTextFieldProps(cell),
         }),
       },
-      {
-        accessorKey: "idoffice",
-        header: "Id Office",
-        enableEditing: "false",
-        muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
-          ...getCommonEditTextFieldProps(cell),
-        }),
-      },
+      
       {
         accessorKey: "name",
         header: "Name",
@@ -281,7 +273,7 @@ console.log(officeData.name);
           width: "auto",
         }}
       >
-        <Box sx={{ width: "100%", position: "relative", /*left: "300px"*/ }}>
+        <Box sx={{ width: "100%", position: "relative" /*left: "300px"*/ }}>
           <MaterialReactTable
             displayColumnDefOptions={{
               "mrt-row-actions": {
@@ -296,7 +288,7 @@ console.log(officeData.name);
             enableRowSelection
             enableGlobalFilter
             enableHiding={true}
-            editingMode="modal" //default //Daa je comprends pas ou est ma modale edit et ou est ma modale create new account. je vois le open et close de createNewAcccountModal mais pas le EDIT ?//
+            editingMode="modal" //default 
             enableColumnOrdering
             enableEditing
             initialState={{
@@ -336,7 +328,7 @@ console.log(officeData.name);
                 onClick={() => setCreateModalOpen(true)}
                 variant="contained"
               >
-                Create New Account
+                Ajouter un nouveau Cabinet
               </Button>
             )}
           />
@@ -348,7 +340,7 @@ console.log(officeData.name);
           />
         </Box>
 
-        <Box display="flex" justifyContent="center" mt="2rem">
+      {/*  { <Box display="flex" justifyContent="center" mt="2rem">
           <NavLink to="/admin/add-offices">
             <Button
               variant="contained"
@@ -358,11 +350,11 @@ console.log(officeData.name);
               Cliquez ici pour ajouter un nouveau Cabinet
             </Button>
           </NavLink>
-        </Box>
+        </Box>} */}
       </Box>
     </Container>
   );
-};;
+};
 
 //example of creating a mui dialog modal for creating new rows
 export const CreateNewAccountModal = ({ open, columns, onClose, onSubmit }) => {
@@ -381,7 +373,7 @@ export const CreateNewAccountModal = ({ open, columns, onClose, onSubmit }) => {
 
   return (
     <Dialog open={open}>
-      <DialogTitle textAlign="center">Create New Account</DialogTitle>
+      <DialogTitle textAlign="center">Entrez infos Cabinet</DialogTitle>
       <DialogContent>
         <form onSubmit={(e) => e.preventDefault()}>
           <Stack
@@ -407,7 +399,7 @@ export const CreateNewAccountModal = ({ open, columns, onClose, onSubmit }) => {
       <DialogActions sx={{ p: "1.25rem" }}>
         <Button onClick={onClose}>Cancel</Button>
         <Button color="secondary" onClick={handleSubmit} variant="contained">
-          Create New Account
+          Validez
         </Button>
       </DialogActions>
     </Dialog>
@@ -421,6 +413,6 @@ const validateEmail = (email) =>
     .toLowerCase()
     .match(
     );
-const validateAge = (age) => age >= 18 && age <= 50;
+/* const validateAge = (age) => age >= 18 && age <= 50; */
 
 export default OfficesList;

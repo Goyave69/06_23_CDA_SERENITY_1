@@ -110,7 +110,6 @@ const CardForm = ({ onClick }) => {
   );
 };
 
-
 CardForm.propTypes = {
   onClick: PropTypes.func.isRequired,
 };

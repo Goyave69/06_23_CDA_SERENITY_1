@@ -1,9 +1,9 @@
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import Paper from '@mui/material/Paper';
+import Paper from "@mui/material/Paper";
 import { Button, Typography } from "@mui/material";
 
-import React from 'react';
+import React from "react";
 
 export default function Reminder() {
   return (
@@ -13,7 +13,7 @@ export default function Reminder() {
         marginTop: "40px",
         backgroundColor: "#F5F5F5",
         borderRadius: "20px",
-        ml:90,
+        ml: 90,
       }}
     >
       <CardContent>
@@ -28,7 +28,7 @@ export default function Reminder() {
             ml: "10px",
           }}
         >
-         Rappels de vos  prochains rendez-vous :
+          Rappels de vos prochains rendez-vous :
         </Typography>
         <Paper
           sx={{

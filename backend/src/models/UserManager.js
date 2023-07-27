@@ -5,6 +5,13 @@ const { passwordHasher } = require("../services/PasswordHelper");
 async function insertUser(data) {
   let bodyResponse = { ...data };
 
+  let is_praticien = false;
+  if (data.roles.includes("PATIENT_ROLE")) {
+    is_praticien = false;
+  } else {
+    is_praticien = true;
+  }
+
   return connection
     .promise()
     .query(
@@ -15,15 +22,46 @@ async function insertUser(data) {
         data.email,
         data.phone,
         data.password,
-        JSON.stringify(data.roles),
+        JSON.stringify(data.roles)
       ]
     )
 
     .then(async ([rows]) => {
       bodyResponse.id = rows.insertId;
+      console.log("user ok", rows.insertId);
       //@TODO remove password from body
 
-      return { status: 201, message: bodyResponse };
+      if (is_praticien != true) {
+        return { status: 201, message: bodyResponse };
+      } else {
+        console.log(is_praticien);
+        return connection
+          .promise()
+          .query(
+            "INSERT INTO doctor ( \
+            specialty, languages, biography, \
+             diploma, experiences, publications, \
+              user_iduser) \
+            VALUES (?, ?, ?, ?, ?, ?, ?)",
+            [
+              data.specialty,
+              data.languages,
+              data.biography,
+              data.diploma,
+              data.experiences,
+              data.publications,
+              rows.insertId,
+            ]
+          )
+          .then(async ([rows]) => {
+            bodyResponse.id = rows.insertId;
+            console.log("doc ok", rows.insertId);
+            return { status: 201, message: bodyResponse };
+          })
+          .catch((error) => {
+            return { status: 500, message: error };
+          });
+      }
     })
     .catch((error) => {
       return { status: 500, message: error };

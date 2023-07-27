@@ -17,9 +17,6 @@ import FormLabel from "@mui/material/FormLabel";
 import React,{ useState } from "react";
 import { useProgress } from "../../context/ProgressContext";
 
-
-
-
 export default function Formular() {
   const { updateProgress } = useProgress();
 
@@ -72,7 +69,7 @@ export default function Formular() {
       }}
     >
       <CardContent>
-        <div style={{ display: "flex",  }}>
+        <div style={{ display: "flex" }}>
           <div>
           <Button variant="contained" sx={{backgroundColor:"#4D7CFE", display:"flex", ml:"600px", mt:3}}>TELECHARGER LA VERSION PAPIER</Button>
             <Typography
@@ -416,5 +413,3 @@ export default function Formular() {
     </Card>
   );
 }
-
-

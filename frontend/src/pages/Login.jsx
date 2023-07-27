@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -7,66 +7,39 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import PropTypes from "prop-types";
 import axios from "axios";
+import { setCookie, getCookie } from "../services/cookieHelper";
 
-// creation des utilisateurs http://localhost:3000/admin/patients
-//daa https://www.passportjs.org/packages/passport-local/
-
-// const LoginPage = ({ setLoggedState }) => {
-//   const handleLogin = function () {
-//     console.log(setLoggedState);
-
-//     let data = {"email" : "trois", "password": "cinq"}
-
-//     axios
-//       .post("http://localhost:5000/authentication/login", data)
-//       .then((response) => {
-//         console.log("response", response);
-
-//         if (response.status == 201) {
-//           console.log("snack")
-//           //on pourra ajouter une snack bar!!
-//         }else{
-//           console.log(response.status)
-//         }
-//       })
-//       .catch((e) => {
-//         console.log(e)
-//         alert("hum ...It seems somthing went wrong !");
-//       });
-//   };
-
-const LoginPage = ({ setLoggedState }) => {
+const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const data = {
     email: email,
     password: password,
   };
 
   const handleLogin = function () {
-    axios
-      .post("http://localhost:5000/login", data)
-      .then((response) => {
-        if (response.status === 201) {
-   
-          console.log(response.data);
-          if (response.data.roles.length == 0){
-            // setLoggedState avec utilisateur
-            alert ("logged as user" )
-            navigate("/user")
-          }else{
-             // setLoggedState /useContext avec medecin
-            alert ("logged as "+response.data.roles.roles )
-            navigate("/admin")
-          }
-  
-        }else{
-          alert ('not good !')
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      withCredentials: true,
+    };
+    axios.post("http://localhost:5000/login", data, config).then((response) => {
+      if (response.status === 201) {
+        const token = JSON.parse(getCookie("user").split("").splice(2).join(""));
+        setCookie("token", token, 7);
+        if (token.roles[0] === "PATIENT_ROLE") {
+          alert("logged as user");
+          navigate("/user");
+        } else if (token.roles[0] === "ADMIN_ROLE") {
+          alert("logged as " + response.data.roles[0]);
+          navigate("/admin");
         }
-      })
-
+      } else {
+        alert("not good !");
+      }
+    });
   };
 
   return (
