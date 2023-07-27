@@ -4,6 +4,11 @@ import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
 
 import axios from "axios";
 import { Typography } from "@mui/material";
@@ -14,11 +19,18 @@ let test = {
   email: "truc@bidule.machin",
   phone: "123456",
   password: "1234",
-  roles: "",
+  roles: "chirurgien",
+  specialty: 1,
+  languages: "Chinois, Marseillais",
+  biography: "Un bon doc !",
+  diploma: "CAP Boucherie",
+  experiences: "Heu ça va personne ne s'est plaint",
+  publications: "Oui oui à la plage",
 };
 
 function AddUserFormular() {
   const navigate = useNavigate();
+  const [role, setRole] = useState("patient");
   const [userData, setUserData] = useState({
     firstname: "",
     lastname: "",
@@ -26,15 +38,29 @@ function AddUserFormular() {
     phone: "",
     password: "",
     roles: "",
+    specialty: "",
+    languages: "",
+    biography: "",
+    diploma: "",
+    experiences: "",
+    publications: "",
   });
 
   useEffect(() => {
     // Effectuer les actions souhaitées lorsque l'état userData est mis à jour
   }, [userData]);
 
+  const handleRoleChange = (event) => {
+    if (event.target.value == "patient") {
+      setUserData({ ...userData, roles: "" });
+    }
+    setRole(event.target.value);
+  };
+
   const handleTest = () => {
     setUserData(test);
   };
+
   const handleAjouter = () => {
     console.log(userData);
 
@@ -163,22 +189,145 @@ function AddUserFormular() {
             }
             sx={{ mr: "2rem" }}
           />
-
-          <TextField
-            id="roles"
-            label="Roles"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            placeholder="roles"
-            value={userData.roles}
-            onChange={(e) =>
-              setUserData({ ...userData, roles: e.target.value })
-            }
-            sx={{ mr: "2rem" }}
-          />
         </div>
+        <div style={{ display: "flex" }}>
+          <FormControl>
+            <FormLabel id="demo-radio-buttons-group-label">Role</FormLabel>
+            <RadioGroup
+              aria-labelledby="demo-radio-buttons-group-label"
+              name="radio-buttons-group"
+              row
+              value={role}
+              onChange={handleRoleChange}
+            >
+              <FormControlLabel
+                value="patient"
+                control={<Radio />}
+                label="Patient"
+              />
+              <FormControlLabel
+                value="praticien"
+                control={<Radio />}
+                label="Praticien"
+              />
+            </RadioGroup>
+          </FormControl>
+        </div>
+
+        <div>
+          {role == "praticien" ? (
+            <div>
+              <div style={{ display: "flex" }}>
+                <TextField
+                  id="roles"
+                  label="Roles"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  placeholder="roles"
+                  value={userData.roles}
+                  onChange={(e) =>
+                    setUserData({ ...userData, roles: e.target.value })
+                  }
+                  sx={{ mr: "2rem" }}
+                />
+
+                <TextField
+                  id="specialty"
+                  label="specialty"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  placeholder="specialty( int )"
+                  value={userData.specialty}
+                  onChange={(e) =>
+                    setUserData({ ...userData, specialty: e.target.value })
+                  }
+                  sx={{ mr: "2rem" }}
+                />
+              </div>
+
+              <div style={{ display: "flex" }}>
+                <TextField
+                  id="languages"
+                  label="Languages"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  placeholder="languages"
+                  value={userData.languages}
+                  onChange={(e) =>
+                    setUserData({ ...userData, languages: e.target.value })
+                  }
+                  sx={{ mr: "2rem" }}
+                />
+                <TextField
+                  id="biography"
+                  label="biography"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  placeholder="biography"
+                  value={userData.biography}
+                  onChange={(e) =>
+                    setUserData({ ...userData, biography: e.target.value })
+                  }
+                  sx={{ mr: "2rem" }}
+                />
+              </div>
+
+              <div style={{ display: "flex" }}>
+                <TextField
+                  id="diploma"
+                  label="diploma"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  placeholder="diploma"
+                  value={userData.diploma}
+                  onChange={(e) =>
+                    setUserData({ ...userData, diploma: e.target.value })
+                  }
+                  sx={{ mr: "2rem" }}
+                />
+                <TextField
+                  id="experiences"
+                  label="experiences"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  placeholder="experiences"
+                  value={userData.experiences}
+                  onChange={(e) =>
+                    setUserData({ ...userData, experiences: e.target.value })
+                  }
+                  sx={{ mr: "2rem" }}
+                />
+              </div>
+
+              <div style={{ display: "flex" }}>
+                <TextField
+                  id="publications"
+                  label="publications"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  placeholder="publications"
+                  value={userData.publications}
+                  onChange={(e) =>
+                    setUserData({ ...userData, publications: e.target.value })
+                  }
+                  sx={{ mr: "2rem" }}
+                />
+              </div>
+            </div>
+          ) : (
+            <span></span>
+          )}
+        </div>
+
         <Button onClick={handleTest}>test</Button>
+
         <Button
           onClick={handleAjouter}
           variant="contained"

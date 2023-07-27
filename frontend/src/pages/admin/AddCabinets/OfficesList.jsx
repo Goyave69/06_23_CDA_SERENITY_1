@@ -25,8 +25,11 @@ const OfficesList = () => {
   const [officeData, setOfficeData] = useState([]);
   const [validationErrors, setValidationErrors] = useState({});
 
-  const handleCreateNewRow = (values) => {
-    // officeData.push(values);
+//essai Mir suppress AddOfficesFormular : en fait non car il a le get, le office data ...
+  
+
+const handleCreateNewRow = (values) => {
+   // officeData.push(values);
     console.log(values);
     console.log("creation");
     delete values.idoffice;
@@ -109,8 +112,8 @@ const OfficesList = () => {
           const isValid =
             cell.column.id === "email"
               ? validateEmail(event.target.value)
-              : cell.column.id === "age"
-              ? validateAge(+event.target.value)
+             /*  : cell.column.id === "age"
+              ? validateAge(+event.target.value) */
               : validateRequired(event.target.value);
           if (!isValid) {
             //set validation error for cell if invalid
@@ -143,7 +146,7 @@ const OfficesList = () => {
     });
   };
 
-  //enablediting false sur idoffice https://www.material-react-table.com/docs/guides/editing
+//enable editing false sur idoffice https://www.material-react-table.com/docs/guides/editing
 
   const columns = useMemo(
     () => [
@@ -155,14 +158,7 @@ const OfficesList = () => {
           ...getCommonEditTextFieldProps(cell),
         }),
       },
-      {
-        accessorKey: "idoffice",
-        header: "Id Office",
-        enableEditing: "false",
-        muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
-          ...getCommonEditTextFieldProps(cell),
-        }),
-      },
+      
       {
         accessorKey: "name",
         header: "Name",
@@ -292,7 +288,7 @@ console.log(officeData.name);
             enableRowSelection
             enableGlobalFilter
             enableHiding={true}
-            editingMode="modal" //default //Daa je comprends pas ou est ma modale edit et ou est ma modale create new account. je vois le open et close de createNewAcccountModal mais pas le EDIT ?//
+            editingMode="modal" //default 
             enableColumnOrdering
             enableEditing
             initialState={{
@@ -332,7 +328,7 @@ console.log(officeData.name);
                 onClick={() => setCreateModalOpen(true)}
                 variant="contained"
               >
-                Create New Account
+                Ajouter un nouveau Cabinet
               </Button>
             )}
           />
@@ -344,7 +340,7 @@ console.log(officeData.name);
           />
         </Box>
 
-        <Box display="flex" justifyContent="center" mt="2rem">
+      {/*  { <Box display="flex" justifyContent="center" mt="2rem">
           <NavLink to="/admin/add-offices">
             <Button
               variant="contained"
@@ -354,7 +350,7 @@ console.log(officeData.name);
               Cliquez ici pour ajouter un nouveau Cabinet
             </Button>
           </NavLink>
-        </Box>
+        </Box>} */}
       </Box>
     </Container>
   );
@@ -377,7 +373,7 @@ export const CreateNewAccountModal = ({ open, columns, onClose, onSubmit }) => {
 
   return (
     <Dialog open={open}>
-      <DialogTitle textAlign="center">Create New Account</DialogTitle>
+      <DialogTitle textAlign="center">Entrez infos Cabinet</DialogTitle>
       <DialogContent>
         <form onSubmit={(e) => e.preventDefault()}>
           <Stack
@@ -403,7 +399,7 @@ export const CreateNewAccountModal = ({ open, columns, onClose, onSubmit }) => {
       <DialogActions sx={{ p: "1.25rem" }}>
         <Button onClick={onClose}>Cancel</Button>
         <Button color="secondary" onClick={handleSubmit} variant="contained">
-          Create New Account
+          Validez
         </Button>
       </DialogActions>
     </Dialog>
@@ -411,7 +407,12 @@ export const CreateNewAccountModal = ({ open, columns, onClose, onSubmit }) => {
 };
 
 const validateRequired = (value) => !!value.length;
-const validateEmail = (email) => !!email.length && email.toLowerCase().match();
-const validateAge = (age) => age >= 18 && age <= 50;
+const validateEmail = (email) =>
+  !!email.length &&
+  email
+    .toLowerCase()
+    .match(
+    );
+/* const validateAge = (age) => age >= 18 && age <= 50; */
 
 export default OfficesList;

@@ -140,6 +140,12 @@ const UsersList = () => {
     console.log("refresh");
     axios.get("http://localhost:5000/users/").then((response) => {
       console.log("response", response);
+      let roles = response.data.roles;
+      if (typeof roles != "string") {
+        roles = JSON.stringify(roles);
+        response.data.roles = roles;
+      }
+
       setUserData(response.data);
     });
   };
@@ -187,6 +193,19 @@ const UsersList = () => {
         muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
           ...getCommonEditTextFieldProps(cell),
         }),
+      },
+      {
+        accessorKey: "roles",
+        header: "Roles",
+        Cell: ({ renderedCellValue }) => <strong>{
+          typeof renderedCellValue == "string" && renderedCellValue.length == 0 ?
+          <span>Patient</span> : 
+
+          renderedCellValue.roles
+          
+          
+          
+          }</strong> 
       },
       /*      {
         accessorKey: "password",

@@ -3,53 +3,70 @@ import { useNavigate } from "react-router-dom";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import Select from "@mui/material/Select";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
-
 import axios from "axios";
 import { Typography } from "@mui/material";
 
-/* let test = {
-  name: "name "+Date.now(),
-  doc_name: "doc_name "+Date.now(),
-  street_number: 4,
-  street_name:"rue du bouyt du monde",
-  zip_code: "34567",
-  phone_number: "123456",
-  email: "truc@bidule.machin",
-  free_parking: 1,
-  disabled: 0,
-  open_hours: "9h00 17h00",
-  specialty: "2",
-}
- */
 function AddInterventionFormular() {
+  const [officeData, setOfficeData] = useState([]);
+  const [doctorData, setDoctorData] = useState([]);
+  const [patientData, setPatientData] = useState([]);
   const navigate = useNavigate();
-  const [interventionData, setInterventioneData] = useState({
-    name: "",
-    doc_name: "",
-    street_number: "",
-    street_name: "",
-    zip_code: "",
-    phone_number: "",
-    email: "",
-    free_parking: "",
-    disabled: "",
-    open_hours: "",
-    specialty: "",
+  const [interventionData, setInterventionData] = useState({
+    id_intervention: "",
+    intervention_name: "",
+    date: "",
+    id_doc: "",
+    id_patient: "",
+    id_office: "",
   });
 
   useEffect(() => {
-    // Effectuer les actions souhaitées lorsque l'état officeData est mis à jour
-  }, [officeData]);
+    refresh();
+  }, []);
+
+  const refresh = () => {
+    console.log("refresh");
+    axios.get("http://localhost:5000/offices/").then((response) => {
+      console.log("office", response.data);
+      setOfficeData(response.data);
+    });
+
+    axios.get("http://localhost:5000/users/").then((response) => {
+      console.log("users", response.data);
+      let doctors = [];
+      let patients = [];
+      response.data.forEach((user) => {
+        if (user.roles.length == 0) {
+          patients.push(user);
+        } else {
+          doctors.push(user);
+        }
+      });
+      setPatientData(patients);
+      setDoctorData(doctors);
+    });
+  };
+
+  useEffect(() => {
+    // Effectuer les actions souhaitées lorsque l'état interventionData est mis à jour
+  }, [interventionData]);
 
   const handleTest = () => {
-    setOfficeData(test);
+    setInterventionData(test);
   };
   const handleAjouter = () => {
-    console.log(officeData);
+    console.log(interventionData);
 
     axios
-      .post("http://localhost:5000/offices/", officeData)
+      .post("http://localhost:5000/interventions/", interventionData)
       .then((response) => {
         console.log("response", response);
 
@@ -57,7 +74,7 @@ function AddInterventionFormular() {
           console.log("snack");
           //on pourra ajouter une snack bar!!
 
-          navigate("/admin/cabinets");
+          navigate("/admin/interventions");
         } else {
           console.log(response.status);
         }
@@ -87,168 +104,110 @@ function AddInterventionFormular() {
           width: "100%",
         }}
       >
-        <Typography sx={{ fontWeight: "medium", mb: 2, fontSize: 16 }}>
-          Ajouter un nouveau cabinet
-        </Typography>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Doctor</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={interventionData.id_doc}
+            label="Age"
+            onChange={(e) =>
+              setInterventionData({
+                ...interventionData,
+                id_doc: e.target.value,
+              })
+            }
+          >
+            {doctorData.map((doctor) => (
+              <MenuItem key={doctor.iduser} value={doctor.iduser}>
+                {doctor.lastname} {doctor.firstname}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Patient</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={interventionData.id_patient}
+            label="Age"
+            onChange={(e) =>
+              setInterventionData({
+                ...interventionData,
+                id_patient: e.target.value,
+              })
+            }
+          >
+            {patientData.map((patient) => (
+              <MenuItem key={patient.iduser} value={patient.iduser}>
+                {patient.lastname} {patient.firstname}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Office</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={interventionData.id_office}
+            label="Office"
+            onChange={(e) =>
+              setInterventionData({
+                ...interventionData,
+                id_office: e.target.value,
+              })
+            }
+          >
+            {officeData.map((office) => (
+              <MenuItem key={office.idoffice} value={office.idoffice}>
+                {office.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+
+        <Typography
+          sx={{ fontWeight: "medium", mb: 2, fontSize: 16 }}
+        ></Typography>
         <div style={{ display: "flex" }}>
           <TextField
-            id="name"
-            label="Nom cabinet"
+            id="interventionName"
+            label="Nom de l'intervention"
             variant="outlined"
             fullWidth
             margin="normal"
-            placeholder="nom du cabinet"
-            value={officeData.name}
+            placeholder="nom de l'intervention"
+            value={interventionData.intervention_name}
             onChange={(e) =>
-              setOfficeData({ ...officeData, name: e.target.value })
+              setInterventionData({
+                ...interventionData,
+                intervention_name: e.target.value,
+              })
             }
             sx={{ mr: "2rem" }}
           />
-          <TextField
-            id="doc_name"
-            label="doc_name"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            placeholder="doc_name"
-            value={officeData.doc_name}
-            onChange={(e) =>
-              setOfficeData({ ...officeData, doc_name: e.target.value })
-            }
-            sx={{ mr: "2rem" }}
-          />
+
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker
+              id="date"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              onChange={(e) =>
+                setInterventionData({
+                  ...interventionData,
+                  date: e.$d.toISOString().slice(0, 19).replace("T", " "),
+                })
+              }
+              sx={{ mr: "2rem" }}
+            />
+          </LocalizationProvider>
         </div>
 
-        <div style={{ display: "flex" }}>
-          <TextField
-            id="street_number"
-            label="street_number"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            placeholder="street_number"
-            value={officeData.street_number}
-            onChange={(e) =>
-              setOfficeData({ ...officeData, street_number: e.target.value })
-            }
-            sx={{ mr: "2rem" }}
-          />
-          <TextField
-            id="street_name"
-            label="street_name"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            placeholder="street_name"
-            value={officeData.street_name}
-            onChange={(e) =>
-              setOfficeData({ ...officeData, street_name: e.target.value })
-            }
-            sx={{ mr: "2rem" }}
-          />
-        </div>
-
-        <div style={{ display: "flex" }}>
-          <TextField
-            id="zip_code"
-            label="zip_code"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            placeholder="zip_code"
-            value={officeData.zip_code}
-            onChange={(e) =>
-              setOfficeData({ ...officeData, zip_code: e.target.value })
-            }
-            sx={{ mr: "2rem" }}
-          />
-          <TextField
-            id="phone_number"
-            label="phone_number"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            placeholder="phone_number"
-            value={officeData.phone_number}
-            onChange={(e) =>
-              setOfficeData({ ...officeData, phone_number: e.target.value })
-            }
-            sx={{ mr: "2rem" }}
-          />
-        </div>
-
-        <div style={{ display: "flex" }}>
-          <TextField
-            id="email"
-            label="email"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            placeholder="email"
-            value={officeData.email}
-            onChange={(e) =>
-              setOfficeData({ ...officeData, email: e.target.value })
-            }
-            sx={{ mr: "2rem" }}
-          />
-          <TextField
-            id="free_parking"
-            label="free_parking"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            placeholder="free_parking"
-            value={officeData.free_parking}
-            onChange={(e) =>
-              setOfficeData({ ...officeData, free_parking: e.target.value })
-            }
-            sx={{ mr: "2rem" }}
-          />
-        </div>
-
-        <div style={{ display: "flex" }}>
-          <TextField
-            id="disabled"
-            label="disabled"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            placeholder="disabled"
-            value={officeData.disabled}
-            onChange={(e) =>
-              setOfficeData({ ...officeData, disabled: e.target.value })
-            }
-            sx={{ mr: "2rem" }}
-          />
-          <TextField
-            id="open_hours"
-            label="open_hours"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            placeholder="open_hours"
-            value={officeData.open_hours}
-            onChange={(e) =>
-              setOfficeData({ ...officeData, open_hours: e.target.value })
-            }
-            sx={{ mr: "2rem" }}
-          />
-        </div>
-
-        <TextField
-          id="specialty"
-          label="specialty"
-          variant="outlined"
-          fullWidth
-          margin="normal"
-          placeholder="specialty"
-          value={officeData.specialty}
-          onChange={(e) =>
-            setOfficeData({ ...officeData, specialty: e.target.value })
-          }
-          sx={{ mr: "2rem" }}
-        />
-        <Button onClick={handleTest}>test</Button>
         <Button
           onClick={handleAjouter}
           variant="contained"

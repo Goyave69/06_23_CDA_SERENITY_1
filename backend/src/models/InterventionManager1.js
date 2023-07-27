@@ -7,8 +7,8 @@ async function insertIntervention(data) {
     let bodyResponse = {...data};
     
 
-    return connection.promise().query("INSERT INTO intervention (intervention_name, date, id_doc, id_patient, id_office ) VALUES (?, ?, ?, ?, ?)", 
-    [data.intervention_name, data.date, data.id_doc, data.id_patient, data.id_office])
+    return connection.promise().query("INSERT INTO interventions (specialty, date, quotation, number_done, patient_idpatient, documents_iddocuments, office_idoffice ) VALUES (?, ?, ?, ?, ?, ?, ?)", 
+    [data.specialty, data.date, data.quotation, data.number_done, data.patient_idpatient, data.documents_iddocuments, data.office_idoffice])
     
     .then(async ([rows]) => { 
         bodyResponse.id = rows.insertId
@@ -22,7 +22,7 @@ async function insertIntervention(data) {
 }
 
 async function updateIntervention(id, data) {
-    let sqlQuery = "UPDATE intervention SET ";
+    let sqlQuery = "UPDATE interventions SET ";
 
     for (let key in itemValue = Object.keys(data)) {
         sqlQuery += `${itemValue[key]} = ?, `
@@ -31,7 +31,7 @@ async function updateIntervention(id, data) {
     sqlQuery = sqlQuery.slice(0, sqlQuery.length - 2);
 
 
-    sqlQuery += ` WHERE id_intervention = ${id}`;
+    sqlQuery += ` WHERE idinterventions = ${id}`;
 
     let bodyResponse = {...data};
     
@@ -50,7 +50,7 @@ async function updateIntervention(id, data) {
 
 async function deleteIntervention(id) {
 
-    let sqlQuery = `DELETE FROM intervention where id_intervention = ${id}`;
+    let sqlQuery = `DELETE FROM intervention where idinterventions = ${id}`;
     
     return connection.promise().query(sqlQuery)
     .then(async ([rows]) => { 
@@ -63,23 +63,7 @@ async function deleteIntervention(id) {
 }
 
 async function fetchIntervention() {
-    //const sql = "SELECT * FROM intervention";
-
-    const sql = `SELECT \
-    intervention.id_intervention, \
-     intervention.intervention_name, \
-     CONCAT(doctor.lastname,' ',doctor.firstname) AS  doctor, \
-     CONCAT(patient.lastname,' ',patient.firstname) AS  patient, \
-     office.name as office, \
-     intervention.date \
-     FROM intervention \
-     JOIN user as doctor ON doctor.iduser = intervention.id_doc
-     JOIN user as patient ON patient.iduser = intervention.id_patient
-     JOIN office as office ON office.idoffice = intervention.id_office`
-  
-  
-
-    
+    const sql = "SELECT * FROM interventions";
     
     return connection.promise().query(sql)
     .then(async ([rows]) => { 
@@ -94,7 +78,7 @@ async function fetchOneIntervention(id) {
 
     //const sql = "SELECT * FROM Intervention WHERE idIntervention = ?";
 
-    return connection.promise().query("SELECT * FROM intervention WHERE id_intervention = ?", id)
+    return connection.promise().query("SELECT * FROM interventions WHERE idinterventions = ?", id)
 
     .then(async ([rows]) => {
         return rows.length === 0 ? {status: 404, message: {}} : {status: 200, message: rows[0]}
