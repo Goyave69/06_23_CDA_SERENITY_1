@@ -19,7 +19,7 @@ let test = {
   email: "truc@bidule.machin",
   phone: "123456",
   password: "1234",
-  roles: "adaptetoiorole",
+  roles: ["PATIENT_ROLE"],
   specialty: 1,
   languages: "Chinois, Marseillais",
   biography: "Un bon doc !",
@@ -37,7 +37,7 @@ function AddUserFormular() {
     email: "",
     phone: "",
     password: "",
-    roles: "",
+    roles: [""],
     specialty: "",
     languages: "",
     biography: "",
@@ -54,7 +54,7 @@ function AddUserFormular() {
   
   const handleRoleChange = (event) => {
     if (event.target.value == "patient") {
-      setUserData({ ...userData, roles: "PATIENT_ROLE" });
+      setUserData({ ...userData, roles: ["PATIENT_ROLE"] });
     }
     setRole(event.target.value);
   };
@@ -63,18 +63,8 @@ function AddUserFormular() {
     setUserData(test);
   };
 
-  const handleAjouter = () => {
+  const handleAdd = () => {
     console.log(userData);
-
-    if (
-      userData.roles != undefined &&
-      userData.roles.length > 0 
-      /* typeof userData.roles == "string" */
-    ) {
-      let roles = { roles: userData.roles };
-      userData.roles = roles;
-    }
-
     console.log("2", userData);
 
     axios
@@ -227,9 +217,9 @@ function AddUserFormular() {
                   fullWidth
                   margin="normal"
                   placeholder="roles"
-                  value={userData.roles}
+                  value={userData.roles[0]}
                   onChange={(e) =>
-                    setUserData({ ...userData, roles: e.target.value })
+                    setUserData({ ...userData, roles: [e.target.value] })
                   }
                   sx={{ mr: "2rem" }}
                 />
@@ -331,7 +321,7 @@ function AddUserFormular() {
         <Button onClick={handleTest}>test</Button>
 
         <Button
-          onClick={handleAjouter}
+          onClick={handleAdd}
           variant="contained"
           color="primary"
           fullWidth
