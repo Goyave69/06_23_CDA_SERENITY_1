@@ -144,7 +144,7 @@ function ResponsiveDrawer(props) {
               component="div"
               sx={{ fontWeight: "Medium", mr: 34, color: "black" }}
             >
-              Comment aller-vous ?
+              Comment allez-vous ?
             </Typography>
           </div>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>

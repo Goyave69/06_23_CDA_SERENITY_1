@@ -87,14 +87,20 @@ const CardProtocole = ({ handleClick }) => {
                   mt: 1,
                 }}
               >
-                Finir les démarches administratives
-              </Typography>
-            </div>
-            <div style={{ color: "white" }}>
-              <p>3</p>
-            </div>
-          </Box>
-
+                <Typography
+                  sx={{
+                    fontSize: "14px",
+                    color: "white",
+                    mt: 1,
+                  }}
+                >
+                  Consultation des fiches administratives
+                </Typography>
+              </div>
+              <div style={{ color: "white" }}>
+                <p>3</p>
+              </div>
+            </Box>
           <Box
             sx={{
               display: "flex",
@@ -120,14 +126,20 @@ const CardProtocole = ({ handleClick }) => {
                   mt: 1.5,
                 }}
               >
-                Anticiper ma sortie
-              </Typography>
-            </div>
-            <div style={{ color: "white" }}>
-              <p>12</p>
-            </div>
-          </Box>
-
+                <Typography
+                  sx={{
+                    fontSize: "15px",
+                    color: "white",
+                    mt: 1.5,
+                  }}
+                >
+                  Ajout Disponibilités
+                </Typography>
+              </div>
+              <div style={{ color: "white" }}>
+                <p>12</p>
+              </div>
+            </Box>
           <Box
             sx={{
               display: "flex",
@@ -146,7 +158,30 @@ const CardProtocole = ({ handleClick }) => {
                 width: "14rem",
               }}
             >
-              <Typography
+              <div
+                style={{
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  width: "14rem",
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontSize: "15px",
+                    color: "white",
+                    mt: 1,
+                    ml: "10px",
+                  }}
+                >
+                  Verification des docs obligatoires
+                </Typography>
+              </div>
+            </Box>
+
+            <Box display="flex" justifyContent="center" mt="0.5rem" mb="2.5rem">
+              <Button
+                fullWidth
+                variant="contained"
                 sx={{
                   fontSize: "15px",
                   color: "white",

@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
+import { useProgress } from "../../context/ProgressContext";
 
 const CircularProgressWithLabel = (props) => {
   return (
@@ -44,6 +45,8 @@ CircularProgressWithLabel.propTypes = {
 };
 
 const CardForm = ({ onClick }) => {
+  const { progress } = useProgress();
+
   const handleClick = () => {
     if (onClick) {
       onClick();
@@ -79,7 +82,7 @@ const CardForm = ({ onClick }) => {
             }}
           >
             <CircularProgressWithLabel
-              value={57}
+              value={progress}
               size={65}
               sx={{ color: "#47CACF" }}
             />

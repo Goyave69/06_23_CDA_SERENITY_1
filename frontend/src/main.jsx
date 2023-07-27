@@ -20,6 +20,7 @@ import AddOfficeFormular from "@pages/admin/AddCabinets/AddOfficeFormular";
 import AddInterventionFormular from "@pages/admin/AddInterventions/AddInterventionFormular";
 import { SnackbarProvider } from "notistack";
 import AddUserFormular from "@pages/admin/AddUsers/AddUserFormular";
+import { ProgressProvider } from "./context/ProgressContext";
 import AuthProvider from "./context/authContext";
 
 const router = createBrowserRouter([
@@ -88,11 +89,13 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <SnackbarProvider>
-      <AuthProvider>
+     <AuthProvider>
+      <ProgressProvider>
         <ThemeProvider theme={mainTheme}>
           <RouterProvider router={router} />
         </ThemeProvider>
-      </AuthProvider>
+      </ProgressProvider>
+     </AuthProvider>
     </SnackbarProvider>
   </React.StrictMode>
 );
