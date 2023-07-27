@@ -95,7 +95,7 @@ function SideBarAdmin(props) {
     },
     {
       id: 2,
-      text: "Patients",
+      text: "Users",
       link: "/admin/patients",
       icon: ExploreOutlinedIcon,
     },
