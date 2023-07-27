@@ -8,13 +8,12 @@ export default function Dashboard() {
   return (
     <div>
       <Box sx={{ml:100, mt: "40px"}}>
-        <DateDDay />
       </Box>
-      <Box>
+      <Box sx={{display:"flex"}}>
         <PreSurgeryProgress />
+        <Reminder />
       </Box>
       <div>
-        <Reminder />
       </div>
     </div>
   );

@@ -239,7 +239,7 @@ console.log(officeData.name);
         alignItems: "center",
         justifyContent: "center",
         minHeight: "80vh",
-        marginLeft: "160px",
+        marginLeft: "15rem",
       }}
     >
       {/* <h3>Liste des Cabinets dans lesquels vous pouvez prendre RDV</h3> */}
