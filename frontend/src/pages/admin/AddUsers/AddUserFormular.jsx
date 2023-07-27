@@ -50,6 +50,8 @@ function AddUserFormular() {
     // Effectuer les actions souhaitées lorsque l'état userData est mis à jour
   }, [userData]);
 
+  //voir avec la logique de mel PATIENT/ADMIN
+  
   const handleRoleChange = (event) => {
     if (event.target.value == "patient") {
       setUserData({ ...userData, roles: "" });
@@ -115,7 +117,7 @@ function AddUserFormular() {
         }}
       >
         <Typography sx={{ fontWeight: "medium", mb: 2, fontSize: 16 }}>
-          Ajouter un nouveau cabinet
+          Ajouter un nouvel utilisateur
         </Typography>
         <div style={{ display: "flex" }}>
           <TextField
