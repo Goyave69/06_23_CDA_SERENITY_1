@@ -23,6 +23,7 @@ import NotificationsNoneRoundedIcon from "@mui/icons-material/NotificationsNoneR
 import { Link, NavLink } from "react-router-dom";
 import { Icon } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
+import DateDDay from "@components/dashboardcomponents/DateDDay";
 
 const drawerWidth = 240;
 
@@ -97,7 +98,7 @@ function ResponsiveDrawer(props) {
       <Box sx={{ position: "absolute", bottom: 16, left: 16 }}>
         <IconButton
           component={NavLink}
-          to="/login"
+          to="/"
           activeClassName="active-icon-login"
         >
           <Avatar src="src/assets/avatar.png" alt="Avatar" />
@@ -149,6 +150,9 @@ function ResponsiveDrawer(props) {
           </div>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Countdown />
+          </Box>
+          <Box sx={{mr: 32}}>
+          <DateDDay />
           </Box>
           <Box>
             <IconButton

@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 
 function LinearProgressWithLabel(props) {
   return (
-    <Box sx={{ mt: 13 }}>
+    <Box sx={{ mt: 10 }}>
       <Typography
         variant="body2"
         sx={{ color: "black", mb: "10px", display: "flex" }}
@@ -27,7 +27,7 @@ function LinearProgressWithLabel(props) {
       </Box>
       <Typography
         variant="body2"
-        sx={{ color: "black", mb: "10px", display: "flex", mt: 5 }}
+        sx={{ color: "black", mb: "10px", display: "flex", mt: 2 }}
       >
         Comprendre mon opération :
         <Typography

@@ -210,8 +210,7 @@ const getCommonEditTextFieldProps = useCallback(
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          minHeight: "80vh",
-          marginLeft: "160px",
+          minHeight: "80vh"
         }}
       >
         {/* <h3>Liste des Cabinets dans lesquels vous pouvez prendre RDV</h3> */}
@@ -224,7 +223,7 @@ const getCommonEditTextFieldProps = useCallback(
             width: "auto",
           }}
         >
-          <Box sx={{ width: "100%", position: "relative", left: "300px" }}>
+          <Box sx={{ width: "100%", position: "relative", ml:"35rem" }}>
                     <MaterialReactTable
                         displayColumnDefOptions={{
                             "mrt-row-actions": {
@@ -244,7 +243,7 @@ const getCommonEditTextFieldProps = useCallback(
                         enableEditing
                         initialState={{
                             columnVisibility: {
-                                id_interventionx: false,
+                                id_intervention: false,
                                 /*  name_spec: false,
                                 date: false,
                                 quotation: false,
@@ -295,7 +294,7 @@ const getCommonEditTextFieldProps = useCallback(
                         <Button
                             variant="contained"
                             color="primary"
-                            sx={{ borderRadius: "10px", marginTop: "20px" }}
+                            sx={{ borderRadius: "10px", marginTop: "20px", ml:"35rem" }}
                         >
                             Cliquez ici pour ajouter nouvelle intervention
                         </Button>
