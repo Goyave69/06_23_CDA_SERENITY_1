@@ -9,7 +9,6 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import { setCookie, getCookie } from "../services/cookieHelper";
 
-
 const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -18,9 +17,7 @@ const LoginPage = () => {
     email: email,
     password: password,
   };
-  const token = JSON.parse(getCookie("user").split("").splice(2).join(""));
 
-console.log(token)
   const handleLogin = function () {
     const config = {
       headers: {
@@ -30,6 +27,7 @@ console.log(token)
     };
     axios.post("http://localhost:5000/login", data, config).then((response) => {
       if (response.status === 201) {
+        const token = JSON.parse(getCookie("user").split("").splice(2).join(""));
         setCookie("token", token, 7);
         if (token.roles[0] === "PATIENT_ROLE") {
           alert("logged as user");

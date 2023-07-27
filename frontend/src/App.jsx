@@ -10,12 +10,11 @@ import { getCookie } from "./services/cookieHelper";
 function App() {
   const token = getCookie("user");
   const navigate = useNavigate();
-  console.log(token)
+  console.log(token);
   React.useEffect(() => {
     if (!token) {
       navigate("/");
     }
-    
   }, [token, navigate]);
 
   return (

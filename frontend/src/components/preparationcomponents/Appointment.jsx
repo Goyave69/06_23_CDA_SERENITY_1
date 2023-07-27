@@ -60,7 +60,11 @@ export default function Appointment() {
             <Button
               sx={{ borderRadius: "16px" }}
               size="small"
-              onClick={() => enqueueSnackbar("Votre RDV est confirmé, a bientot!", { variant: "success" })}
+              onClick={() =>
+                enqueueSnackbar("Votre RDV est confirmé, a bientot!", {
+                  variant: "success",
+                })
+              }
             >
               Prendre Rendez-vous
             </Button>
@@ -91,7 +95,11 @@ export default function Appointment() {
             <Button
               sx={{ borderRadius: "16px" }}
               size="small"
-              onClick={() => enqueueSnackbar("Votre RDV est confirmé, a bientot!", { variant: "success" })}
+              onClick={() =>
+                enqueueSnackbar("Votre RDV est confirmé, a bientot!", {
+                  variant: "success",
+                })
+              }
             >
               Prendre Rendez-vous
             </Button>
@@ -122,7 +130,11 @@ export default function Appointment() {
             <Button
               sx={{ borderRadius: "16px" }}
               size="small"
-              onClick={() => enqueueSnackbar("Votre RDV est confirmé, a bientot!", { variant: "success" })}
+              onClick={() =>
+                enqueueSnackbar("Votre RDV est confirmé, a bientot!", {
+                  variant: "success",
+                })
+              }
             >
               Prendre Rendez-vous
             </Button>
@@ -132,4 +144,3 @@ export default function Appointment() {
     </Card>
   );
 }
-

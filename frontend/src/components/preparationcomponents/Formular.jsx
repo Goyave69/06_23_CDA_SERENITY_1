@@ -13,7 +13,7 @@ import {
   Divider,
 } from "@mui/material";
 import FormLabel from "@mui/material/FormLabel";
-import React,{ useState } from "react";
+import React, { useState } from "react";
 
 export default function Formular() {
   const [adminForm, setAdminForm] = useState({
@@ -57,7 +57,7 @@ export default function Formular() {
       }}
     >
       <CardContent>
-        <div style={{ display: "flex",  }}>
+        <div style={{ display: "flex" }}>
           <div>
             <Typography
               variant="h6"
@@ -397,5 +397,3 @@ export default function Formular() {
     </Card>
   );
 }
-
-

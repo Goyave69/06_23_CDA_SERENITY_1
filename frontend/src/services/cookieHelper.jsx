@@ -25,17 +25,17 @@ export const setCookie = (name, value, days) => {
 // };
 
 export function getCookie(key) {
-    const b = document.cookie.match(`(^|;)\\s*${key}\\s*=\\s*([^;]+)`);
-    return b ? decodeURIComponent(b.pop()) : "";
-  }
+  const b = document.cookie.match(`(^|;)\\s*${key}\\s*=\\s*([^;]+)`);
+  return b ? decodeURIComponent(b.pop()) : "";
+}
 
 export const deleteCookie = (name) => {
   setCookie(name, "", -1);
 };
 
 export const getTokenFromCookie = () => {
-    const token = getCookie("token");
-    console.log(token);
+  const token = getCookie("token");
+  console.log(token);
 
-    return console.log(token);
-  };
+  return console.log(token);
+};

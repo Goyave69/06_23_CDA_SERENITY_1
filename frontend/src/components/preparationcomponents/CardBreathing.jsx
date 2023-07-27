@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 
-const CircularProgressWithLabel = ({value}) => {
+const CircularProgressWithLabel = ({ value }) => {
   return (
     <Box
       sx={{
@@ -108,10 +108,8 @@ const CardBreathing = ({ onClick }) => {
   );
 };
 
-
 CardBreathing.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
-
 
 export default CardBreathing;

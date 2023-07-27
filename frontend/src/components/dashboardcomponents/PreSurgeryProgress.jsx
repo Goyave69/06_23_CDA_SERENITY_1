@@ -6,72 +6,114 @@ import Box from "@mui/material/Box";
 
 function LinearProgressWithLabel(props) {
   return (
-    <Box sx={{ mt: 13}}>
-      <Typography variant="body2"  sx={{ color:"black", mb:"10px", display:"flex"}}>
-       Préparation pour ma chirurgie :
-      </Typography>
-      <Box sx={{ width: '230px', mr: 1,}}>
+    <Box sx={{ mt: 13 }}>
       <Typography
+        variant="body2"
+        sx={{ color: "black", mb: "10px", display: "flex" }}
+      >
+        Préparation pour ma chirurgie :
+      </Typography>
+      <Box sx={{ width: "230px", mr: 1 }}>
+        <Typography
           variant="body2"
           color="#4C5980"
-          sx={{ fontWeight: "bold",}}
+          sx={{ fontWeight: "bold" }}
         >{`${Math.round(props.value)}%`}</Typography>
-        <LinearProgress variant="determinate" {...props} sx={{ height: "40px", borderRadius: "16px", color: "root" }} />
+        <LinearProgress
+          variant="determinate"
+          {...props}
+          sx={{ height: "40px", borderRadius: "16px", color: "root" }}
+        />
       </Box>
-      <Typography variant="body2"  sx={{ color:"black", mb:"10px", display:"flex", mt:5}}>
-       Comprendre mon opération : 
-       <Typography
+      <Typography
+        variant="body2"
+        sx={{ color: "black", mb: "10px", display: "flex", mt: 5 }}
+      >
+        Comprendre mon opération :
+        <Typography
           variant="body2"
           color="#4C5980"
-          sx={{ fontWeight: "bold",}}
+          sx={{ fontWeight: "bold" }}
         >{`${Math.round(props.value)}%`}</Typography>
       </Typography>
-      <Box sx={{ width: '230px', mr: 1,}}>
-        <LinearProgress variant="determinate" {...props} sx={{ height: "40px", borderRadius: "16px", color: "root" }} />
+      <Box sx={{ width: "230px", mr: 1 }}>
+        <LinearProgress
+          variant="determinate"
+          {...props}
+          sx={{ height: "40px", borderRadius: "16px", color: "root" }}
+        />
       </Box>
-      <Typography variant="body2"  sx={{ color:"black", mb:"10px", display:"flex", mt:2}}>
-       Finir les démarches administratives :
-       <Typography
+      <Typography
+        variant="body2"
+        sx={{ color: "black", mb: "10px", display: "flex", mt: 2 }}
+      >
+        Finir les démarches administratives :
+        <Typography
           variant="body2"
           color="#4C5980"
-          sx={{ fontWeight: "bold",}}
+          sx={{ fontWeight: "bold" }}
         >{`${Math.round(props.value)}%`}</Typography>
       </Typography>
-      <Box sx={{ width: '230px', mr: 1,}}>
-        <LinearProgress variant="determinate" {...props} sx={{ height: "40px", borderRadius: "16px", color: "root" }} />
+      <Box sx={{ width: "230px", mr: 1 }}>
+        <LinearProgress
+          variant="determinate"
+          {...props}
+          sx={{ height: "40px", borderRadius: "16px", color: "root" }}
+        />
       </Box>
-      <Typography variant="body2"  sx={{ color:"black", mb:"10px", display:"flex", mt:2}}>
-       Préparer mon arrivée en tout sérénité :
-       <Typography
+      <Typography
+        variant="body2"
+        sx={{ color: "black", mb: "10px", display: "flex", mt: 2 }}
+      >
+        Préparer mon arrivée en tout sérénité :
+        <Typography
           variant="body2"
           color="#4C5980"
-          sx={{ fontWeight: "bold",}}
+          sx={{ fontWeight: "bold" }}
         >{`${Math.round(props.value)}%`}</Typography>
       </Typography>
-      <Box sx={{ width: '230px', mr: 1,}}>
-        <LinearProgress variant="determinate" {...props} sx={{ height: "40px", borderRadius: "16px", color: "root" }} />
+      <Box sx={{ width: "230px", mr: 1 }}>
+        <LinearProgress
+          variant="determinate"
+          {...props}
+          sx={{ height: "40px", borderRadius: "16px", color: "root" }}
+        />
       </Box>
-      <Typography variant="body2"  sx={{ color:"black", mb:"10px", display:"flex", mt:2}}>
-       Anticiper ma sortie :
-       <Typography
+      <Typography
+        variant="body2"
+        sx={{ color: "black", mb: "10px", display: "flex", mt: 2 }}
+      >
+        Anticiper ma sortie :
+        <Typography
           variant="body2"
           color="#4C5980"
-          sx={{ fontWeight: "bold",}}
+          sx={{ fontWeight: "bold" }}
         >{`${Math.round(props.value)}%`}</Typography>
       </Typography>
-      <Box sx={{ width: '230px', mr: 1,}}>
-        <LinearProgress variant="determinate" {...props} sx={{ height: "40px", borderRadius: "16px", color: "root" }} />
+      <Box sx={{ width: "230px", mr: 1 }}>
+        <LinearProgress
+          variant="determinate"
+          {...props}
+          sx={{ height: "40px", borderRadius: "16px", color: "root" }}
+        />
       </Box>
-      <Typography variant="body2"  sx={{ color:"black", mb:"10px", display:"flex", mt:2}}>
-       Ma checklist avangt le départ à la Clinique :
-       <Typography
+      <Typography
+        variant="body2"
+        sx={{ color: "black", mb: "10px", display: "flex", mt: 2 }}
+      >
+        Ma checklist avangt le départ à la Clinique :
+        <Typography
           variant="body2"
           color="#4C5980"
-          sx={{ fontWeight: "bold",}}
+          sx={{ fontWeight: "bold" }}
         >{`${Math.round(props.value)}%`}</Typography>
       </Typography>
-      <Box sx={{ width: '230px', mr: 1,}}>
-        <LinearProgress variant="determinate" {...props} sx={{ height: "40px", borderRadius: "16px", color: "root" }} />
+      <Box sx={{ width: "230px", mr: 1 }}>
+        <LinearProgress
+          variant="determinate"
+          {...props}
+          sx={{ height: "40px", borderRadius: "16px", color: "root" }}
+        />
       </Box>
     </Box>
   );
