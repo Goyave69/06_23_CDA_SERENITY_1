@@ -8,7 +8,8 @@ export default function CheckListState(props) {
   const [checked, setChecked] = useState(false);
 
   const handleCheckboxChange = () => {
-    setChecked(!checked);
+    setChecked((prevChecked) => !prevChecked);
+    props.onCheckChange(!checked);
   };
 
   const labelStrikOut = () => ({
@@ -44,5 +45,6 @@ export default function CheckListState(props) {
 
 CheckListState.propTypes = {
   label1: PropTypes.string.isRequired, // Add the missing prop type validation
-  label2: PropTypes.string.isRequired, // Add the missing prop type validation
+  label2: PropTypes.string.isRequired,
+  onCheckChange: PropTypes.func.isRequired, // Add the missing prop type validation
 };

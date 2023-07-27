@@ -11,35 +11,40 @@ import Login from "@pages/Login";
 /* import AdminDoctor  from "@pages/admin/AdminDoctor.jsx" */
 //import AdminUser from "@pages/admin/AdminUser.jsx";
 import Admin from "./Admin";
-import Interventions from "@pages/admin/Interventions"
-import Patients from "@pages/admin/Patients"
+import InterventionsList from "@pages/admin/AddInterventions/InterventionsList"
+import UsersList from "@pages/admin/AddUsers/UsersList"
 import Suivi from "@pages/admin/Suivi"
-import Praticiens from "@pages/admin/Praticiens"
-import OfficesList from "@pages/admin/OfficesList";
-import AddOfficeFormular from "@pages/admin/AddOfficeFormular";
+import Praticiens from "@pages/admin/AddPraticiens/PraticiensList"
+import OfficesList from "@pages/admin/AddCabinets/OfficesList";
+import AddOfficeFormular from "@pages/admin/AddCabinets/AddOfficeFormular";
+import AddInterventionFormular from "@pages/admin/AddInterventions/AddInterventionFormular"
 import { SnackbarProvider } from "notistack";
+import AddUserFormular from "@pages/admin/AddUsers/AddUserFormular";
+import { ProgressProvider } from "./context/ProgressContext";
+
+
 
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Login />,
+  },
+   {
+    path: "/user",
     element: <App />,
     children: [
       {
-        path: "/dashboard",
+        path: "/user/dashboard",
         element: <Dashboard />,
       },
       {
-        path: "/mypreparation",
+        path: "/user/mypreparation",
         element: <MyPreparation />,
       },
       {
-        path: "/timetable",
+        path: "/user/timetable",
         element: <TimeTable />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
       },
     ],
   },
@@ -53,11 +58,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin/interventions",
-        element: <Interventions/>,
+        element: <InterventionsList/>,
       },
       {
         path: "/admin/patients",
-        element: <Patients/>,
+        element: <UsersList/>,
       },
       {
         path: "/admin/praticiens",
@@ -71,16 +76,28 @@ const router = createBrowserRouter([
         path: "/admin/add-offices",
         element: <AddOfficeFormular/>,
       },
+      {
+        path: "/admin/add-user",
+        element: <AddUserFormular/>,
+      },
+      {
+        path: "/admin/add-interventions",
+        element: <AddInterventionFormular/>,
+      },
+
     ],
+
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <SnackbarProvider>
-    <ThemeProvider theme={mainTheme}>
-      <RouterProvider router={router} />
-    </ThemeProvider>
+      <ProgressProvider>
+        <ThemeProvider theme={mainTheme}>
+          <RouterProvider router={router} />
+        </ThemeProvider>
+      </ProgressProvider>
     </SnackbarProvider>
   </React.StrictMode>
 );

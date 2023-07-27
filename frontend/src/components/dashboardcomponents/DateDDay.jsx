@@ -12,7 +12,7 @@ const DateDDay = () => {
       </Box>
       <Box>
         <Typography variant="h5" component="span" sx={{fontWeight:"bold", fontSize: 15, color:"#004F8B"}}>
-         7 Juillet 2023
+         28 Juillet 2023
         </Typography>
       </Box>
     </div>

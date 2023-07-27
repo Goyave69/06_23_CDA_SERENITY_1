@@ -6,8 +6,11 @@ import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
+import { useProgress } from "../../context/ProgressContext";
 
-const CircularProgressWithLabel = (props) => {
+const CircularProgressWithLabel = () => {
+  const { progress } = useProgress();
+
   return (
     <Box
       sx={{
@@ -17,7 +20,7 @@ const CircularProgressWithLabel = (props) => {
         ml: "29px",
       }}
     >
-      <CircularProgress variant="determinate" {...props} />
+      <CircularProgress variant="determinate" value={progress} />
       <Box
         sx={{
           top: "50%",
@@ -28,7 +31,7 @@ const CircularProgressWithLabel = (props) => {
         }}
       >
         <Typography variant="body2" component="div" color="text.secondary">
-          {`${Math.round(props.value)}%`}
+          {`${Math.round(progress)}%`}
         </Typography>
       </Box>
     </Box>
@@ -43,7 +46,7 @@ CircularProgressWithLabel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-const CardCheckList = ({ onClick }) => {
+const CardCheckList = ({ onClick, progress }) => {
   const handleClick = () => {
     if (onClick) {
       onClick();
@@ -79,7 +82,7 @@ const CardCheckList = ({ onClick }) => {
             }}
           >
             <CircularProgressWithLabel
-              value={62}
+              value={progress}
               size={65}
               sx={{ color: "#8D77F0" }}
             />
@@ -88,17 +91,16 @@ const CardCheckList = ({ onClick }) => {
               variant="subtitle1"
               component="div"
               sx={{
-                flexWrap:"wrap",
                 position: "absolute",
                 left: "47px",
-                top: "79px",
+                top: "49px",
                 margin: "10px",
                 transform: "translate(-50%, -50%)",
                 fontSize: "10px",
                 fontWeight: "Medium",
               }}
             >
-              Ma check list avant de quitter la maison
+              Ma checklist
             </Typography>
           </div>
         </CardContent>

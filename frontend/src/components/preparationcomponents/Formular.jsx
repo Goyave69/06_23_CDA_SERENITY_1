@@ -10,12 +10,19 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  Button,
   Divider,
 } from "@mui/material";
 import FormLabel from "@mui/material/FormLabel";
 import React,{ useState } from "react";
+import { useProgress } from "../../context/ProgressContext";
+
+
+
 
 export default function Formular() {
+  const { updateProgress } = useProgress();
+
   const [adminForm, setAdminForm] = useState({
     gender: "",
     civility: "",
@@ -45,6 +52,14 @@ export default function Formular() {
       [e.target.name]: value,
     });
     console.log(adminForm.email);
+
+    const completedFieldsCount = Object.values(adminForm).filter(
+      (value) => value !== ""
+    ).length;
+    const totalCount = Object.keys(adminForm).length;
+    const newProgress = (completedFieldsCount / totalCount) * 100;
+    updateProgress(newProgress);
+    
   }
 
   return (
@@ -59,6 +74,7 @@ export default function Formular() {
       <CardContent>
         <div style={{ display: "flex",  }}>
           <div>
+          <Button variant="contained" sx={{backgroundColor:"#4D7CFE", display:"flex", ml:"600px", mt:3}}>TELECHARGER LA VERSION PAPIER</Button>
             <Typography
               variant="h6"
               sx={{
@@ -384,7 +400,10 @@ export default function Formular() {
                 sx={{ ml: "2rem", mt: "2rem" }}
               />
             </div>
-            <Divider variant="middle" sx={{ mt: "3rem", width: "50%" }} />
+            <Divider variant="middle" sx={{ mt: "3rem",  }} />
+            <Button variant="contained" sx={{ mt:3, backgroundColor:"#4D7CFE" }}>
+              Envoyer
+            </Button>
           </div>
           <Divider
             orientation="vertical"

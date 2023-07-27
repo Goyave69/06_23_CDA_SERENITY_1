@@ -7,7 +7,9 @@ import PropTypes from "prop-types";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 
-const CircularProgressWithLabel = ({value}) => {
+
+const CircularProgressWithLabel = (props) => {
+  
   return (
     <Box
       sx={{
@@ -17,7 +19,7 @@ const CircularProgressWithLabel = ({value}) => {
         ml: "29px",
       }}
     >
-      <CircularProgress variant="determinate" />
+      <CircularProgress variant="determinate" {...props} />
       <Box
         sx={{
           top: "50%",
@@ -28,7 +30,7 @@ const CircularProgressWithLabel = ({value}) => {
         }}
       >
         <Typography variant="body2" component="div" color="text.secondary">
-          {`${Math.round(value.value)}%`}
+          {`${Math.round(props.value)}%`}
         </Typography>
       </Box>
     </Box>
@@ -49,6 +51,16 @@ const CardBreathing = ({ onClick }) => {
       onClick();
     }
   };
+  const [progress, setProgress] = React.useState(10);
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress((prevProgress) => (prevProgress >= 100 ? 0 : prevProgress + 10));
+    }, 800);
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
 
   return (
     <Card
@@ -80,7 +92,7 @@ const CardBreathing = ({ onClick }) => {
             }}
           >
             <CircularProgressWithLabel
-              value={62}
+              value={progress}
               size={65}
               sx={{ color: "#F8749F" }}
             />

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Formular from "@components/preparationcomponents/Formular";
 import CardUnderstand from "@components/preparationcomponents/CardUnderstand";
 import CardForm from "@components/preparationcomponents/CardForm";
@@ -10,6 +10,7 @@ import Understand from "@components/preparationcomponents/Understand";
 import Appointment from "@components/preparationcomponents/Appointment";
 import CheckListLeaving from "@components/preparationcomponents/CheckListLeaving";
 //import CheckListState from "@components/preparationcomponents/CheckListState";
+import { useProgress } from "../context/ProgressContext";
 
 export default function MyPreparation() {
   //state array qui contient les éléments d'affichage pour les modules à update en fonction de l'avancée du form
@@ -18,6 +19,9 @@ export default function MyPreparation() {
   const handleCardClick = (cardName) => {
     setSelectedCard(cardName);
   };
+
+  const { progress } = useProgress();
+ 
 
   const renderSelectedComponent = () => {
     switch (selectedCard) {
@@ -39,8 +43,8 @@ export default function MyPreparation() {
     <div>
       <div style={{ display: "flex" }}>
         <CardUnderstand onClick={() => handleCardClick("Understand")} />
-        <CardForm onClick={() => handleCardClick("formular")} />
-        <CardCheckList onClick={() => handleCardClick("checklist")} />
+        <CardForm onClick={() => handleCardClick("formular")} progress={progress} />
+        <CardCheckList onClick={() => handleCardClick("checklist")} progress={progress} />
         <CardBreathing onClick={() => handleCardClick("breathing")} />
         <CardLeaving onClick={() => handleCardClick("appointment")} />
       </div>

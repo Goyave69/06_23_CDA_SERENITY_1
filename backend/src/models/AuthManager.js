@@ -28,7 +28,7 @@ const privateKey = fs.readFileSync('jwtRS256.key');
 
 async function findOneByEmail(email) {
     return connection.promise().query(
-      `SELECT email, password FROM user WHERE email = ?`,
+      `SELECT email, password, roles FROM user WHERE email = ?`,
       [email]
     );
   }

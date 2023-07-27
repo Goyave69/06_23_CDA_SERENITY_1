@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -7,6 +7,7 @@ import FormHelperText from "@mui/material/FormHelperText";
 import CheckListState from "./CheckListState";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Card from "@mui/material/Card";
+import { useProgress } from "../../context/ProgressContext";
 
 const Container = styled(Box)`
   background-color: #f5f5f5;
@@ -27,6 +28,17 @@ const EmptySpace = styled(Box)`
 `;
 
 const CheckListLeaving = () => {
+  const [checkedCount, setCheckedCount] = useState(0); 
+  
+  const { setProgress } = useProgress();
+
+  const handleCheckChange = (isChecked) => {
+    setCheckedCount((prevCount) => (isChecked ? prevCount + 1 : prevCount - 1));
+    const totalCount = 7;
+    const newProgress = (checkedCount / totalCount) * 100;
+    setProgress(newProgress);
+  };
+
   return (
     <Card
       sx={{
@@ -56,6 +68,7 @@ const CheckListLeaving = () => {
                 <CheckListState
                   label1="Pièce d' Identité"
                   label2="Obligatoire"
+                  onCheckChange={handleCheckChange}
                 />
               </Encart>
               <Encart>
@@ -79,6 +92,7 @@ const CheckListLeaving = () => {
                   label1="Test COVID"
                   label2="Moins de 3 jours"
                   label3={<ChevronRightIcon />}
+                  onCheckChange={handleCheckChange}
                 />
               </Encart>
               <Encart>
@@ -86,6 +100,7 @@ const CheckListLeaving = () => {
                   label1="Vaccin GRIPPE"
                   label2="A faire"
                   label3={<ChevronRightIcon />}
+                  onCheckChange={handleCheckChange}
                 />
               </Encart>
               <Encart>
@@ -93,6 +108,7 @@ const CheckListLeaving = () => {
                   label1="Consentement"
                   label2="Obligatoire"
                   label3={<ChevronRightIcon />}
+                  onCheckChange={handleCheckChange}
                 />
               </Encart>
             </FormControl>
