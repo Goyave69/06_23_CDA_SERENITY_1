@@ -172,7 +172,9 @@ function AddUserFormular() {
             margin="normal"
             placeholder="roles"
             value={userData.roles}
-            onChange={(e) => setUserData({ ...userData, roles: e.target.value })}
+            onChange={(e) =>
+              setUserData({ ...userData, roles: e.target.value })
+            }
             sx={{ mr: "2rem" }}
           />
         </div>

@@ -1,10 +1,10 @@
 import { Box, CircularProgress, Typography } from "@mui/material";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 export default function ProgressCircular(props) {
   const [progress, setProgress] = useState(10);
-  console.log(progress) // hack progress is not utilisé
+  console.log(progress); // hack progress is not utilisé
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -40,8 +40,6 @@ export default function ProgressCircular(props) {
   );
 }
 
-
 ProgressCircular.propTypes = {
   value: PropTypes.string.isRequired, // Add the missing prop type validation
- 
 };

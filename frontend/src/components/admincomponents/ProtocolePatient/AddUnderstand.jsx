@@ -6,9 +6,8 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Modal from '@mui/material/Modal';
-import TextField from '@mui/material/TextField';
-
+import Modal from "@mui/material/Modal";
+import TextField from "@mui/material/TextField";
 
 const style = {
   position: "absolute",
@@ -39,18 +38,16 @@ const AddUnderstand = () => {
   };
 
   const handleUpload = () => {
-
-    if (file && title) { // Check si les deux ne sont pas vide
+    if (file && title) {
+      // Check si les deux ne sont pas vide
       const formData = new FormData();
       formData.append("name", title);
       formData.append("files", file);
 
-
       fetch("http://localhost:5000/upload_files", {
         method: "POST",
         body: formData,
-      })
-        .catch((err) => console.error("Error", err));
+      }).catch((err) => console.error("Error", err));
     } else {
       alert("Formulaire incorrect");
     }
@@ -146,7 +143,7 @@ const AddUnderstand = () => {
                       justifyContent: "center",
                       borderRadius: "10px",
                       backgroundColor: "#F3D03D",
-                      mb:3,
+                      mb: 3,
                     }}
                   >
                     <Typography
@@ -155,7 +152,7 @@ const AddUnderstand = () => {
                         fontWeight: "medium",
                         color: "white",
                         mt: 2,
-                        mb:2,
+                        mb: 2,
                         mr: 25,
                         ml: 2,
                       }}
@@ -201,7 +198,6 @@ const AddUnderstand = () => {
                       label="Déscription courte"
                       multiline
                       rows={4}
-                      
                     />
                   </div>
 
@@ -252,6 +248,4 @@ const AddUnderstand = () => {
   );
 };
 
-
 export default AddUnderstand;
-

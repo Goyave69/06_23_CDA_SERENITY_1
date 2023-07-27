@@ -15,60 +15,59 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import PermContactCalendarOutlinedIcon from '@mui/icons-material/PermContactCalendarOutlined';
-import BusinessCenterOutlinedIcon from '@mui/icons-material/BusinessCenterOutlined';
-import SourceOutlinedIcon from '@mui/icons-material/SourceOutlined';
-import SortOutlinedIcon from '@mui/icons-material/SortOutlined';
+import PermContactCalendarOutlinedIcon from "@mui/icons-material/PermContactCalendarOutlined";
+import BusinessCenterOutlinedIcon from "@mui/icons-material/BusinessCenterOutlined";
+import SourceOutlinedIcon from "@mui/icons-material/SourceOutlined";
+import SortOutlinedIcon from "@mui/icons-material/SortOutlined";
 import NotificationsNoneRoundedIcon from "@mui/icons-material/NotificationsNoneRounded";
-import ExploreOutlinedIcon from '@mui/icons-material/ExploreOutlined';
+import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
 import { Link } from "react-router-dom";
 import { Icon } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
-import SearchIcon from '@mui/icons-material/Search';
-import { styled } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
+import SearchIcon from "@mui/icons-material/Search";
+import { styled } from "@mui/material/styles";
+import InputBase from "@mui/material/InputBase";
 
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
+const Search = styled("div")(({ theme }) => ({
+  position: "relative",
   borderRadius: theme.shape.borderRadius,
   backgroundColor: "white",
   marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
+  width: "100%",
+  [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(1),
-    width: 'auto',
+    width: "auto",
   },
 }));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
+const SearchIconWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  color: 'black',
-  opacity:'50%'
+  height: "100%",
+  position: "absolute",
+  pointerEvents: "none",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  color: "black",
+  opacity: "50%",
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'black',
-  '& .MuiInputBase-input': {
+  color: "black",
+  "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      width: "12ch",
+      "&:focus": {
+        width: "20ch",
       },
     },
   },
 }));
-
 
 const drawerWidth = 240;
 
@@ -111,7 +110,6 @@ function SideBarAdmin(props) {
       link: "/admin/suivi",
       icon: SortOutlinedIcon,
     },
-    
   ];
 
   const drawer = (
@@ -206,7 +204,7 @@ function SideBarAdmin(props) {
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
+              inputProps={{ "aria-label": "search" }}
             />
           </Search>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
@@ -263,7 +261,5 @@ function SideBarAdmin(props) {
     </Box>
   );
 }
-
-
 
 export default SideBarAdmin;
