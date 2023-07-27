@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  TextField,
-  Box,
-  Typography,
-  Card,
-  Container,
-  CardContent,
-  Button,
-} from "@mui/material";
+import { TextField, Box, Typography, Card, Container, CardContent, Button } from "@mui/material";
 
 const AddAppointment = () => {
   return (
@@ -35,16 +27,6 @@ const AddAppointment = () => {
               backgroundColor: "#BAEA64",
             }}
           >
-            <Typography
-              sx={{
-                fontSize: "15px",
-                fontWeight: "medium",
-                color: "white",
-                mt: 2,
-                mr: 25,
-                ml: 2,
-              }}
-            >
               <Typography
                 sx={{
                   fontSize: "15px",
@@ -110,8 +92,6 @@ const AddAppointment = () => {
                 sx={{ ml: "2rem", mt: "2rem" }}
               />
             </div>
-          </Box>
-
           <div style={{ display: "flex" }}>
             <TextField
               id="patient-number-street"
