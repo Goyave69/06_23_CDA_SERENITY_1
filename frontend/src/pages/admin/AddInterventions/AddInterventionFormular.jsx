@@ -13,6 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import axios from "axios";
 import { Typography } from "@mui/material";
+import { enqueueSnackbar } from "notistack";
 
 function AddInterventionFormular() {
   const [officeData, setOfficeData] = useState([]);
@@ -71,8 +72,9 @@ function AddInterventionFormular() {
         console.log("response", response);
 
         if (response.status == 201) {
-          console.log("snack");
-          //on pourra ajouter une snack bar!!
+           enqueueSnackbar("L'intervention est bien ajoutée", {
+            variant: "success",
+          })
 
           navigate("/admin/interventions");
         } else {
