@@ -54,7 +54,7 @@ const CardProtocole = ({ handleClick }) => {
                   mt: 1,
                 }}
               >
-                Comprendre mon operation
+                Comprendre mon operation rose
               </Typography>
             </div>
             <div style={{ color: "white" }}>
@@ -80,13 +80,6 @@ const CardProtocole = ({ handleClick }) => {
                 width: "11rem",
               }}
             >
-              <Typography
-                sx={{
-                  fontSize: "15px",
-                  color: "white",
-                  mt: 1,
-                }}
-              >
                 <Typography
                   sx={{
                     fontSize: "14px",
@@ -119,13 +112,6 @@ const CardProtocole = ({ handleClick }) => {
                 width: "11rem",
               }}
             >
-              <Typography
-                sx={{
-                  fontSize: "15px",
-                  color: "white",
-                  mt: 1.5,
-                }}
-              >
                 <Typography
                   sx={{
                     fontSize: "15px",
@@ -151,13 +137,6 @@ const CardProtocole = ({ handleClick }) => {
             }}
             onClick={() => handleClick("checklist")}
           >
-            <div
-              style={{
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                width: "14rem",
-              }}
-            >
               <div
                 style={{
                   overflow: "hidden",
@@ -177,23 +156,6 @@ const CardProtocole = ({ handleClick }) => {
                 </Typography>
               </div>
             </Box>
-
-            <Box display="flex" justifyContent="center" mt="0.5rem" mb="2.5rem">
-              <Button
-                fullWidth
-                variant="contained"
-                sx={{
-                  fontSize: "15px",
-                  color: "white",
-                  mt: 1,
-                  ml: "10px",
-                }}
-              >
-                Ma checklist avant de quitter la maison
-              </Typography>
-            </div>
-          </Box>
-
           <Box display="flex" justifyContent="center" mt="0.5rem" mb="2.5rem">
             <Button
               fullWidth
@@ -212,6 +174,7 @@ const CardProtocole = ({ handleClick }) => {
       </Card>
     </Container>
   );
-};
+}
+;
 
 export default CardProtocole;
