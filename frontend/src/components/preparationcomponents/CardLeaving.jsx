@@ -58,7 +58,7 @@ const CardLeaving = ({ onClick }) => {
         position: "relative",
         width: "100",
         ml: "56px",
-        padding: "45px",
+        padding: "55px",
         marginTop: "100px",
         display: "flex",
         justifyContent: "center",
@@ -80,7 +80,7 @@ const CardLeaving = ({ onClick }) => {
             }}
           >
             <CircularProgressWithLabel
-              value={50}
+              value={70}
               size={65}
               sx={{ color: "#66E47A" }}
             />

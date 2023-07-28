@@ -151,7 +151,7 @@ function ResponsiveDrawer(props) {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Countdown />
           </Box>
-          <Box sx={{mr: 32}}>
+          <Box sx={{mr: 38}}>
           <DateDDay />
           </Box>
           <Box>

@@ -2,7 +2,6 @@ import React from "react";
 import PreSurgeryProgress from "@components/dashboardcomponents/PreSurgeryProgress";
 import Reminder from "@components/dashboardcomponents/Reminder";
 import Box from '@mui/material/Box';
-import DateDDay from "@components/dashboardcomponents/DateDDay";
 
 export default function Dashboard() {
   return (

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 
-const BreathingCircle = () => {
+const BreathingCircle = ({ onStartStopAnimation }) => {
   const [isInhale, setIsInhale] = useState(true);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -24,7 +24,9 @@ const BreathingCircle = () => {
 
   const handleToggleAnimation = () => {
     setIsAnimating((prevIsAnimating) => !prevIsAnimating);
+    onStartStopAnimation(); // Notify the parent component that the animation has started/stopped
   };
+
 
   const circleVariants = {
     inhale: {
@@ -40,7 +42,7 @@ const BreathingCircle = () => {
   };
 
   const circleStyle = {
-    marginLeft: "330px",
+    marginLeft: "375px",
     width: 200,
     height: 200,
     backgroundColor: "#03003C",

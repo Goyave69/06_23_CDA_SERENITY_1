@@ -22,7 +22,7 @@ const CircularProgressWithLabel = (props) => {
       <Box
         sx={{
           top: "50%",
-          left: "50%",
+          left: "47%",
           position: "absolute",
           transform: "translate(-50%, -50%)",
           textAlign: "center",
@@ -58,9 +58,9 @@ const CardForm = ({ onClick }) => {
         backgroundColor: "#F5F5F5",
         borderRadius: "20px",
         position: "relative",
-        width: "100",
+        width: "auto",
         ml: "56px",
-        padding: "45px",
+        padding: "55px",
         marginTop: "100px",
         display: "flex",
         justifyContent: "center",
@@ -92,8 +92,8 @@ const CardForm = ({ onClick }) => {
               component="div"
               sx={{
                 position: "absolute",
-                left: "47px",
-                top: "79px",
+                left: "40px",
+                top: "82px",
                 margin: "10px",
                 transform: "translate(-50%, -50%)",
                 textAlign: "center",

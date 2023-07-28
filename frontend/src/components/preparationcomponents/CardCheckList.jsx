@@ -17,14 +17,14 @@ const CircularProgressWithLabel = () => {
         position: "relative",
         display: "inline-flex",
         width: "55px",
-        ml: "29px",
+        ml: "40px",
       }}
     >
       <CircularProgress variant="determinate" value={progress} />
       <Box
         sx={{
           top: "50%",
-          left: "50%",
+          left: "35%",
           position: "absolute",
           transform: "translate(-50%, -50%)",
           textAlign: "center",
@@ -60,7 +60,7 @@ const CardCheckList = ({ onClick, progress }) => {
         position: "relative",
         width: "100",
         ml: "56px",
-        padding: "45px",
+        padding: "55px",
         marginTop: "100px",
         display: "flex",
         justifyContent: "center",
@@ -84,7 +84,7 @@ const CardCheckList = ({ onClick, progress }) => {
             <CircularProgressWithLabel
               value={progress}
               size={65}
-              sx={{ color: "#8D77F0" }}
+              sx={{ color: "#8D77F0"}}
             />
 
             <Typography
@@ -93,7 +93,7 @@ const CardCheckList = ({ onClick, progress }) => {
               sx={{
                 position: "absolute",
                 left: "47px",
-                top: "49px",
+                top: "51px",
                 margin: "10px",
                 transform: "translate(-50%, -50%)",
                 fontSize: "10px",

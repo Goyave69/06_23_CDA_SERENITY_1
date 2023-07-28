@@ -44,22 +44,26 @@ CircularProgressWithLabel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-const CardBreathing = ({ onClick }) => {
+const CardBreathing = ({ onClick, isAnimating}) => {
   const handleClick = () => {
     if (onClick) {
       onClick();
     }
   };
-  const [progress, setProgress] = React.useState(10);
+  const [progress, setProgress] = React.useState(0);
 
   React.useEffect(() => {
     const timer = setInterval(() => {
-      setProgress((prevProgress) => (prevProgress >= 100 ? 0 : prevProgress + 10));
+      if (isAnimating) {
+        setProgress((prevProgress) => (prevProgress >= 100 ? 0 : prevProgress + 10));
+      }
     }, 800);
+
     return () => {
       clearInterval(timer);
     };
-  }, []);
+  }, [isAnimating]);
+
 
   return (
     <Card
@@ -69,7 +73,7 @@ const CardBreathing = ({ onClick }) => {
         position: "relative",
         width: "100",
         ml: "56px",
-        padding: "45px",
+        padding: "55px",
         marginTop: "100px",
         display: "flex",
         justifyContent: "center",
@@ -101,7 +105,7 @@ const CardBreathing = ({ onClick }) => {
               component="div"
               sx={{
                 position: "absolute",
-                left: "47px",
+                left: "44px",
                 top: "79px",
                 margin: "10px",
                 transform: "translate(-50%, -50%)",

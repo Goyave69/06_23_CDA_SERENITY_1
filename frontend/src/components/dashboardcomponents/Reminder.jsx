@@ -10,10 +10,11 @@ export default function Reminder() {
     <Card
       sx={{
         border: "3px solid #66E47A",
-        marginTop: "150px",
+        marginTop: "220px",
         backgroundColor: "#F5F5F5",
         borderRadius: "20px",
-        height:"300px",
+        height:"360px",
+        width:'650px',
       }}
     >
       <CardContent>
