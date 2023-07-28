@@ -22,7 +22,7 @@ const CircularProgressWithLabel = (props) => {
       <Box
         sx={{
           top: "50%",
-          left: "50%",
+          left: "47%",
           position: "absolute",
           transform: "translate(-50%, -50%)",
           textAlign: "center",
@@ -58,7 +58,7 @@ const CardUnderstand = ({ onClick }) => {
         position: "relative",
         width: "100",
         ml: "26px",
-        padding: "45px",
+        padding: "55px",
         marginTop: "100px",
         display: "flex",
         justifyContent: "center",
@@ -90,7 +90,7 @@ const CardUnderstand = ({ onClick }) => {
               component="div"
               sx={{
                 position: "absolute",
-                left: "47px",
+                left: "44px",
                 top: "79px",
                 margin: "10px",
                 transform: "translate(-50%, -50%)",

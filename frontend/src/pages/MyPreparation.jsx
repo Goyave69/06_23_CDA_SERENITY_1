@@ -13,11 +13,16 @@ import CheckListLeaving from "@components/preparationcomponents/CheckListLeaving
 import { useProgress } from "../context/ProgressContext";
 
 export default function MyPreparation() {
-  //state array qui contient les éléments d'affichage pour les modules à update en fonction de l'avancée du form
   const [selectedCard, setSelectedCard] = useState(null);
 
   const handleCardClick = (cardName) => {
     setSelectedCard(cardName);
+  };
+
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const handleStartStopAnimation = () => {
+    setIsAnimating((prevIsAnimating) => !prevIsAnimating);
   };
 
   const { progress } = useProgress();
@@ -30,7 +35,7 @@ export default function MyPreparation() {
       case "Understand":
         return <Understand />;
       case "breathing":
-        return <Breathing />;
+        return <Breathing onStartStopAnimation={handleStartStopAnimation} />;
       case "appointment":
         return <Appointment />;
       case "checklist":
@@ -45,7 +50,7 @@ export default function MyPreparation() {
         <CardUnderstand onClick={() => handleCardClick("Understand")} />
         <CardForm onClick={() => handleCardClick("formular")} progress={progress} />
         <CardCheckList onClick={() => handleCardClick("checklist")} progress={progress} />
-        <CardBreathing onClick={() => handleCardClick("breathing")} />
+        <CardBreathing onClick={() => handleCardClick("breathing")} isAnimating={isAnimating} />
         <CardLeaving onClick={() => handleCardClick("appointment")} />
       </div>
       {renderSelectedComponent()}

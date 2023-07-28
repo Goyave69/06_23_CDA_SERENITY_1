@@ -6,7 +6,8 @@ async function insertUser(data) {
   let bodyResponse = { ...data };
 
   let is_praticien = false;
-  if (data.roles.includes("PATIENT_ROLE")) {
+  console.log(data)
+  if (data.roles?.includes("PATIENT_ROLE")) {
     is_praticien = false;
   } else {
     is_praticien = true;
